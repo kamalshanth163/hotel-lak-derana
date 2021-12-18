@@ -1,2 +1,2 @@
 # hotel-lak-derana
-Lak Derana Hotel Management System
+Lak Derana - Hotel Management System
