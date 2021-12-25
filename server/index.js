@@ -1,13 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const Seed = require("./db/seed");
-const db = require("./db/connection");
+
 require('dotenv').config();
+
+const employeeRoutes = require("./routes/employee");
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
+
+app.use("/employees", employeeRoutes);
 
 let seed = new Seed();
 
