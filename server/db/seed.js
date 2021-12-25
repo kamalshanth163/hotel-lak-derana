@@ -1,4 +1,4 @@
-const db = require("./connection");
+const sqlCon = require("./connection");
 
 class Seed {
 
@@ -19,7 +19,7 @@ class Seed {
         )
         LIMIT 1;`;
 
-        db.query(insertAdmin, function(err, results, fields) {
+        sqlCon.query(insertAdmin, function(err, results, fields) {
             if (err) {
                 console.log(err.message);
             }
@@ -124,13 +124,13 @@ class Seed {
             Amount DECIMAL(13,2),
             FromWhom VARCHAR(100),
             Type VARCHAR(40),
-            RecordedBy INT,
+            RecordesqlCony INT,
             PRIMARY KEY (Id),
-            FOREIGN KEY (RecordedBy) REFERENCES Employees(Id)
+            FOREIGN KEY (RecordesqlCony) REFERENCES Employees(Id)
         );
         `;
 
-        db.query(createTables, function(err, results, fields) {
+        sqlCon.query(createTables, function(err, results, fields) {
             if (err) {
                 console.log(err.message);
             }
