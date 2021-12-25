@@ -4,9 +4,29 @@ class Seed {
 
     constructor() {
         this.createAllTables();
+        this.insertAdmins();
     }
 
-    createAllTables(){
+    insertAdmins() {
+        var insertAdmin = 
+        `INSERT INTO Employees (Name, Department, Role, Email, Phone, Password)
+        SELECT "Owner", "Administration", "Admin", "admin@gmail.com", "0811234567", "admin123"
+        FROM DUAL
+        WHERE NOT EXISTS(
+            SELECT 1
+            FROM Employees
+            WHERE Role = 'Admin'
+        )
+        LIMIT 1;`;
+
+        db.query(insertAdmin, function(err, results, fields) {
+            if (err) {
+                console.log(err.message);
+            }
+        });
+    }
+
+    createAllTables() {
         let createTables = 
         `
         CREATE TABLE if not exists Customers (
@@ -42,6 +62,7 @@ class Seed {
             Role VARCHAR(100),
             Email VARCHAR(100),
             Phone VARCHAR(100),
+            Password VARCHAR(100),
             HotelId INT,
             PRIMARY KEY (Id),
             FOREIGN KEY (HotelId) REFERENCES Hotels(Id)
@@ -107,7 +128,6 @@ class Seed {
             PRIMARY KEY (Id),
             FOREIGN KEY (RecordedBy) REFERENCES Employees(Id)
         );
-
         `;
 
         db.query(createTables, function(err, results, fields) {
