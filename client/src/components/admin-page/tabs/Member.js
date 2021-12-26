@@ -1,27 +1,28 @@
-import React, { useState } from 'react';
-import './styles/Admin.css'
+import React, {useState} from 'react';
 
-const Admin = () => {
-  var initialBook = {
-    id: 0,
-    title: "",
-    author: "",
-    isbn: "",
-    price: 0,
-  }
-  const [book, setBook] = useState(initialBook);
-  const [books, setBooks] = useState([]);
-
-  const handleEditAction = () => {
-
-  }
-
-  const handleDelete = () => {
+function Member() {
+    var initialBook = {
+        id: 0,
+        title: "",
+        author: "",
+        isbn: "",
+        price: 0,
+      }
+      const [book, setBook] = useState(initialBook);
+      const [books, setBooks] = useState([]);
     
-  }
+      const handleEditAction = () => {
+    
+      }
+    
+      const handleDelete = () => {
+        
+      }
 
   return (
-    <div className="admin-page row">
+      <div>
+        <div>Members</div>
+<div className="admin-page row">
       <table className="layout">
       <tr>
         <td className="left-col">
@@ -80,7 +81,9 @@ const Admin = () => {
       </tr>
     </table>       
     </div>
+
+      </div>
   );
 }
 
-export default Admin;
+export default Member;
