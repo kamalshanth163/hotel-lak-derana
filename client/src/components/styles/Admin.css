@@ -1,0 +1,150 @@
+.admin-page{
+    width: 80%;
+    margin: 0 auto;
+}
+.form {
+    background-color: white;
+  }
+  
+  input[type=text], input[type=password], input[type=number]{
+    width: 300px;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  } 
+  .addBookBtn, .editBookBtn {
+    background-color: #046daa;
+    color: white;
+    padding: 16px 20px;
+    margin: 0 auto;
+    border: none;
+    cursor: pointer;
+    width: 300px;
+    opacity: 0.9;
+  } 
+
+  .adminbtn:hover {
+    opacity: 1;
+  }
+  a {
+    color: dodgerblue;
+  }
+  .signup {
+    background-color: #f1f1f1;
+    text-align: center;
+  }
+  .layout{
+    width: 100%;
+  }
+  .left-col{
+    width: 30%;
+}
+  .right-col{
+    width: 70%;
+    vertical-align: top;
+    padding: 30px 0px 30px 100px;
+}
+
+.panel {
+  margin-top: -10px;
+}
+.panel table{
+    display: block;
+    width: 100%;
+    padding: 20px;
+    background: white;
+    height: 400px;
+}
+.panel table thead tr {
+    text-align: center;
+}
+.panel table thead tr td {
+    padding: 20px;
+    text-align: center;
+    height: 50px;
+    min-height: 40px;
+}
+.panel table tbody tr {
+    text-align: center;
+    background: white;
+}
+.panel table tr td{
+    padding: 20px;
+    text-align: center;
+    height: 50px;
+    min-height: 40px;
+}
+
+.panel table .btn{
+    padding: 4px 8px;
+    border: none;
+    border-radius: 2px;
+    background: rgb(7, 158, 70);
+    color: white;
+    margin: 2px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.panel table .edit-btn{
+    background: rgb(7, 158, 70);
+}
+
+.panel table .delete-btn{
+    background: rgb(221, 26, 0);
+}
+
+.panel table .table-body {
+  height: 300px;
+  overflow-y: scroll;
+}
+.panel table .table-head {
+  overflow-y: scroll;
+}
+
+.panel table .th-row th{
+  border: none;
+  border-radius: 10px;
+  padding: 0;
+  width: 160px;
+  margin: 0 auto;
+  text-align: center;
+  height: 40px;
+}
+.panel table .td-row td{
+  border: none;
+  border-radius: 10px;
+  width: 200px;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.admin-table-message-box{
+  width: 500px;
+  height: auto;
+  color: rgb(109, 109, 109);
+  vertical-align: center;
+  margin: 120px auto;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.admin-panel-message-box{
+  width: 500px;
+  height: auto;
+  color: rgb(109, 109, 109);
+  vertical-align: center;
+  margin: 160px auto;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+}

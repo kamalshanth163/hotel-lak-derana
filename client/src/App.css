@@ -1,38 +1,73 @@
-.App {
+.topnav {
+  background-color: rgb(87, 87, 87);
+  overflow: hidden;
+  height: 100%;
+}
+.navlinks{
+  width: 100%;
+  height: 50px;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navlinks table {
+    width: 400px;
+    margin: 0 auto;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .navlinks table tr td{
+      margin: 0 auto;
   }
+  .navlinks table tr td .navlink{
+      width: 100px;
+  }
+ .navlink {
+  float: left;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  text-decoration: none;
+  list-style: none;
+  text-align: center;
+  outline: none;
+  border: none;
+  border-radius: 6px 6px 0 0;
+  font-weight: bold;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.topnav li:hover {
+  background-color: rgb(25, 26, 27);
+  color: #ddd;
+}
+.topnav li.active {
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.topnav .logo{
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
+}
+.navlinks .is-active{
+  background-color: white;
+  color: #111;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-topbar{
+  width: 100%;
+  padding: 10px 100px;
+  height: 40px;
+}
+.sign-section{
+position: absolute;
+right: 0;
+padding: 40px 100px
+}
+
+.signin-btn{
+background: rgb(11, 179, 100);
+color: white;
+font-weight: bold;
+border-radius: 6px;
+padding: 4px 8px;
+border: none;
+cursor: pointer;
 }
