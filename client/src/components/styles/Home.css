@@ -1,0 +1,44 @@
+.home-page{
+    background-image: url('../../assets/hotel.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 80vh;
+    width: 100%;
+    padding-top: 40px;
+    color: #fff;
+}
+
+.home-page .text-1{
+    font-size: 40px;
+    margin: 0px 0px 0px;
+}
+
+.home-page .text-2{
+    font-size: 80px;
+    margin: 10px 0px 0px;
+    /* text-shadow: 6px 8px #2a6079; */
+}
+
+.home-page .text-3{
+    font-size: 20px;
+    padding: 0px 300px;
+    text-shadow: 1px 1px #9b9b9b;
+}
+
+.home-page .banner{
+    text-align: center;
+    margin-top: 0px;
+}
+
+.home-page .btn{
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background: rgb(71, 71, 71);
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: center;
+    margin: 4px auto;
+}
