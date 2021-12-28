@@ -7,23 +7,22 @@ import {
   Link,
   useRouteMatch
 } from "react-router-dom";
-import Member from './tabs/Member';
+import Member from './tabs/Employee';
 import Hotel from './tabs/Hotel';
 import Room from './tabs/Room';
-
 
 const Admin = () => {
   let { path, url } = useRouteMatch();
 
   return (
 
-  <div>
+  <div className='admin-page'>
     <div>
       <div>
         <h2>Admin page</h2>
-        <ul>
+        <ul className='sub-links'>
           <li>
-            <Link to={`${url}/member`}>Members</Link>
+            <Link to={`${url}/employee`}>Employees</Link>
           </li>
           <li>
             <Link to={`${url}/hotel`}>Hotels</Link>
@@ -35,7 +34,7 @@ const Admin = () => {
 
         <Switch>
           <Route path={`${path}`} exact component = {Member} />
-          <Route path={`${path}/member`} component = {Member} />
+          <Route path={`${path}/employee`} component = {Member} />
           <Route path={`${path}/hotel`} component = {Hotel} />
           <Route path={`${path}/room`} component = {Room} />
         </Switch>
