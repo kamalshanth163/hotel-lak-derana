@@ -60,15 +60,17 @@ function Employee() {
   return (
     <div className="employee-page row">
       <div>
-        <div>Employees</div>
+        <hr></hr>
+        <h2>Manage Employees</h2>
       <table className="layout">
       <tr>
         <td className="left-col">
         <form className="form">
             <div class="container">
             {action === 'add' ? 
-                <h1>Add an Employee</h1> : <h1>Edit Employee</h1>
+                <h3>Add an Employee</h3> : <h3>Edit Employee</h3>
               }
+            <hr></hr>
             <label for="name"><b>Name</b></label>
             <input type="text" placeholder="Name" name="name" id="name" value={employee.name} required onChange={(e)=>handleChange(e)}/>
 
@@ -97,7 +99,6 @@ function Employee() {
         </td>
         <td className="right-col">
             <div className="panel">
-              <h1>Admin Panel</h1>
                   <table>
 
                     <div className="table-body">

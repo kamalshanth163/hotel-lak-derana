@@ -19,7 +19,7 @@ const Admin = () => {
   <div className='admin-page'>
     <div>
       <div>
-        <h2>Admin page</h2>
+        <h1>Admin page</h1>
         <ul className='sub-links'>
           <li>
             <Link to={`${url}/employee`}>Employees</Link>
