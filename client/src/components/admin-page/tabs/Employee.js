@@ -99,8 +99,10 @@ function Employee() {
             <div className="panel">
               <h1>Admin Panel</h1>
                   <table>
-                    <div className="table-head">
+
+                    <div className="table-body">
                       <tr className="th-row">
+                        <th>No.</th>
                         <th>Name</th>
                         <th>Department</th>
                         <th>Role</th>
@@ -108,11 +110,10 @@ function Employee() {
                         <th>Phone</th>
                         <th></th>
                       </tr>
-                    </div>
-                    <div className="table-body">
                       {employees.map((e, i) => {
                         return (
                           <tr className="td-row">
+                            <td>{i + 1}</td>
                             <td>{e.name}</td>
                             <td>{e.department}</td>
                             <td>{e.role}</td>
