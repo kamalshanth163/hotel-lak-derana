@@ -9,13 +9,13 @@ class Seed {
 
     insertAdmins() {
         var insertAdmin = 
-        `INSERT INTO Employees (Name, Department, Role, Email, Phone, Password)
+        `INSERT INTO employees (name, department, role, email, phone, password)
         SELECT "Owner", "Administration", "Admin", "admin@gmail.com", "0811234567", "admin123"
         FROM DUAL
         WHERE NOT EXISTS(
             SELECT 1
-            FROM Employees
-            WHERE Role = 'Admin'
+            FROM employees
+            WHERE role = 'Admin'
         )
         LIMIT 1;`;
 
@@ -29,104 +29,104 @@ class Seed {
     createAllTables() {
         let createTables = 
         `
-        CREATE TABLE if not exists Customers (
-            Id INT NOT NULL AUTO_INCREMENT,
-            Name VARCHAR(100) NOT NULL,
-            Address VARCHAR(100),
-            Phone VARCHAR(40),
-            PRIMARY KEY (Id)
+        CREATE TABLE if not exists customers (
+            id INT NOT NULL AUTO_INCREMENT,
+            name VARCHAR(100) NOT NULL,
+            address VARCHAR(100),
+            phone VARCHAR(40),
+            PRIMARY KEY (id)
         );
         
-        CREATE TABLE if not exists Hotels (
-            Id INT NOT NULL AUTO_INCREMENT,
-            Name VARCHAR(100) NOT NULL,
-            Address VARCHAR(100),
-            Phone VARCHAR(40),
-            PRIMARY KEY (Id)
+        CREATE TABLE if not exists hotels (
+            id INT NOT NULL AUTO_INCREMENT,
+            name VARCHAR(100) NOT NULL,
+            address VARCHAR(100),
+            phone VARCHAR(40),
+            PRIMARY KEY (id)
         );
         
-        CREATE TABLE if not exists Rooms (
-            Id INT NOT NULL AUTO_INCREMENT,
-            Number VARCHAR(100) NOT NULL,
-            Availability BOOLEAN,
-            Type VARCHAR(40),
-            HotelId INT,
-            PRIMARY KEY (Id),
-            FOREIGN KEY (HotelId) REFERENCES Hotels(Id)
+        CREATE TABLE if not exists rooms (
+            id INT NOT NULL AUTO_INCREMENT,
+            number VARCHAR(100) NOT NULL,
+            availability BOOLEAN,
+            type VARCHAR(40),
+            hotel_id INT,
+            PRIMARY KEY (id),
+            FOREIGN KEY (hotel_id) REFERENCES hotels(id)
         );
         
-        CREATE TABLE if not exists Employees (
-            Id INT NOT NULL AUTO_INCREMENT,
-            Name VARCHAR(100),
-            Department VARCHAR(100),
-            Role VARCHAR(100),
-            Email VARCHAR(100),
-            Phone VARCHAR(100),
-            Password VARCHAR(100),
-            HotelId INT,
-            PRIMARY KEY (Id),
-            FOREIGN KEY (HotelId) REFERENCES Hotels(Id)
+        CREATE TABLE if not exists employees (
+            id INT NOT NULL AUTO_INCREMENT,
+            name VARCHAR(100),
+            department VARCHAR(100),
+            role VARCHAR(100),
+            email VARCHAR(100),
+            phone VARCHAR(100),
+            password VARCHAR(100),
+            hotel_id INT,
+            PRIMARY KEY (id),
+            FOREIGN KEY (hotel_id) REFERENCES hotels(id)
         );
         
-        CREATE TABLE if not exists Salaries (
-            Id INT NOT NULL AUTO_INCREMENT,
-            BasicSalary DECIMAL(13,2),
-            OverTime DECIMAL(13,2),
-            Allowance DECIMAL(13,2),
-            Leaves DECIMAL(13,2),
-            Deduction DECIMAL(13,2),
-            FinalAmount DECIMAL(13,2),
-            HRId INT,
-            EmployeeId INT,
-            PRIMARY KEY (Id),
-            FOREIGN KEY (EmployeeId) REFERENCES Employees(Id)
+        CREATE TABLE if not exists salaries (
+            id INT NOT NULL AUTO_INCREMENT,
+            basic_salary DECIMAL(13,2),
+            over_time DECIMAL(13,2),
+            allowance DECIMAL(13,2),
+            leaves DECIMAL(13,2),
+            deduction DECIMAL(13,2),
+            final_amount DECIMAL(13,2),
+            hr_id INT,
+            employee_id INT,
+            PRIMARY KEY (id),
+            FOREIGN KEY (employee_id) REFERENCES employees(id)
         );
         
-        CREATE TABLE if not exists Attendances (
-            Id INT NOT NULL AUTO_INCREMENT,
-            Entered DATETIME,
-            Exited DATETIME,
-            HRId INT,
-            EmployeeId INT,
-            PRIMARY KEY (Id),
-            FOREIGN KEY (EmployeeId) REFERENCES Employees(Id)
+        CREATE TABLE if not exists attendances (
+            id INT NOT NULL AUTO_INCREMENT,
+            entered DATETIME,
+            exited DATETIME,
+            hr_id INT,
+            employee_id INT,
+            PRIMARY KEY (id),
+            FOREIGN KEY (employee_id) REFERENCES employees(id)
         );
         
-        CREATE TABLE if not exists Payments (
-            Id INT NOT NULL AUTO_INCREMENT,
-            DateCheckedIn DATETIME,
-            DateCheckedOut DATETIME,
-            ReservationFee DECIMAL(13,2),
-            HotelFee DECIMAL(13,2),
-            Paid DECIMAL(13,2),
-            Due DECIMAL(13,2),
-            Completed BOOLEAN,
-            CustomerId INT,
-            RoomId INT,
-            PRIMARY KEY (Id),
-            FOREIGN KEY (CustomerId) REFERENCES Customers(Id),
-            FOREIGN KEY (RoomId) REFERENCES Rooms(Id)
+        CREATE TABLE if not exists payments (
+            id INT NOT NULL AUTO_INCREMENT,
+            date_checked_in DATETIME,
+            date_checked_out DATETIME,
+            reservation_fee DECIMAL(13,2),
+            hotel_fee DECIMAL(13,2),
+            paid DECIMAL(13,2),
+            due DECIMAL(13,2),
+            completed BOOLEAN,
+            customer_id INT,
+            room_id INT,
+            PRIMARY KEY (id),
+            FOREIGN KEY (customer_id) REFERENCES customers(id),
+            FOREIGN KEY (room_id) REFERENCES rooms(id)
         );
         
-        CREATE TABLE if not exists Reservations (
-            Id INT NOT NULL AUTO_INCREMENT,
-            AdultsCount INT,
-            ChildrenCount INT,
-            CustomerId INT,
-            RoomId INT,
-            PRIMARY KEY (Id),
-            FOREIGN KEY (CustomerId) REFERENCES Customers(Id),
-            FOREIGN KEY (RoomId) REFERENCES Rooms(Id)
+        CREATE TABLE if not exists reservations (
+            id INT NOT NULL AUTO_INCREMENT,
+            adults_count INT,
+            children_count INT,
+            customer_id INT,
+            room_id INT,
+            PRIMARY KEY (id),
+            FOREIGN KEY (customer_id) REFERENCES customers(id),
+            FOREIGN KEY (room_id) REFERENCES rooms(id)
         );
         
-        CREATE TABLE if not exists Finances (
-            Id INT NOT NULL AUTO_INCREMENT,
-            Amount DECIMAL(13,2),
-            FromWhom VARCHAR(100),
-            Type VARCHAR(40),
-            RecordesqlCony INT,
-            PRIMARY KEY (Id),
-            FOREIGN KEY (RecordesqlCony) REFERENCES Employees(Id)
+        CREATE TABLE if not exists finances (
+            id INT NOT NULL AUTO_INCREMENT,
+            amount DECIMAL(13,2),
+            from_whom VARCHAR(100),
+            type VARCHAR(40),
+            recorded_by INT,
+            PRIMARY KEY (id),
+            FOREIGN KEY (recorded_by) REFERENCES employees(id)
         );
         `;
 
