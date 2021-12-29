@@ -10,6 +10,8 @@ router.post("/login", employeeController.loginEmployee);
 
 router.put("/", employeeController.updateEmployee);
 
+router.delete("/:id", employeeController.deleteEmployee);
+
 module.exports = router;
 
 

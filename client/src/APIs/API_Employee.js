@@ -41,6 +41,18 @@ class API_Employee {
             });
         return result;
     }
+
+    async deleteEmployee(employeeId){
+        var result =
+            fetch(`${baseUrl}employees/${employeeId}`, {
+                method: 'DELETE',
+            })
+            .then((response) => response.json())
+            .then((a) => {
+                return a;
+            });
+        return result;
+    }
 }
 
 export default API_Employee;

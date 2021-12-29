@@ -105,7 +105,7 @@ function Employee() {
 
                     <div className="table-body">
                       <tr className="th-row">
-                        <th>No.</th>
+                        <th>Id</th>
                         <th>Name</th>
                         <th>Department</th>
                         <th>Role</th>
@@ -116,7 +116,7 @@ function Employee() {
                       {employees.map((e, i) => {
                         return (
                           <tr className="td-row">
-                            <td>{i + 1}</td>
+                            <td>{e.id}</td>
                             <td>{e.name}</td>
                             <td>{e.department}</td>
                             <td>{e.role}</td>
@@ -126,7 +126,7 @@ function Employee() {
                               <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                             </td>
                             <td>
-                              <button className="delete-btn btn" onClick={() => handleDelete(e.Id)}>Delete</button>
+                              <button className="delete-btn btn" onClick={() => handleDelete(e.id)}>Delete</button>
                             </td>
                           </tr>
                         )
