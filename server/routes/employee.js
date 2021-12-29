@@ -8,6 +8,8 @@ router.get("/:id", employeeController.getEmployeeById);
 router.post("/", employeeController.postEmployee);
 router.post("/login", employeeController.loginEmployee);
 
+router.put("/", employeeController.updateEmployee);
+
 module.exports = router;
 
 

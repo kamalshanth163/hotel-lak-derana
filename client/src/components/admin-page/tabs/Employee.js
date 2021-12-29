@@ -3,59 +3,59 @@ import '../../styles/Admin.css'
 import API_Employee from '../../../APIs/API_Employee';
 
 function Employee() {
-    var initialEmployee = {
-        name: "",
-        department: "",
-        role: "",
-        email: "",
-        phone: "",
-        password: ""
-      }
-      const [employee, setEmployee] = useState(initialEmployee);
-      const [employees, setEmployees] = useState([]);
-      const [action, setAction] = useState("add");
+  var initialEmployee = {
+    name: "",
+    department: "",
+    role: "",
+    email: "",
+    phone: "",
+    password: ""
+  }
+  const [employee, setEmployee] = useState(initialEmployee);
+  const [employees, setEmployees] = useState([]);
+  const [action, setAction] = useState("add");
 
-      useEffect(() => {
-        getAllEmployees();
-      })
+  useEffect(() => {
+    getAllEmployees();
+  })
 
-      const getAllEmployees = () => {
-        new API_Employee().getAllEmployees().then(data => {
-          setEmployees([...data]);
-        });
-      }
+  const getAllEmployees = () => {
+    new API_Employee().getAllEmployees().then(data => {
+      setEmployees([...data]);
+    });
+  }
 
-      const handleChange = (e) => {
-        var name = e.target.name;
-        var value = e.target.value;
-        setEmployee({...employee, [name]: value});
-      }
+  const handleChange = (e) => {
+    var name = e.target.name;
+    var value = e.target.value;
+    setEmployee({...employee, [name]: value});
+  }
 
-      const handleAdd = (e) => {
-        e.preventDefault();
-        new API_Employee().postEmployee(employee).then(data => {
-          setEmployee(initialEmployee);
-        });
-      }
+  const handleAdd = (e) => {
+    e.preventDefault();
+    new API_Employee().postEmployee(employee).then(data => {
+      setEmployee(initialEmployee);
+    });
+  }
 
-      const handleEdit = (e) => {
-        e.preventDefault();
-        new API_Employee().updateEmployee(employee).then(data => {
-          setEmployee(initialEmployee);
-        });
-        setAction("add");
+  const handleEdit = (e) => {
+    e.preventDefault();
+    new API_Employee().updateEmployee(employee).then(data => {
+      setEmployee(initialEmployee);
+    });
+    setAction("add");
+  }
+
+  const handleEditAction = (model) => {
+    setAction("edit");
+    setEmployee(model);
+  }
+
+  const handleDelete = (employeeId) => {
+    if(window.confirm("Are you sure you want to DELETE this Employee?")){
+      new API_Employee().deleteEmployee(employeeId);
     }
-    
-      const handleEditAction = (model) => {
-        setAction("edit");
-        setEmployee(model);
-      }
-    
-      const handleDelete = (employeeId) => {
-        if(window.confirm("Are you sure you want to DELETE this Employee?")){
-          new API_Employee().deleteEmployee(employeeId);
-        }
-      }
+  }
 
   return (
     <div className="employee-page row">
@@ -122,6 +122,8 @@ function Employee() {
                             <td>{e.phone}</td>
                             <td>
                               <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
+                            </td>
+                            <td>
                               <button className="delete-btn btn" onClick={() => handleDelete(e.Id)}>Delete</button>
                             </td>
                           </tr>
