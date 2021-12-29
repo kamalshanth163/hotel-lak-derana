@@ -17,6 +17,21 @@ class API_Employee {
         return result;
     }
 
+    async updateEmployee(employee){
+        var result =
+            fetch(`${baseUrl}employees`,
+            {
+                method: "PUT",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(employee)           
+            })
+            .then((response) => response.json())
+            .then((a) => {
+                return a;
+            });
+        return result;
+    }
+
     async getAllEmployees(){
         var result =
             fetch(`${baseUrl}employees`)

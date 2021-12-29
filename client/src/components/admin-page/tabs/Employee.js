@@ -4,6 +4,7 @@ import API_Employee from '../../../APIs/API_Employee';
 
 function Employee() {
   var initialEmployee = {
+    id: "",
     name: "",
     department: "",
     role: "",
@@ -49,6 +50,7 @@ function Employee() {
   const handleEditAction = (model) => {
     setAction("edit");
     setEmployee(model);
+    console.log(employee)
   }
 
   const handleDelete = (employeeId) => {
@@ -91,8 +93,8 @@ function Employee() {
             <br></br>
 
             {action === 'add' ? 
-            <button type="submit" className="addEmployeeBtn"  onClick={(e) => handleAdd(e)}>Add</button> :
-            <button type="submit" className="editEmployeeBtn"  onClick={(e) => handleEdit(e)}>Save</button>
+            <button type="submit" className="addEmployeeBtn" onClick={(e) => handleAdd(e)}>Add</button> :
+            <button type="submit" className="editEmployeeBtn" onClick={(e) => handleEdit(e)}>Save</button>
             }
             </div>        
         </form>
