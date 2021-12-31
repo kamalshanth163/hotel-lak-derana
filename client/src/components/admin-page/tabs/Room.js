@@ -6,9 +6,9 @@ import React, { useState, useEffect } from 'react';
     var initialRoom = {
       id: "",
       number: "",
-      availability: "",
-      type: "",
-      hotel_id: ""
+      availability: 1,
+      type: "Budget",
+      hotel_id: 0
     }
     const [room, setRoom] = useState(initialRoom);
     const [rooms, setRooms] = useState([]);
@@ -31,6 +31,7 @@ import React, { useState, useEffect } from 'react';
     }
   
     const handleAdd = (e) => {
+      room.hotel_id = room.hotel_id * 1;
       e.preventDefault();
       new API_Room().postRoom(room).then(data => {
         setRoom(initialRoom);
@@ -72,13 +73,25 @@ import React, { useState, useEffect } from 'react';
                 }
               <hr></hr>
               <label for="number"><b>Number</b></label>
-              <input type="text" placeholder="Number" name="number" id="number" value={room.name} required onChange={(e)=>handleChange(e)}/>
+              <input type="text" placeholder="Number" name="number" id="number" value={room.number} required onChange={(e)=>handleChange(e)}/>
   
               <label for="availability"><b>Availability</b></label>
-              <input type="number" placeholder="Availability" name="availability" id="availability" value={room.availability} required onChange={(e)=>handleChange(e)}/>
-  
+              {/* <input type="number" placeholder="Availability" name="availability" id="availability" value={room.availability} required onChange={(e)=>handleChange(e)}/> */}
+              <select name="availability" id="availability" value={room.availability} required onChange={(e)=>handleChange(e)}>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+              <br></br>
+              <br></br>
+
               <label for="type"><b>Type</b></label>
-              <input type="text" placeholder="Type" name="type" id="type" value={room.type} required onChange={(e)=>handleChange(e)}/>
+              {/* <input type="text" placeholder="Type" name="type" id="type" value={room.type} required onChange={(e)=>handleChange(e)}/> */}
+              <select name="type" id="type" value={room.type} defaultValue="Budget" required onChange={(e)=>handleChange(e)}>
+                <option value="Budget">Budget</option>
+                <option value="Luxury">Luxury</option>
+              </select>
+              <br></br>
+              <br></br>
               
               <label for="hotel_id"><b>Hotel Id</b></label>
               <input type="number" placeholder="Hotel Id" name="hotel_id" id="hotel_id" value={room.hotel_id} required onChange={(e)=>handleChange(e)}/>
