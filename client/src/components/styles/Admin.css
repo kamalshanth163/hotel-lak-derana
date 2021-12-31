@@ -116,7 +116,7 @@
   padding: 0;
   width: 160px;
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
   height: 40px;
 }
 .panel table .td-row td{
@@ -124,7 +124,7 @@
   width: 160px;
   padding: 10px;
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
 }
 
 .admin-table-message-box{
@@ -152,4 +152,14 @@
 .admin-page .sub-links ul{
   display: inline-block;
   text-decoration: none;
+}
+.admin-page .admin-menu{
+  margin-bottom: 20px; 
+}
+.admin-page .admin-menu td .menu-link{
+  background: rgb(218, 218, 218);
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding: 8px 20px;
+  border-radius: 10px;
 }

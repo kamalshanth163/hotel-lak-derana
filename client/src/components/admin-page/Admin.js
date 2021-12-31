@@ -19,18 +19,21 @@ const Admin = () => {
   <div className='admin-page'>
     <div>
       <div>
+
         <h1>Admin page</h1>
-        <ul className='sub-links'>
-          <li>
-            <Link to={`${url}/employee`}>Employees</Link>
-          </li>
-          <li>
-            <Link to={`${url}/hotel`}>Hotels</Link>
-          </li>
-          <li>
-            <Link to={`${url}/room`}>Rooms</Link>
-          </li>
-        </ul>
+        <table className='admin-menu'>
+          <tr>
+            <td>
+              <Link className="menu-link" to={`${url}/employee`}>Employees</Link>
+            </td>
+            <td>
+              <Link className="menu-link" to={`${url}/hotel`}>Hotels</Link>
+            </td>
+            <td>
+              <Link className="menu-link" to={`${url}/room`}>Rooms</Link>
+            </td>
+          </tr>
+        </table>
 
         <Switch>
           <Route path={`${path}`} exact component = {Member} />
