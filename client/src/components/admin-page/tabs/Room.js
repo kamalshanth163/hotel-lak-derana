@@ -76,7 +76,6 @@ import React, { useState, useEffect } from 'react';
               <input type="text" placeholder="Number" name="number" id="number" value={room.number} required onChange={(e)=>handleChange(e)}/>
   
               <label for="availability"><b>Availability</b></label>
-              {/* <input type="number" placeholder="Availability" name="availability" id="availability" value={room.availability} required onChange={(e)=>handleChange(e)}/> */}
               <select name="availability" id="availability" value={room.availability} required onChange={(e)=>handleChange(e)}>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
@@ -85,7 +84,6 @@ import React, { useState, useEffect } from 'react';
               <br></br>
 
               <label for="type"><b>Type</b></label>
-              {/* <input type="text" placeholder="Type" name="type" id="type" value={room.type} required onChange={(e)=>handleChange(e)}/> */}
               <select name="type" id="type" value={room.type} defaultValue="Budget" required onChange={(e)=>handleChange(e)}>
                 <option value="Budget">Budget</option>
                 <option value="Luxury">Luxury</option>
