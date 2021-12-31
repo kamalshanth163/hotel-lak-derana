@@ -7,6 +7,7 @@ require('dotenv').config();
 
 const employeeRoutes = require("./routes/employee");
 const hotelRoutes = require("./routes/hotel");
+const roomRoutes = require("./routes/room");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -14,8 +15,10 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
+// Routes
 app.use("/employees", employeeRoutes);
 app.use("/hotels", hotelRoutes);
+app.use("/rooms", roomRoutes);
 
 let seed = new Seed();
 
