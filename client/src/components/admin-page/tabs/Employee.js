@@ -93,8 +93,8 @@ function Employee() {
             <br></br>
 
             {action === 'add' ? 
-            <button type="submit" className="addEmployeeBtn" onClick={(e) => handleAdd(e)}>Add</button> :
-            <button type="submit" className="editEmployeeBtn" onClick={(e) => handleEdit(e)}>Save</button>
+            <button type="submit" className="addBtn" onClick={(e) => handleAdd(e)}>Add</button> :
+            <button type="submit" className="editBtn" onClick={(e) => handleEdit(e)}>Save</button>
             }
             </div>        
         </form>

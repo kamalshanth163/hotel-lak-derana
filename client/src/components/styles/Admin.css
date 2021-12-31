@@ -19,7 +19,7 @@
     background-color: #ddd;
     outline: none;
   } 
-  .addEmployeeBtn, .editEmployeeBtn {
+  .addBtn, .editBtn {
     background-color: #046daa;
     color: white;
     padding: 16px 20px;
