@@ -49,7 +49,6 @@ import React, { useState, useEffect } from 'react';
     const handleEditAction = (model) => {
       setAction("edit");
       setReservation(model);
-      console.log(reservation)
     }
   
     const handleDelete = (reservationId) => {

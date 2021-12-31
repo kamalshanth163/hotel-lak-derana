@@ -49,7 +49,6 @@ import React, { useState, useEffect } from 'react';
     const handleEditAction = (model) => {
       setAction("edit");
       setRoom(model);
-      console.log(room)
     }
   
     const handleDelete = (roomId) => {
