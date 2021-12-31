@@ -1,5 +1,5 @@
 .admin-page{
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
 }
 .form {
@@ -19,7 +19,7 @@
     background-color: #ddd;
     outline: none;
   } 
-  .addBookBtn, .editBookBtn {
+  .addEmployeeBtn, .editEmployeeBtn {
     background-color: #046daa;
     color: white;
     padding: 16px 20px;
@@ -44,12 +44,12 @@
     width: 100%;
   }
   .left-col{
-    width: 30%;
+    width: 10%;
 }
   .right-col{
-    width: 70%;
+    width: 90%;
     vertical-align: top;
-    padding: 30px 0px 30px 100px;
+    padding: 30px 0px 30px 10px;
 }
 
 .panel {
@@ -102,13 +102,14 @@
 }
 
 .panel table .table-body {
-  height: 300px;
+  height: 500px;
   overflow-y: scroll;
+  padding: 10px;
+  border: 2px solid black;
 }
 .panel table .table-head {
   overflow-y: scroll;
 }
-
 .panel table .th-row th{
   border: none;
   border-radius: 10px;
@@ -119,10 +120,9 @@
   height: 40px;
 }
 .panel table .td-row td{
-  border: none;
-  border-radius: 10px;
-  width: 200px;
-  padding: 0;
+  background: rgb(236, 236, 236);
+  width: 160px;
+  padding: 10px;
   margin: 0 auto;
   text-align: center;
 }
@@ -147,4 +147,19 @@
   border: none;
   border-radius: 10px;
   text-align: center;
+}
+
+.admin-page .sub-links ul{
+  display: inline-block;
+  text-decoration: none;
+}
+.admin-page .admin-menu{
+  margin-bottom: 20px; 
+}
+.admin-page .admin-menu td .menu-link{
+  background: rgb(218, 218, 218);
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding: 8px 20px;
+  border-radius: 10px;
 }

@@ -1,14 +1,14 @@
 const sqlCon = require("../db/connection");
 
 const getAllEmployees = (req, res) => {
-    sqlCon.query("SELECT * FROM Employees", (err, results) => {
+    sqlCon.query("SELECT * FROM employees", (err, results) => {
         if(err) return res.sendStatus(400);
         return res.send(results);
     })
 };
 
 const getEmployeeById = (req, res) => {
-    sqlCon.query(`SELECT * FROM Employees WHERE Id = ${req.params.id}`, (err, results) => {
+    sqlCon.query(`SELECT * FROM employees WHERE id = ${req.params.id}`, (err, results) => {
         if(err) return res.sendStatus(400);
         return res.send(results);
     })
@@ -16,14 +16,13 @@ const getEmployeeById = (req, res) => {
 
 const postEmployee = (req, res) => {
     sqlCon.query(
-        `
-        INSERT INTO Employees (Name, Department, Role, Email, Phone, Password)
+        `INSERT INTO employees (name, department, role, email, phone, password)
         SELECT ?,?,?,?,?,?
         FROM DUAL
         WHERE NOT EXISTS(
             SELECT 1
-            FROM Employees
-            WHERE Email = '${req.body.email}' AND Password = '${req.body.password}'
+            FROM employees
+            WHERE email = '${req.body.email}' AND password = '${req.body.password}'
         )
         LIMIT 1;`,
         [
@@ -41,10 +40,38 @@ const postEmployee = (req, res) => {
 }
 
 const loginEmployee = (req, res) => {
-    sqlCon.query(`SELECT * FROM Employees WHERE Email = "${req.body.email}" AND Password = "${req.body.password}"`, (err, results) => {
+    sqlCon.query(
+        `SELECT * FROM employees WHERE email = "${req.body.email}" AND password = "${req.body.password}"`
+    , (err, results) => {
         if(err) return res.sendStatus(400);
         if(results.length == 0) return res.sendStatus(404);
         return res.sendStatus(200);
+    })
+}
+
+const updateEmployee = (req, res) => {
+    sqlCon.query(
+        `UPDATE employees 
+        SET 
+        name = '${req.body.name}',
+        department = '${req.body.department}',
+        role = '${req.body.role}',
+        email = '${req.body.email}',
+        phone = '${req.body.phone}',
+        password = '${req.body.password}'
+        WHERE id = '${req.body.id}';`
+    , (err, results) => {
+        if(err) return res.sendStatus(400);
+        return res.send(results); 
+    })
+}
+
+const deleteEmployee = (req, res) => {
+    sqlCon.query(
+        `DELETE FROM employees WHERE id = ${req.params.id};`
+    , (err, results) => {
+        if(err) return res.sendStatus(400);
+        return res.send(results); 
     })
 }
 
@@ -52,6 +79,8 @@ module.exports = {
     getAllEmployees,
     getEmployeeById,
     postEmployee,
-    loginEmployee
+    loginEmployee,
+    updateEmployee,
+    deleteEmployee
 };
 
