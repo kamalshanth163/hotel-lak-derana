@@ -9,6 +9,7 @@ const employeeRoutes = require("./routes/employee");
 const hotelRoutes = require("./routes/hotel");
 const roomRoutes = require("./routes/room");
 const customerRoutes = require("./routes/customer");
+const reservationRoutes = require("./routes/reservation");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -21,6 +22,7 @@ app.use("/employees", employeeRoutes);
 app.use("/hotels", hotelRoutes);
 app.use("/rooms", roomRoutes);
 app.use("/customers", customerRoutes);
+app.use("/reservations", reservationRoutes);
 
 let seed = new Seed();
 

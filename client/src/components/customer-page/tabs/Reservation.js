@@ -1,82 +1,88 @@
 import React, { useState, useEffect } from 'react';
-import '../../styles/CustomerPage.css'
-import API_Customer from '../../../APIs/API_Customer';
+  import '../../styles/AdminPage.css'
+  import API_Reservation from '../../../APIs/API_Reservation';
   
-  function Customer() {
-    var initialCustomer = {
-      id: "",
-      name: "",
-      address: "",
-      phone: ""
+  function Reservation() {
+    var initialReservation = {
+      id: 0,
+      adults_count: 0,
+      children_count: 0,
+      customer_id: 0,
+      room_id: 0
     }
-    const [customer, setCustomer] = useState(initialCustomer);
-    const [customers, setCustomers] = useState([]);
+    const [reservation, setReservation] = useState(initialReservation);
+    const [reservations, setReservations] = useState([]);
     const [action, setAction] = useState("add");
   
     useEffect(() => {
-      getAllCustomers();
+      getAllReservations();
     })
   
-    const getAllCustomers = () => {
-      new API_Customer().getAllCustomers().then(data => {
-        setCustomers([...data]);
+    const getAllReservations = () => {
+      new API_Reservation().getAllReservations().then(data => {
+        setReservations([...data]);
       });
     }
   
     const handleChange = (e) => {
       var name = e.target.name;
       var value = e.target.value;
-      setCustomer({...customer, [name]: value});
+      setReservation({...reservation, [name]: value});
     }
   
     const handleAdd = (e) => {
+      reservation.hotel_id = reservation.hotel_id * 1;
       e.preventDefault();
-      new API_Customer().postCustomer(customer).then(data => {
-        setCustomer(initialCustomer);
+      new API_Reservation().postReservation(reservation).then(data => {
+        setReservation(initialReservation);
       });
     }
   
     const handleEdit = (e) => {
       e.preventDefault();
-      new API_Customer().updateCustomer(customer).then(data => {
-        setCustomer(initialCustomer);
+      new API_Reservation().updateReservation(reservation).then(data => {
+        setReservation(initialReservation);
       });
       setAction("add");
     }
   
     const handleEditAction = (model) => {
       setAction("edit");
-      setCustomer(model);
+      setReservation(model);
+      console.log(reservation)
     }
   
-    const handleDelete = (customerId) => {
-      if(window.confirm("Are you sure you want to DELETE this Customer?")){
-        new API_Customer().deleteCustomer(customerId);
+    const handleDelete = (reservationId) => {
+      if(window.confirm("Are you sure you want to DELETE this Reservation?")){
+        new API_Reservation().deleteReservation(reservationId);
       }
     }
   
     return (
-      <div className="customer-page row">
+      <div className="reservation-page row">
         <div>
           <hr></hr>
-          <h2>Manage Customers</h2>
+          <h2>Manage Reservations</h2>
         <table className="layout">
         <tr>
           <td className="left-col">
           <form className="form">
               <div class="container">
               {action === 'add' ? 
-                  <h3>Add a Customer</h3> : <h3>Edit Customer</h3>
+                  <h3>Add a Reservation</h3> : <h3>Edit Reservation</h3>
                 }
               <hr></hr>
-              <label for="name"><b>Name</b></label>
-              <input type="text" placeholder="Name" name="name" id="name" value={customer.name} required onChange={(e)=>handleChange(e)}/>
-  
-              <label for="address"><b>Address</b></label>
-              <input type="text" placeholder="Address" name="address" id="address" value={customer.address} required onChange={(e)=>handleChange(e)}/>
-  
-              <label for="phone"><b>Phone</b></label>
-              <input type="number" placeholder="Phone" name="phone" id="phone" value={customer.phone} required onChange={(e)=>handleChange(e)}/>
+              <label for="adults_count"><b>Adults Count</b></label>
+              <input type="number" placeholder="Adults Count" name="adults_count" id="adults_count" value={reservation.adults_count} required onChange={(e)=>handleChange(e)}/>
+              
+              <label for="children_count"><b>Adults Count</b></label>
+              <input type="number" placeholder="Children Count" name="children_count" id="children_count" value={reservation.children_count} required onChange={(e)=>handleChange(e)}/>
+              
+              <label for="customer_id"><b>Customer Id</b></label>
+              <input type="number" placeholder="Customer Id" name="customer_id" id="customer_id" value={reservation.customer_id} required onChange={(e)=>handleChange(e)}/>
+              
+              <label for="room_id"><b>Room Id</b></label>
+              <input type="number" placeholder="Room Id" name="room_id" id="room_id" value={reservation.room_id} required onChange={(e)=>handleChange(e)}/>
               <br></br>
   
               {action === 'add' ? 
@@ -93,18 +99,20 @@ import API_Customer from '../../../APIs/API_Customer';
                       <div className="table-body">
                         <tr className="th-row">
                           <th>Id</th>
-                          <th>Name</th>
-                          <th>Address</th>
-                          <th>Phone</th>
+                          <th>Adults Count</th>
+                          <th>Children Count</th>
+                          <th>Customer Id</th>
+                          <th>Room Id</th>
                           <th></th>
                         </tr>
-                        {customers.map((e, i) => {
+                        {reservations.map((e, i) => {
                           return (
                             <tr className="td-row">
                               <td>{e.id}</td>
-                              <td>{e.name}</td>
-                              <td>{e.address}</td>
-                              <td>{e.phone}</td>
+                              <td>{e.adults_count}</td>
+                              <td>{e.children_count}</td>
+                              <td>{e.customer_id}</td>
+                              <td>{e.room_id}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>
@@ -126,4 +134,4 @@ import API_Customer from '../../../APIs/API_Customer';
     );
   }
   
-export default Customer;
+export default Reservation;
