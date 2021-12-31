@@ -74,7 +74,7 @@ import React, { useState, useEffect } from 'react';
               <label for="adults_count"><b>Adults Count</b></label>
               <input type="number" placeholder="Adults Count" name="adults_count" id="adults_count" value={reservation.adults_count} required onChange={(e)=>handleChange(e)}/>
               
-              <label for="children_count"><b>Adults Count</b></label>
+              <label for="children_count"><b>Children Count</b></label>
               <input type="number" placeholder="Children Count" name="children_count" id="children_count" value={reservation.children_count} required onChange={(e)=>handleChange(e)}/>
               
               <label for="customer_id"><b>Customer Id</b></label>
