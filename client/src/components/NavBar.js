@@ -31,16 +31,16 @@ const NavBar = () => {
                     <NavLink className="navlink" activeClassName="is-active" to="/" exact>Home</NavLink>
                   </td>
                   <td>
-                    <NavLink className="navlink" activeClassName="is-active" to="/admin">Admin</NavLink>
+                    <NavLink className="navlink" activeClassName="is-active" to="/admin-page">Admin</NavLink>
                   </td>
                   <td>
-                    <NavLink className="navlink" activeClassName="is-active" to="/customer">Customer</NavLink>
+                    <NavLink className="navlink" activeClassName="is-active" to="/customer-page">Customer</NavLink>
                   </td>
                   <td>
-                    <NavLink className="navlink" activeClassName="is-active" to="/staff">Staff</NavLink>
+                    <NavLink className="navlink" activeClassName="is-active" to="/staff-page">Staff</NavLink>
                   </td>
                   <td>
-                    <NavLink className="navlink" activeClassName="is-active" to="/bar">Bar</NavLink>
+                    <NavLink className="navlink" activeClassName="is-active" to="/bar-page">Bar</NavLink>
                   </td>
                 </tr>
               </table>

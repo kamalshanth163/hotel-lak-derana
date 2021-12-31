@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-  import '../../styles/Admin.css'
+  import '../../styles/AdminPage.css'
   import API_Room from '../../../APIs/API_Room';
   
   function Room() {

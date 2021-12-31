@@ -1,82 +1,82 @@
 import React, { useState, useEffect } from 'react';
-  import '../../styles/AdminPage.css'
-  import API_Hotel from '../../../APIs/API_Hotel';
+import '../../styles/CustomerPage.css'
+import API_Customer from '../../../APIs/API_Customer';
   
-  function Hotel() {
-    var initialHotel = {
+  function Customer() {
+    var initialCustomer = {
       id: "",
       name: "",
       address: "",
       phone: ""
     }
-    const [hotel, setHotel] = useState(initialHotel);
-    const [hotels, setHotels] = useState([]);
+    const [customer, setCustomer] = useState(initialCustomer);
+    const [customers, setCustomers] = useState([]);
     const [action, setAction] = useState("add");
   
     useEffect(() => {
-      getAllHotels();
+      getAllCustomers();
     })
   
-    const getAllHotels = () => {
-      new API_Hotel().getAllHotels().then(data => {
-        setHotels([...data]);
+    const getAllCustomers = () => {
+      new API_Customer().getAllCustomers().then(data => {
+        setCustomers([...data]);
       });
     }
   
     const handleChange = (e) => {
       var name = e.target.name;
       var value = e.target.value;
-      setHotel({...hotel, [name]: value});
+      setCustomer({...customer, [name]: value});
     }
   
     const handleAdd = (e) => {
       e.preventDefault();
-      new API_Hotel().postHotel(hotel).then(data => {
-        setHotel(initialHotel);
+      new API_Customer().postCustomer(customer).then(data => {
+        setCustomer(initialCustomer);
       });
     }
   
     const handleEdit = (e) => {
       e.preventDefault();
-      new API_Hotel().updateHotel(hotel).then(data => {
-        setHotel(initialHotel);
+      new API_Customer().updateCustomer(customer).then(data => {
+        setCustomer(initialCustomer);
       });
       setAction("add");
     }
   
     const handleEditAction = (model) => {
       setAction("edit");
-      setHotel(model);
+      setCustomer(model);
     }
   
-    const handleDelete = (hotelId) => {
-      if(window.confirm("Are you sure you want to DELETE this Hotel?")){
-        new API_Hotel().deleteHotel(hotelId);
+    const handleDelete = (customerId) => {
+      if(window.confirm("Are you sure you want to DELETE this Customer?")){
+        new API_Customer().deleteCustomer(customerId);
       }
     }
   
     return (
-      <div className="hotel-page row">
+      <div className="customer-page row">
         <div>
           <hr></hr>
-          <h2>Manage Hotels</h2>
+          <h2>Manage Customers</h2>
         <table className="layout">
         <tr>
           <td className="left-col">
           <form className="form">
               <div class="container">
               {action === 'add' ? 
-                  <h3>Add a Hotel</h3> : <h3>Edit Hotel</h3>
+                  <h3>Add a Customer</h3> : <h3>Edit Customer</h3>
                 }
               <hr></hr>
               <label for="name"><b>Name</b></label>
-              <input type="text" placeholder="Name" name="name" id="name" value={hotel.name} required onChange={(e)=>handleChange(e)}/>
+              <input type="text" placeholder="Name" name="name" id="name" value={customer.name} required onChange={(e)=>handleChange(e)}/>
   
               <label for="address"><b>Address</b></label>
-              <input type="text" placeholder="Address" name="address" id="address" value={hotel.address} required onChange={(e)=>handleChange(e)}/>
+              <input type="text" placeholder="Address" name="address" id="address" value={customer.address} required onChange={(e)=>handleChange(e)}/>
   
               <label for="phone"><b>Phone</b></label>
-              <input type="number" placeholder="Phone" name="phone" id="phone" value={hotel.phone} required onChange={(e)=>handleChange(e)}/>
+              <input type="number" placeholder="Phone" name="phone" id="phone" value={customer.phone} required onChange={(e)=>handleChange(e)}/>
               <br></br>
   
               {action === 'add' ? 
@@ -98,7 +98,7 @@ import React, { useState, useEffect } from 'react';
                           <th>Phone</th>
                           <th></th>
                         </tr>
-                        {hotels.map((e, i) => {
+                        {customers.map((e, i) => {
                           return (
                             <tr className="td-row">
                               <td>{e.id}</td>
@@ -126,4 +126,4 @@ import React, { useState, useEffect } from 'react';
     );
   }
   
-export default Hotel;
+export default Customer;
