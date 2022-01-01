@@ -30,7 +30,6 @@ const postPayment = (req, res) => {
             req.body.room_id
         ]
     , (err, results) => {
-        console.log(err)
         if(err) return res.sendStatus(400);
         return res.send(results); 
     })
@@ -53,7 +52,6 @@ const updatePayment = (req, res) => {
         room_id = '${req.body.room_id}'
         WHERE id = '${req.body.id}';`
     , (err, results) => {
-        console.log(err)
         if(err) return res.sendStatus(400);
         return res.send(results); 
     })

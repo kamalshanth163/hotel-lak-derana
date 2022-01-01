@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import '../App.css';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
-import { AppContext } from '../AppContext';
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
 

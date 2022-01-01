@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './components/Home';
 import AdminPage from './components/admin-page/AdminPage';
 import CustomerPage from './components/customer-page/CustomerPage';
-import Staff from './components/Staff';
+import StaffPage from './components/staff-page/StaffPage';
 import Bar from './components/Bar';
 import NavBar from './components/NavBar';
 import { AppContextProvider } from './AppContext';
@@ -18,7 +18,7 @@ function App() {
             <Route path="/" exact component = {Home} />
             <Route path="/admin-page" component = {AdminPage} />
             <Route path="/customer-page" component = {CustomerPage} />
-            <Route path="/staff-page" component = {Staff} />
+            <Route path="/staff-page" component = {StaffPage} />
             <Route path="/bar-page" component = {Bar} />
         </Switch>
       </Router>
