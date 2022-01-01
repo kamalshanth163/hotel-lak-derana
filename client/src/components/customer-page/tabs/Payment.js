@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-  import '../../styles/AdminPage.css'
+  import '../../styles/CustomerPage.css'
   import API_Payment from '../../../APIs/API_Payment';
   
   function Payment() {
@@ -85,7 +85,7 @@ import React, { useState, useEffect } from 'react';
               <input type="date" placeholder="Date Checked Out" name="date_checked_out" id="date_checked_out" value={payment.date_checked_out} required onChange={(e)=>handleChange(e)}/>
               <br></br>
               <br></br>
-              
+
               <label for="reservation_fee"><b>Reservation Fee (LKR)</b></label>
               <input type="number" placeholder="Reservation Fee" name="reservation_fee" id="reservation_fee" value={payment.reservation_fee} required onChange={(e)=>handleChange(e)}/>
               
@@ -129,10 +129,10 @@ import React, { useState, useEffect } from 'react';
                           <th>Id</th>
                           <th>Date Checked In</th>
                           <th>Date Checked Out</th>
-                          <th>Reservation Fee</th>
-                          <th>Hotel Fee</th>
-                          <th>Paid</th>
-                          <th>Due</th>
+                          <th>Reservation Fee (LKR)</th>
+                          <th>Hotel Fee (LKR)</th>
+                          <th>Paid (LKR)</th>
+                          <th>Due (LKR)</th>
                           <th>Completed</th>
                           <th>Customer Id</th>
                           <th>Room Id</th>

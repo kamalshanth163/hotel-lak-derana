@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-  import '../../styles/AdminPage.css'
+  import '../../styles/StaffPage.css'
   import API_Attendance from '../../../APIs/API_Attendance';
   
   function Attendance() {

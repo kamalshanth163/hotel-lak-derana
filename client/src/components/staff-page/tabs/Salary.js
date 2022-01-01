@@ -1,87 +1,103 @@
 import React, { useState, useEffect } from 'react';
-  import '../../styles/AdminPage.css'
-  import API_Reservation from '../../../APIs/API_Reservation';
+  import '../../styles/StaffPage.css'
+  import API_Salary from '../../../APIs/API_Salary';
   
-  function Reservation() {
-    var initialReservation = {
+  function Salary() {
+    var initialSalary = {
       id: 0,
-      adults_count: 0,
-      children_count: 0,
+      basic_salary: 0,
+      over_time: 0,
+      allowance: 0,
+      leaves: 0,
+      deduction: 0,
+      final_amount: 0,
       customer_id: 0,
       room_id: 0
     }
-    const [reservation, setReservation] = useState(initialReservation);
-    const [reservations, setReservations] = useState([]);
+    const [salary, setSalary] = useState(initialSalary);
+    const [salaries, setSalaries] = useState([]);
     const [action, setAction] = useState("add");
   
     useEffect(() => {
-      getAllReservations();
+      getAllSalaries();
     })
   
-    const getAllReservations = () => {
-      new API_Reservation().getAllReservations().then(data => {
-        setReservations([...data]);
+    const getAllSalaries = () => {
+      new API_Salary().getAllSalaries().then(data => {
+        setSalaries([...data]);
       });
     }
   
     const handleChange = (e) => {
       var name = e.target.name;
       var value = e.target.value;
-      setReservation({...reservation, [name]: value});
+      setSalary({...salary, [name]: value});
     }
   
     const handleAdd = (e) => {
-      reservation.hotel_id = reservation.hotel_id * 1;
+      console.log(salary)
       e.preventDefault();
-      new API_Reservation().postReservation(reservation).then(data => {
-        setReservation(initialReservation);
+      new API_Salary().postSalary(salary).then(data => {
+        setSalary(initialSalary);
       });
     }
   
     const handleEdit = (e) => {
       e.preventDefault();
-      new API_Reservation().updateReservation(reservation).then(data => {
-        setReservation(initialReservation);
+      new API_Salary().updateSalary(salary).then(data => {
+        setSalary(initialSalary);
       });
       setAction("add");
     }
   
     const handleEditAction = (model) => {
       setAction("edit");
-      setReservation(model);
+      setSalary(model);
     }
   
-    const handleDelete = (reservationId) => {
-      if(window.confirm("Are you sure you want to DELETE this Reservation?")){
-        new API_Reservation().deleteReservation(reservationId);
+    const handleDelete = (salaryId) => {
+      if(window.confirm("Are you sure you want to DELETE this Salary?")){
+        new API_Salary().deleteSalary(salaryId);
       }
     }
   
     return (
-      <div className="reservation-page row">
+      <div className="salary-page row">
         <div>
           <hr></hr>
-          <h2>Manage Reservations</h2>
+          <h2>Manage Salaries</h2>
         <table className="layout">
         <tr>
           <td className="left-col">
           <form className="form">
               <div class="container">
               {action === 'add' ? 
-                  <h3>Add a Reservation</h3> : <h3>Edit Reservation</h3>
+                  <h3>Add a Salary</h3> : <h3>Edit Salary</h3>
                 }
               <hr></hr>
-              <label for="adults_count"><b>Adults Count</b></label>
-              <input type="number" placeholder="Adults Count" name="adults_count" id="adults_count" value={reservation.adults_count} required onChange={(e)=>handleChange(e)}/>
+              <label for="basic_salary"><b>Basic Salary (LKR)</b></label>
+              <input type="number" placeholder="Basic Salary" name="basic_salary" id="basic_salary" value={salary.basic_salary} required onChange={(e)=>handleChange(e)}/>
+
+              <label for="over_time"><b>Overtime (LKR)</b></label>
+              <input type="number" placeholder="Overtime" name="over_time" id="over_time" value={salary.over_time} required onChange={(e)=>handleChange(e)}/>
+
+              <label for="allowance"><b>Allowance (LKR)</b></label>
+              <input type="number" placeholder="Allowance" name="allowance" id="allowance" value={salary.allowance} required onChange={(e)=>handleChange(e)}/>
+
+              <label for="leaves"><b>Leaves</b></label>
+              <input type="number" placeholder="Leaves" name="leaves" id="leaves" value={salary.leaves} required onChange={(e)=>handleChange(e)}/>
+
+              <label for="deduction"><b>Deduction (LKR)</b></label>
+              <input type="number" placeholder="Deduction" name="deduction" id="deduction" value={salary.deduction} required onChange={(e)=>handleChange(e)}/>
+
+              <label for="final_amount"><b>Final Amount (LKR)</b></label>
+              <input type="number" placeholder="Final Amount" name="final_amount" id="final_amount" value={salary.final_amount} required onChange={(e)=>handleChange(e)}/>
               
-              <label for="children_count"><b>Children Count</b></label>
-              <input type="number" placeholder="Children Count" name="children_count" id="children_count" value={reservation.children_count} required onChange={(e)=>handleChange(e)}/>
+              <label for="hr_id"><b>HR Id</b></label>
+              <input type="number" placeholder="HR Id" name="hr_id" id="hr_id" value={salary.hr_id} required onChange={(e)=>handleChange(e)}/>
               
-              <label for="customer_id"><b>Customer Id</b></label>
-              <input type="number" placeholder="Customer Id" name="customer_id" id="customer_id" value={reservation.customer_id} required onChange={(e)=>handleChange(e)}/>
-              
-              <label for="room_id"><b>Room Id</b></label>
-              <input type="number" placeholder="Room Id" name="room_id" id="room_id" value={reservation.room_id} required onChange={(e)=>handleChange(e)}/>
+              <label for="employee_id"><b>Employee Id</b></label>
+              <input type="number" placeholder="Employee Id" name="employee_id" id="employee_id" value={salary.employee_id} required onChange={(e)=>handleChange(e)}/>
               <br></br>
   
               {action === 'add' ? 
@@ -98,20 +114,28 @@ import React, { useState, useEffect } from 'react';
                       <div className="table-body">
                         <tr className="th-row">
                           <th>Id</th>
-                          <th>Adults Count</th>
-                          <th>Children Count</th>
-                          <th>Customer Id</th>
-                          <th>Room Id</th>
+                          <th>Basic Salary (LKR)</th>
+                          <th>Overtime (LKR)</th>
+                          <th>Allowance (LKR)</th>
+                          <th>Leaves</th>
+                          <th>Deduction (LKR)</th>
+                          <th>Final Amount (LKR)</th>
+                          <th>HR Id</th>
+                          <th>Employee Id</th>
                           <th></th>
                         </tr>
-                        {reservations.map((e, i) => {
+                        {salaries.map((e, i) => {
                           return (
                             <tr className="td-row">
                               <td>{e.id}</td>
-                              <td>{e.adults_count}</td>
-                              <td>{e.children_count}</td>
-                              <td>{e.customer_id}</td>
-                              <td>{e.room_id}</td>
+                              <td>{e.basic_salary}</td>
+                              <td>{e.over_time}</td>
+                              <td>{e.allowance}</td>
+                              <td>{e.leaves}</td>
+                              <td>{e.deduction}</td>
+                              <td>{e.final_amount}</td>
+                              <td>{e.hr_id}</td>
+                              <td>{e.employee_id}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>
@@ -133,4 +157,4 @@ import React, { useState, useEffect } from 'react';
     );
   }
   
-export default Reservation;
+export default Salary;

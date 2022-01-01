@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-  import '../../styles/AdminPage.css'
+  import '../../styles/CustomerPage.css'
   import API_Reservation from '../../../APIs/API_Reservation';
   
   function Reservation() {
