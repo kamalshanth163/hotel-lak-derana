@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/Admin.css'
+import '../styles/AdminPage.css'
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,11 +7,11 @@ import {
   Link,
   useRouteMatch
 } from "react-router-dom";
-import Member from './tabs/Employee';
+import Employee from './tabs/Employee';
 import Hotel from './tabs/Hotel';
 import Room from './tabs/Room';
 
-const Admin = () => {
+const AdminPage = () => {
   let { path, url } = useRouteMatch();
 
   return (
@@ -36,8 +36,8 @@ const Admin = () => {
         </table>
 
         <Switch>
-          <Route path={`${path}`} exact component = {Member} />
-          <Route path={`${path}/employee`} component = {Member} />
+          <Route path={`${path}`} exact component = {Employee} />
+          <Route path={`${path}/employee`} component = {Employee} />
           <Route path={`${path}/hotel`} component = {Hotel} />
           <Route path={`${path}/room`} component = {Room} />
         </Switch>
@@ -49,4 +49,4 @@ const Admin = () => {
   );
 }
 
-export default Admin;
+export default AdminPage;

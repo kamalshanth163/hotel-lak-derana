@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles/Admin.css'
+import './styles/AdminPage.css'
 
 const Staff = () => {
   var initialBook = {
