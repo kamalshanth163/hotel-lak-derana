@@ -10,6 +10,7 @@ const hotelRoutes = require("./routes/hotel");
 const roomRoutes = require("./routes/room");
 const customerRoutes = require("./routes/customer");
 const reservationRoutes = require("./routes/reservation");
+const paymentRoutes = require("./routes/payment");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -23,6 +24,7 @@ app.use("/hotels", hotelRoutes);
 app.use("/rooms", roomRoutes);
 app.use("/customers", customerRoutes);
 app.use("/reservations", reservationRoutes);
+app.use("/payments", paymentRoutes);
 
 let seed = new Seed();
 
