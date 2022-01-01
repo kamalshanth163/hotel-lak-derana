@@ -1,87 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import '../../styles/FinancePage.css'
-import API_Finance from '../../../APIs/API_Finance';
+import React from 'react';
+import '../../styles/ReportPage.css'
   
-  function Finance() {
-    var initialFinance = {
-      id: 0,
-      amount: 0,
-      payer: "",
-      description: "",
-      recorded_by: 0
-    }
-    const [finance, setFinance] = useState(initialFinance);
-    const [finances, setFinances] = useState([]);
-    const [action, setAction] = useState("add");
-  
-    useEffect(() => {
-      getAllFinances();
-    })
-  
-    const getAllFinances = () => {
-      new API_Finance().getAllFinances().then(data => {
-        setFinances([...data]);
-      });
-    }
-  
-    const handleChange = (e) => {
-      var name = e.target.name;
-      var value = e.target.value;
-      setFinance({...finance, [name]: value});
-    }
-  
-    const handleAdd = (e) => {
-      console.log(finance)
-      e.preventDefault();
-      new API_Finance().postFinance(finance).then(data => {
-        setFinance(initialFinance);
-      });
-    }
-  
-    const handleEdit = (e) => {
-      e.preventDefault();
-      new API_Finance().updateFinance(finance).then(data => {
-        setFinance(initialFinance);
-      });
-      setAction("add");
-    }
-  
-    const handleEditAction = (model) => {
-      setAction("edit");
-      setFinance(model);
-    }
-  
-    const handleDelete = (financeId) => {
-      if(window.confirm("Are you sure you want to DELETE this Finance?")){
-        new API_Finance().deleteFinance(financeId);
-      }
-    }
+  function Report() {
   
     return (
-      <div className="finance-page row">
+      <div className="report-page row">
         <div>
           <hr></hr>
-          <h2>Manage Finances</h2>
+          <h2>Manage Reports</h2>
         <table className="layout">
         <tr>
           <td className="left-col">
           <form className="form">
               <div class="container">
               {action === 'add' ? 
-                  <h3>Add a Finance</h3> : <h3>Edit Finance</h3>
+                  <h3>Add a Report</h3> : <h3>Edit Report</h3>
                 }
               <hr></hr>
               <label for="amount"><b>Amount (LKR)</b></label>
-              <input type="number" placeholder="Amount (LKR)" name="amount" id="amount" value={finance.amount} required onChange={(e)=>handleChange(e)}/>
+              <input type="number" placeholder="Amount (LKR)" name="amount" id="amount" value={report.amount} required onChange={(e)=>handleChange(e)}/>
 
               <label for="payer"><b>Payer</b></label>
-              <input type="text" placeholder="Payer" name="payer" id="payer" value={finance.payer} required onChange={(e)=>handleChange(e)}/>
+              <input type="text" placeholder="Payer" name="payer" id="payer" value={report.payer} required onChange={(e)=>handleChange(e)}/>
               
               <label for="description"><b>Description</b></label>
-              <input type="text" placeholder="Description" name="description" id="description" value={finance.description} required onChange={(e)=>handleChange(e)}/>
+              <input type="text" placeholder="Description" name="description" id="description" value={report.description} required onChange={(e)=>handleChange(e)}/>
               
               <label for="recorded_by"><b>Recorded By</b></label>
-              <input type="number" placeholder="Recorded By" name="recorded_by" id="recorded_by" value={finance.recorded_by} required onChange={(e)=>handleChange(e)}/>
+              <input type="number" placeholder="Recorded By" name="recorded_by" id="recorded_by" value={report.recorded_by} required onChange={(e)=>handleChange(e)}/>
               <br></br>
   
               {action === 'add' ? 
@@ -104,7 +50,7 @@ import API_Finance from '../../../APIs/API_Finance';
                           <th>Recorded By</th>
                           <th></th>
                         </tr>
-                        {finances.map((e, i) => {
+                        {reports.map((e, i) => {
                           return (
                             <tr className="td-row">
                               <td>{e.id}</td>
@@ -133,4 +79,4 @@ import API_Finance from '../../../APIs/API_Finance';
     );
   }
   
-export default Finance;
+export default Report;
