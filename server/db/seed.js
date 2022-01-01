@@ -122,8 +122,8 @@ class Seed {
         CREATE TABLE if not exists finances (
             id INT NOT NULL AUTO_INCREMENT,
             amount DECIMAL(13,2),
-            from_whom VARCHAR(100),
-            type VARCHAR(40),
+            payer VARCHAR(100),
+            description VARCHAR(40),
             recorded_by INT,
             PRIMARY KEY (id),
             FOREIGN KEY (recorded_by) REFERENCES employees(id)
