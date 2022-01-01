@@ -39,7 +39,7 @@ const NavBar = () => {
                     <NavLink className="navlink" activeClassName="is-active" to="/staff-page">Staff</NavLink>
                   </td>
                   <td>
-                    <NavLink className="navlink" activeClassName="is-active" to="/bar-page">Bar</NavLink>
+                    <NavLink className="navlink" activeClassName="is-active" to="/finance-page">Finance</NavLink>
                   </td>
                 </tr>
               </table>

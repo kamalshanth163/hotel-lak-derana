@@ -19,8 +19,8 @@ const Home = () => {
           <button className="btn btn-3" onClick={() => history.push('./staff-page')}>
             Attendance Management & Payroll
           </button><br />
-          <button className="btn btn-4" onClick={() => history.push('./bar-page')}>
-            Bar Management
+          <button className="btn btn-4" onClick={() => history.push('./finance-page')}>
+            Finance Management
           </button><br />
         </div>
       </div>

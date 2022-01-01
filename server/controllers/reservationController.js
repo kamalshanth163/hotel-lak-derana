@@ -32,7 +32,6 @@ const postReservation = (req, res) => {
             req.body.room_id
         ]
     , (err, results) => {
-        console.log(err)
         if(err) return res.sendStatus(400);
         return res.send(results); 
     })
