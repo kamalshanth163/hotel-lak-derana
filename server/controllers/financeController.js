@@ -1,4 +1,5 @@
 const sqlCon = require("../db/connection");
+const DateTimeService = require('../services/DateTimeService')
 
 const getAllFinances = (req, res) => {
     sqlCon.query("SELECT * FROM finances", (err, results) => {
@@ -15,14 +16,16 @@ const getFinanceById = (req, res) => {
 }
 
 const postFinance = (req, res) => {
+    var localDateTime = new DateTimeService().getLocalDateTime(new Date());
     sqlCon.query(
-        `INSERT INTO finances (amount, payer, description, recorded_by)
-        VALUES (?,?,?,?);`,
+        `INSERT INTO finances (amount, payer, description, recorded_by, date)
+        VALUES (?,?,?,?,?);`,
         [
             req.body.amount,
             req.body.payer,
             req.body.description,
-            req.body.recorded_by
+            req.body.recorded_by,
+            localDateTime,
         ]
     , (err, results) => {
         if(err) return res.sendStatus(400);

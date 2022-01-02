@@ -125,6 +125,7 @@ class Seed {
             payer VARCHAR(100),
             description VARCHAR(40),
             recorded_by INT,
+            date DATETIME,
             PRIMARY KEY (id),
             FOREIGN KEY (recorded_by) REFERENCES employees(id)
         );
