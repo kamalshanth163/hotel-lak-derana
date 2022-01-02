@@ -11,7 +11,7 @@ const Home = () => {
         <div>
           <h1 className="text-2">Welcome to <br /> Lak Derana Hotels</h1>
           <button className="btn btn-1" onClick={() => history.push('./admin-page')}>
-            System Management & Reporting
+            System Management
           </button><br />
           <button className="btn btn-2" onClick={() => history.push('./customer-page')}>
             Customer Inquiry, Reservation & Payment Handling
@@ -21,6 +21,9 @@ const Home = () => {
           </button><br />
           <button className="btn btn-4" onClick={() => history.push('./finance-page')}>
             Finance Management
+          </button><br />
+          <button className="btn btn-1" onClick={() => history.push('./report-page')}>
+            Generate Reports
           </button><br />
         </div>
       </div>

@@ -41,6 +41,9 @@ const NavBar = () => {
                   <td>
                     <NavLink className="navlink" activeClassName="is-active" to="/finance-page">Finance</NavLink>
                   </td>
+                  <td>
+                    <NavLink className="navlink" activeClassName="is-active" to="/report-page">Report</NavLink>
+                  </td>
                 </tr>
               </table>
             </div>
