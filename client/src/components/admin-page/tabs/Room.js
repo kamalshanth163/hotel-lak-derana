@@ -119,7 +119,7 @@ import React, { useState, useEffect } from 'react';
                             <tr className="td-row">
                               <td>{e.id}</td>
                               <td>{e.number}</td>
-                              <td>{e.availability}</td>
+                              <td>{e.availability ? "Yes" : "No"}</td>
                               <td>{e.type}</td>
                               <td>{e.hotel_id}</td>
                               <td>

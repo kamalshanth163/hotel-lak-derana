@@ -148,14 +148,14 @@ import React, { useState, useEffect } from 'react';
                               <td>{e.hotel_fee}</td>
                               <td>{e.paid}</td>
                               <td>{e.due}</td>
-                              <td>{e.completed}</td>
+                              <td>{e.completed ? "Yes" : "No"}</td>
                               <td>{e.customer_id}</td>
                               <td>{e.room_id}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>
                               <td>
-                                <button className="delete-btn btn" onClick={() => handleDelete(e.id)}>Delete</button>
+                                <button className={`delete-btn btn ${e.completed ? "disable" : ""}`} onClick={() => handleDelete(e.id)} disabled={e.completed}>Delete</button>
                               </td>
                             </tr>
                           )

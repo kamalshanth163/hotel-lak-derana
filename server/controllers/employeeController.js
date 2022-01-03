@@ -16,8 +16,8 @@ const getEmployeeById = (req, res) => {
 
 const postEmployee = (req, res) => {
     sqlCon.query(
-        `INSERT INTO employees (name, department, role, email, phone, password)
-        SELECT ?,?,?,?,?,?
+        `INSERT INTO employees (name, department, role, email, phone, password, hotel_id)
+        SELECT ?,?,?,?,?,?,?
         FROM DUAL
         WHERE NOT EXISTS(
             SELECT 1
@@ -31,7 +31,8 @@ const postEmployee = (req, res) => {
             req.body.role,
             req.body.email,
             req.body.phone,
-            req.body.password
+            req.body.password,
+            req.body.hotel_id,
         ]
     , (err, results) => {
         if(err) return res.sendStatus(400);
@@ -58,9 +59,11 @@ const updateEmployee = (req, res) => {
         role = '${req.body.role}',
         email = '${req.body.email}',
         phone = '${req.body.phone}',
-        password = '${req.body.password}'
+        password = '${req.body.password}',
+        hotel_id = '${req.body.hotel_id}'
         WHERE id = '${req.body.id}';`
     , (err, results) => {
+        console.log(err)
         if(err) return res.sendStatus(400);
         return res.send(results); 
     })

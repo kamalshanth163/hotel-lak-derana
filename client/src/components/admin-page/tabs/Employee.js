@@ -10,7 +10,8 @@ function Employee() {
     role: "",
     email: "",
     phone: "",
-    password: ""
+    password: "",
+    hotel_id: ""
   }
   const [employee, setEmployee] = useState(initialEmployee);
   const [employees, setEmployees] = useState([]);
@@ -90,6 +91,9 @@ function Employee() {
             
             <label for="password"><b>Password</b></label>
             <input type="text" placeholder="Password" name="password" id="password" value={employee.password} required onChange={(e)=>handleChange(e)}/>
+            
+            <label for="hotel_id"><b>Hotel Id</b></label>
+            <input type="text" placeholder="Hotel Id" name="hotel_id" id="hotel_id" value={employee.hotel_id} required onChange={(e)=>handleChange(e)}/>
             <br></br>
 
             {action === 'add' ? 
@@ -111,6 +115,7 @@ function Employee() {
                         <th>Role</th>
                         <th>Email</th>
                         <th>Phone</th>
+                        <th>Hotel Id</th>
                         <th></th>
                       </tr>
                       {employees.map((e, i) => {
@@ -122,6 +127,7 @@ function Employee() {
                             <td>{e.role}</td>
                             <td>{e.email}</td>
                             <td>{e.phone}</td>
+                            <td>{e.hotel_id}</td>
                             <td>
                               <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                             </td>

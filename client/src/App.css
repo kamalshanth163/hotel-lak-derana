@@ -71,3 +71,8 @@ padding: 4px 8px;
 border: none;
 cursor: pointer;
 }
+
+.disable {
+  opacity: .5;
+  cursor: not-allowed !important;
+}
