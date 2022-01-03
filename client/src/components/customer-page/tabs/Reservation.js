@@ -8,7 +8,8 @@ import React, { useState, useEffect } from 'react';
       adults_count: 0,
       children_count: 0,
       customer_id: 0,
-      room_id: 0
+      room_id: 0,
+      checked_out: 0
     }
     const [reservation, setReservation] = useState(initialReservation);
     const [reservations, setReservations] = useState([]);
@@ -83,6 +84,14 @@ import React, { useState, useEffect } from 'react';
               <label for="room_id"><b>Room Id</b></label>
               <input type="number" placeholder="Room Id" name="room_id" id="room_id" value={reservation.room_id} required onChange={(e)=>handleChange(e)}/>
               <br></br>
+
+              <label for="checked_out"><b>Checked Out</b></label>
+              <select name="checked_out" id="checked_out" value={reservation.checked_out} required onChange={(e)=>handleChange(e)}>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+              <br></br>
+              <br></br>
   
               {action === 'add' ? 
               <button type="submit" className="addBtn" onClick={(e) => handleAdd(e)}>Add</button> :
@@ -102,6 +111,7 @@ import React, { useState, useEffect } from 'react';
                           <th>Children Count</th>
                           <th>Customer Id</th>
                           <th>Room Id</th>
+                          <th>Checked Out</th>
                           <th></th>
                         </tr>
                         {reservations.map((e, i) => {
@@ -112,6 +122,7 @@ import React, { useState, useEffect } from 'react';
                               <td>{e.children_count}</td>
                               <td>{e.customer_id}</td>
                               <td>{e.room_id}</td>
+                              <td>{e.checked_out ? "Yes" : "No"}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>

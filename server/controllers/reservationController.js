@@ -16,8 +16,8 @@ const getReservationById = (req, res) => {
 
 const postReservation = (req, res) => {
     sqlCon.query(
-        `INSERT INTO reservations (adults_count, children_count, customer_id, room_id)
-        SELECT ?,?,?,?
+        `INSERT INTO reservations (adults_count, children_count, customer_id, room_id, checked_out)
+        SELECT ?,?,?,?,?
         FROM DUAL
         WHERE NOT EXISTS(
             SELECT 1
@@ -29,9 +29,11 @@ const postReservation = (req, res) => {
             req.body.adults_count,
             req.body.children_count,
             req.body.customer_id,
-            req.body.room_id
+            req.body.room_id,
+            req.body.checked_out
         ]
     , (err, results) => {
+        console.log(err)
         if(err) return res.sendStatus(400);
         return res.send(results); 
     })
@@ -44,7 +46,8 @@ const updateReservation = (req, res) => {
         adults_count = '${req.body.adults_count}',
         children_count = '${req.body.children_count}',
         customer_id = '${req.body.customer_id}',
-        room_id = '${req.body.room_id}'
+        room_id = '${req.body.room_id}',
+        checked_out = '${req.body.checked_out}'
         WHERE id = '${req.body.id}';`
     , (err, results) => {
         if(err) return res.sendStatus(400);
