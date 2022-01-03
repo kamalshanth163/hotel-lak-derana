@@ -5,19 +5,19 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import reports from '../reports';
 import API_Finance from '../../../APIs/API_Finance';
+import DateTimeService from '../../../services/DateTimeService';
 
   function Report() {
 
-    const [data, setData] = useState([]);
-
     const saveReport = (report, data) => {
       const doc = new jsPDF();
-      if(data){
-        var keys = Object.keys(data[0]);
-        var values = data.map(d => {
-          return Object.values(d);
-        })
+      if(data.length < 1){
+        return false;
       }
+      var keys = Object.keys(data[0]);
+      var values = data.map(d => {
+        return Object.values(d);
+      })
       doc.autoTable({
         head: [keys],
         body: values,
@@ -43,18 +43,44 @@ import API_Finance from '../../../APIs/API_Finance';
 
     const generateDailyIncomeReport = (report) => {
       new API_Finance().getAllFinances().then(data => {
-        saveReport(report, data);
+        var mapped = data.filter((d) => {
+          var dateTimeService = new DateTimeService(calculateTimeDifference(d.date));
+          d.date = new Date(d.date).toLocaleString();
+          return dateTimeService.days < 1;
+        })
+        saveReport(report, mapped);
       });
     }
-
-    const generateMonthlyIncomeReport = () => {
-
+      
+    const generateMonthlyIncomeReport = (report) => {
+      new API_Finance().getAllFinances().then(data => {
+        var mapped = data.filter((d) => {
+          var dateTimeService = new DateTimeService(calculateTimeDifference(d.date));
+          d.date = new Date(d.date).toLocaleString();
+          return dateTimeService.months < 1;
+        })
+        saveReport(report, mapped);
+      });
+    }
+    
+    const generateYearlyIncomeReport = (report) => {
+      new API_Finance().getAllFinances().then(data => {
+        var mapped = data.filter((d) => {
+          var dateTimeService = new DateTimeService(calculateTimeDifference(d.date));
+          d.date = new Date(d.date).toLocaleString();
+          return dateTimeService.years < 1;
+        })
+        saveReport(report, mapped);
+      });
+    }
+    
+    const calculateTimeDifference = (d) => {
+      var date = new Date(d);
+      var localDate = new Date(date.setMinutes(date.getMinutes() - 330));
+      var ms = new Date() - localDate;
+      return ms;
     }
 
-    const generateYearlyIncomeReport = () => {
-
-    }
-  
     return (
       <div className="report-page row">
         <div>
