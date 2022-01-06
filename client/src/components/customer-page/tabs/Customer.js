@@ -96,6 +96,8 @@ import API_Customer from '../../../APIs/API_Customer';
                           <th>Name</th>
                           <th>Address</th>
                           <th>Phone</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
                           <th></th>
                         </tr>
                         {customers.map((e, i) => {

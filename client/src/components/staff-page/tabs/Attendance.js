@@ -106,6 +106,8 @@ import React, { useState, useEffect } from 'react';
                           <th>Exited</th>
                           <th>HR Id</th>
                           <th>Employee Id</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
                           <th></th>
                         </tr>
                         {attendances.map((e, i) => {

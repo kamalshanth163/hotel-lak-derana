@@ -112,6 +112,8 @@ import React, { useState, useEffect } from 'react';
                           <th>Availability</th>
                           <th>Type</th>
                           <th>Hotel Id</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
                           <th></th>
                         </tr>
                         {rooms.map((e, i) => {

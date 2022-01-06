@@ -122,6 +122,8 @@ import React, { useState, useEffect } from 'react';
                           <th>Final Amount (LKR)</th>
                           <th>HR Id</th>
                           <th>Employee Id</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
                           <th></th>
                         </tr>
                         {salaries.map((e, i) => {

@@ -96,6 +96,8 @@ import React, { useState, useEffect } from 'react';
                           <th>Name</th>
                           <th>Address</th>
                           <th>Phone</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
                           <th></th>
                         </tr>
                         {hotels.map((e, i) => {

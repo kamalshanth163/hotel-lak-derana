@@ -136,6 +136,8 @@ import React, { useState, useEffect } from 'react';
                           <th>Completed</th>
                           <th>Customer Id</th>
                           <th>Room Id</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
                           <th></th>
                         </tr>
                         {payments.map((e, i) => {

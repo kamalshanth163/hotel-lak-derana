@@ -116,6 +116,8 @@ function Employee() {
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Hotel Id</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
                         <th></th>
                       </tr>
                       {employees.map((e, i) => {
