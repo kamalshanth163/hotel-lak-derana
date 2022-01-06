@@ -56,7 +56,9 @@ import React, { useState, useEffect } from 'react';
   
     const handleDelete = (roomId) => {
       if(window.confirm("Are you sure you want to DELETE this Room?")){
-        new API_Room().deleteRoom(roomId);
+        new API_Room().deleteRoom(roomId).then(data => {
+          getAllRooms();
+        });
       }
     }
   

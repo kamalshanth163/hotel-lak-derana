@@ -54,7 +54,9 @@ import DateTimeService from '../../../services/DateTimeService';
   
     const handleDelete = (customerId) => {
       if(window.confirm("Are you sure you want to DELETE this Customer?")){
-        new API_Customer().deleteCustomer(customerId);
+        new API_Customer().deleteCustomer(customerId).then(data => {
+          getAllCustomers();
+        });
       }
     }
   

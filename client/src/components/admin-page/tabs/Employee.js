@@ -54,12 +54,13 @@ function Employee() {
   const handleEditAction = (model) => {
     setAction("edit");
     setEmployee(model);
-    console.log(employee)
   }
 
   const handleDelete = (employeeId) => {
     if(window.confirm("Are you sure you want to DELETE this Employee?")){
-      new API_Employee().deleteEmployee(employeeId);
+      new API_Employee().deleteEmployee(employeeId).then(data => {
+        getAllEmployees();
+      });
     }
   }
 

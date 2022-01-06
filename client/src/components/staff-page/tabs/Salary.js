@@ -59,7 +59,9 @@ import React, { useState, useEffect } from 'react';
   
     const handleDelete = (salaryId) => {
       if(window.confirm("Are you sure you want to DELETE this Salary?")){
-        new API_Salary().deleteSalary(salaryId);
+        new API_Salary().deleteSalary(salaryId).then(data => {
+          getAllSalaries();
+        });
       }
     }
   

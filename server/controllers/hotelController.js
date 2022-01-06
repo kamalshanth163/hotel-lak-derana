@@ -64,6 +64,7 @@ const deleteHotel = (req, res) => {
     sqlCon.query(
         `DELETE FROM hotels WHERE id = ${req.params.id};`
     , (err, results) => {
+        console.log(err)
         if(err) return res.sendStatus(400);
         return res.send(results); 
     })

@@ -138,8 +138,11 @@ class Seed {
         
         CREATE TABLE if not exists finances (
             id INT NOT NULL AUTO_INCREMENT,
-            amount DECIMAL(13,2),
+            income DECIMAL(13,2),
+            expense DECIMAL(13,2),
             payer VARCHAR(100),
+            receiver VARCHAR(100),          
+            type VARCHAR(40),
             description VARCHAR(40),
             recorded_by INT,
             created_at DATETIME,

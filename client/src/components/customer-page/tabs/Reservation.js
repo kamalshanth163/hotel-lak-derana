@@ -56,7 +56,9 @@ import React, { useState, useEffect } from 'react';
   
     const handleDelete = (reservationId) => {
       if(window.confirm("Are you sure you want to DELETE this Reservation?")){
-        new API_Reservation().deleteReservation(reservationId);
+        new API_Reservation().deleteReservation(reservationId).then(data => {
+          getAllReservations();
+        });
       }
     }
   

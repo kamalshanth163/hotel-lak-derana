@@ -56,7 +56,9 @@ import React, { useState, useEffect } from 'react';
   
     const handleDelete = (attendanceId) => {
       if(window.confirm("Are you sure you want to DELETE this Attendance?")){
-        new API_Attendance().deleteAttendance(attendanceId);
+        new API_Attendance().deleteAttendance(attendanceId).then(data => {
+          getAllAttendances();
+        });
       }
     }
   

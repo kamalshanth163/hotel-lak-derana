@@ -54,7 +54,9 @@ import React, { useState, useEffect } from 'react';
   
     const handleDelete = (hotelId) => {
       if(window.confirm("Are you sure you want to DELETE this Hotel?")){
-        new API_Hotel().deleteHotel(hotelId);
+        new API_Hotel().deleteHotel(hotelId).then(data => {
+          getAllHotels();
+        });
       }
     }
   

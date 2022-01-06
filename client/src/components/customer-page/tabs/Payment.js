@@ -61,7 +61,9 @@ import React, { useState, useEffect } from 'react';
   
     const handleDelete = (paymentId) => {
       if(window.confirm("Are you sure you want to DELETE this Payment?")){
-        new API_Payment().deletePayment(paymentId);
+        new API_Payment().deletePayment(paymentId).then(data => {
+          getAllPayments();
+        });
       }
     }
   
