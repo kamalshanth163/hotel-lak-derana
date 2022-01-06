@@ -34,6 +34,8 @@ class Seed {
             name VARCHAR(100) NOT NULL,
             address VARCHAR(100),
             phone VARCHAR(40),
+            created_at DATETIME,
+            updated_at DATETIME,
             PRIMARY KEY (id)
         );
         
@@ -42,6 +44,8 @@ class Seed {
             name VARCHAR(100) NOT NULL,
             address VARCHAR(100),
             phone VARCHAR(40),
+            created_at DATETIME,
+            updated_at DATETIME,
             PRIMARY KEY (id)
         );
         
@@ -51,6 +55,8 @@ class Seed {
             availability BOOLEAN,
             type VARCHAR(40),
             hotel_id INT,
+            created_at DATETIME,
+            updated_at DATETIME,
             PRIMARY KEY (id),
             FOREIGN KEY (hotel_id) REFERENCES hotels(id)
         );
@@ -64,6 +70,8 @@ class Seed {
             phone VARCHAR(100),
             password VARCHAR(100),
             hotel_id INT,
+            created_at DATETIME,
+            updated_at DATETIME,
             PRIMARY KEY (id),
             FOREIGN KEY (hotel_id) REFERENCES hotels(id)
         );
@@ -78,6 +86,8 @@ class Seed {
             final_amount DECIMAL(13,2),
             hr_id INT,
             employee_id INT,
+            created_at DATETIME,
+            updated_at DATETIME,
             PRIMARY KEY (id),
             FOREIGN KEY (employee_id) REFERENCES employees(id)
         );
@@ -88,6 +98,8 @@ class Seed {
             exited DATETIME,
             hr_id INT,
             employee_id INT,
+            created_at DATETIME,
+            updated_at DATETIME,
             PRIMARY KEY (id),
             FOREIGN KEY (employee_id) REFERENCES employees(id)
         );
@@ -103,6 +115,8 @@ class Seed {
             completed BOOLEAN,
             customer_id INT,
             room_id INT,
+            created_at DATETIME,
+            updated_at DATETIME,
             PRIMARY KEY (id),
             FOREIGN KEY (customer_id) REFERENCES customers(id),
             FOREIGN KEY (room_id) REFERENCES rooms(id)
@@ -114,6 +128,9 @@ class Seed {
             children_count INT,
             customer_id INT,
             room_id INT,
+            checked_out BOOLEAN,
+            created_at DATETIME,
+            updated_at DATETIME,
             PRIMARY KEY (id),
             FOREIGN KEY (customer_id) REFERENCES customers(id),
             FOREIGN KEY (room_id) REFERENCES rooms(id)
@@ -121,10 +138,30 @@ class Seed {
         
         CREATE TABLE if not exists finances (
             id INT NOT NULL AUTO_INCREMENT,
-            amount DECIMAL(13,2),
+            income DECIMAL(13,2),
+            expense DECIMAL(13,2),
             payer VARCHAR(100),
+            receiver VARCHAR(100),          
+            type VARCHAR(40),
             description VARCHAR(40),
             recorded_by INT,
+            created_at DATETIME,
+            updated_at DATETIME,
+            PRIMARY KEY (id),
+            FOREIGN KEY (recorded_by) REFERENCES employees(id)
+        );
+        
+        CREATE TABLE if not exists inventories (
+            id INT NOT NULL AUTO_INCREMENT,
+            product VARCHAR(100),
+            quantity INT,
+            price DECIMAL(13,2),
+            seller VARCHAR(100),          
+            department VARCHAR(40),
+            description VARCHAR(40),
+            recorded_by INT,
+            created_at DATETIME,
+            updated_at DATETIME,
             PRIMARY KEY (id),
             FOREIGN KEY (recorded_by) REFERENCES employees(id)
         );

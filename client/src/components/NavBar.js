@@ -12,7 +12,7 @@ const NavBar = () => {
                 <tr>
                   <td>
                     <NavLink className="logo" to="/">
-                      <h1 className="main-text">Lak Derana</h1>
+                      <h1 className="main-text">LD</h1>
                     </NavLink>
                   </td>
                   <td className="sign-section">
@@ -40,6 +40,12 @@ const NavBar = () => {
                   </td>
                   <td>
                     <NavLink className="navlink" activeClassName="is-active" to="/finance-page">Finance</NavLink>
+                  </td>
+                  <td>
+                    <NavLink className="navlink" activeClassName="is-active" to="/inventory-page">Inventory</NavLink>
+                  </td>
+                  <td>
+                    <NavLink className="navlink" activeClassName="is-active" to="/report-page">Report</NavLink>
                   </td>
                 </tr>
               </table>

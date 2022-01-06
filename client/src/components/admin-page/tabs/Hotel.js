@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
   import '../../styles/AdminPage.css'
   import API_Hotel from '../../../APIs/API_Hotel';
+  import DateTimeService from '../../../services/DateTimeService';
   
   function Hotel() {
     var initialHotel = {
@@ -15,7 +16,7 @@ import React, { useState, useEffect } from 'react';
   
     useEffect(() => {
       getAllHotels();
-    })
+    }, [])
   
     const getAllHotels = () => {
       new API_Hotel().getAllHotels().then(data => {
@@ -33,6 +34,7 @@ import React, { useState, useEffect } from 'react';
       e.preventDefault();
       new API_Hotel().postHotel(hotel).then(data => {
         setHotel(initialHotel);
+        getAllHotels();
       });
     }
   
@@ -40,6 +42,7 @@ import React, { useState, useEffect } from 'react';
       e.preventDefault();
       new API_Hotel().updateHotel(hotel).then(data => {
         setHotel(initialHotel);
+        getAllHotels();
       });
       setAction("add");
     }
@@ -51,7 +54,9 @@ import React, { useState, useEffect } from 'react';
   
     const handleDelete = (hotelId) => {
       if(window.confirm("Are you sure you want to DELETE this Hotel?")){
-        new API_Hotel().deleteHotel(hotelId);
+        new API_Hotel().deleteHotel(hotelId).then(data => {
+          getAllHotels();
+        });
       }
     }
   
@@ -96,6 +101,8 @@ import React, { useState, useEffect } from 'react';
                           <th>Name</th>
                           <th>Address</th>
                           <th>Phone</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
                           <th></th>
                         </tr>
                         {hotels.map((e, i) => {
@@ -105,6 +112,8 @@ import React, { useState, useEffect } from 'react';
                               <td>{e.name}</td>
                               <td>{e.address}</td>
                               <td>{e.phone}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.created_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.updated_at).toLocaleString()}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>

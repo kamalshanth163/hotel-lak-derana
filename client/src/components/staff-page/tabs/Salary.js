@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
   import '../../styles/StaffPage.css'
   import API_Salary from '../../../APIs/API_Salary';
+  import DateTimeService from '../../../services/DateTimeService';
   
   function Salary() {
     var initialSalary = {
@@ -20,7 +21,7 @@ import React, { useState, useEffect } from 'react';
   
     useEffect(() => {
       getAllSalaries();
-    })
+    }, [])
   
     const getAllSalaries = () => {
       new API_Salary().getAllSalaries().then(data => {
@@ -35,10 +36,10 @@ import React, { useState, useEffect } from 'react';
     }
   
     const handleAdd = (e) => {
-      console.log(salary)
       e.preventDefault();
       new API_Salary().postSalary(salary).then(data => {
         setSalary(initialSalary);
+        getAllSalaries();
       });
     }
   
@@ -46,6 +47,7 @@ import React, { useState, useEffect } from 'react';
       e.preventDefault();
       new API_Salary().updateSalary(salary).then(data => {
         setSalary(initialSalary);
+        getAllSalaries();
       });
       setAction("add");
     }
@@ -57,7 +59,9 @@ import React, { useState, useEffect } from 'react';
   
     const handleDelete = (salaryId) => {
       if(window.confirm("Are you sure you want to DELETE this Salary?")){
-        new API_Salary().deleteSalary(salaryId);
+        new API_Salary().deleteSalary(salaryId).then(data => {
+          getAllSalaries();
+        });
       }
     }
   
@@ -122,6 +126,8 @@ import React, { useState, useEffect } from 'react';
                           <th>Final Amount (LKR)</th>
                           <th>HR Id</th>
                           <th>Employee Id</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
                           <th></th>
                         </tr>
                         {salaries.map((e, i) => {
@@ -136,6 +142,8 @@ import React, { useState, useEffect } from 'react';
                               <td>{e.final_amount}</td>
                               <td>{e.hr_id}</td>
                               <td>{e.employee_id}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.created_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.updated_at).toLocaleString()}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>

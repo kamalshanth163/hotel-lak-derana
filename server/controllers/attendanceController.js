@@ -1,4 +1,5 @@
 const sqlCon = require("../db/connection");
+const DateTimeService = require('../services/DateTimeService');
 
 const getAllAttendances = (req, res) => {
     sqlCon.query("SELECT * FROM attendances", (err, results) => {
@@ -15,14 +16,17 @@ const getAttendanceById = (req, res) => {
 }
 
 const postAttendance = (req, res) => {
+    var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
     sqlCon.query(
-        `INSERT INTO attendances (entered, exited, hr_id, employee_id)
-        VALUES (?,?,?,?);`,
+        `INSERT INTO attendances (entered, exited, hr_id, employee_id, created_at, updated_at)
+        VALUES (?,?,?,?,?,?);`,
         [
             new Date(req.body.entered),
             new Date(req.body.exited),
             req.body.hr_id,
-            req.body.employee_id
+            req.body.employee_id,
+            currentLocalTime,
+            currentLocalTime,
         ]
     , (err, results) => {
         console.log(err)
@@ -32,13 +36,19 @@ const postAttendance = (req, res) => {
 }
 
 const updateAttendance = (req, res) => {
+    var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
+    var updatedAt = new Date(currentLocalTime).toISOString();
+  
     sqlCon.query(
-        `UPDATE attendances 
+        `
+        SET SQL_MODE='ALLOW_INVALID_DATES';
+        UPDATE attendances 
         SET 
         entered = '${req.body.entered}',
         exited = '${req.body.exited}',
         hr_id = '${req.body.hr_id}',
-        employee_id = '${req.body.employee_id}'
+        employee_id = '${req.body.employee_id}',
+        updated_at = '${updatedAt}'
         WHERE id = '${req.body.id}';`
     , (err, results) => {
         if(err) return res.sendStatus(400);

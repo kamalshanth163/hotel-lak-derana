@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/AdminPage.css'
 import API_Employee from '../../../APIs/API_Employee';
+import DateTimeService from '../../../services/DateTimeService';
 
 function Employee() {
   var initialEmployee = {
@@ -10,7 +11,8 @@ function Employee() {
     role: "",
     email: "",
     phone: "",
-    password: ""
+    password: "",
+    hotel_id: 0
   }
   const [employee, setEmployee] = useState(initialEmployee);
   const [employees, setEmployees] = useState([]);
@@ -18,7 +20,7 @@ function Employee() {
 
   useEffect(() => {
     getAllEmployees();
-  })
+  }, [])
 
   const getAllEmployees = () => {
     new API_Employee().getAllEmployees().then(data => {
@@ -36,6 +38,7 @@ function Employee() {
     e.preventDefault();
     new API_Employee().postEmployee(employee).then(data => {
       setEmployee(initialEmployee);
+      getAllEmployees();
     });
   }
 
@@ -43,6 +46,7 @@ function Employee() {
     e.preventDefault();
     new API_Employee().updateEmployee(employee).then(data => {
       setEmployee(initialEmployee);
+      getAllEmployees();
     });
     setAction("add");
   }
@@ -50,12 +54,13 @@ function Employee() {
   const handleEditAction = (model) => {
     setAction("edit");
     setEmployee(model);
-    console.log(employee)
   }
 
   const handleDelete = (employeeId) => {
     if(window.confirm("Are you sure you want to DELETE this Employee?")){
-      new API_Employee().deleteEmployee(employeeId);
+      new API_Employee().deleteEmployee(employeeId).then(data => {
+        getAllEmployees();
+      });
     }
   }
 
@@ -90,6 +95,9 @@ function Employee() {
             
             <label for="password"><b>Password</b></label>
             <input type="text" placeholder="Password" name="password" id="password" value={employee.password} required onChange={(e)=>handleChange(e)}/>
+            
+            <label for="hotel_id"><b>Hotel Id</b></label>
+            <input type="number" placeholder="Hotel Id" name="hotel_id" id="hotel_id" value={employee.hotel_id} required onChange={(e)=>handleChange(e)}/>
             <br></br>
 
             {action === 'add' ? 
@@ -111,6 +119,9 @@ function Employee() {
                         <th>Role</th>
                         <th>Email</th>
                         <th>Phone</th>
+                        <th>Hotel Id</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
                         <th></th>
                       </tr>
                       {employees.map((e, i) => {
@@ -122,8 +133,11 @@ function Employee() {
                             <td>{e.role}</td>
                             <td>{e.email}</td>
                             <td>{e.phone}</td>
+                            <td>{e.hotel_id}</td>
+                            <td>{new DateTimeService().getLocalDateTime(e.created_at).toLocaleString()}</td>
+                            <td>{new DateTimeService().getLocalDateTime(e.updated_at).toLocaleString()}</td>
                             <td>
-                              <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
+                            <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                             </td>
                             <td>
                               <button className="delete-btn btn" onClick={() => handleDelete(e.id)}>Delete</button>

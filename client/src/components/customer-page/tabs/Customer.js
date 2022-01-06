@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/CustomerPage.css'
 import API_Customer from '../../../APIs/API_Customer';
+import DateTimeService from '../../../services/DateTimeService';
   
   function Customer() {
     var initialCustomer = {
@@ -15,7 +16,7 @@ import API_Customer from '../../../APIs/API_Customer';
   
     useEffect(() => {
       getAllCustomers();
-    })
+    }, [])
   
     const getAllCustomers = () => {
       new API_Customer().getAllCustomers().then(data => {
@@ -33,6 +34,7 @@ import API_Customer from '../../../APIs/API_Customer';
       e.preventDefault();
       new API_Customer().postCustomer(customer).then(data => {
         setCustomer(initialCustomer);
+        getAllCustomers();
       });
     }
   
@@ -40,6 +42,7 @@ import API_Customer from '../../../APIs/API_Customer';
       e.preventDefault();
       new API_Customer().updateCustomer(customer).then(data => {
         setCustomer(initialCustomer);
+        getAllCustomers();
       });
       setAction("add");
     }
@@ -51,7 +54,9 @@ import API_Customer from '../../../APIs/API_Customer';
   
     const handleDelete = (customerId) => {
       if(window.confirm("Are you sure you want to DELETE this Customer?")){
-        new API_Customer().deleteCustomer(customerId);
+        new API_Customer().deleteCustomer(customerId).then(data => {
+          getAllCustomers();
+        });
       }
     }
   
@@ -96,6 +101,8 @@ import API_Customer from '../../../APIs/API_Customer';
                           <th>Name</th>
                           <th>Address</th>
                           <th>Phone</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
                           <th></th>
                         </tr>
                         {customers.map((e, i) => {
@@ -105,6 +112,8 @@ import API_Customer from '../../../APIs/API_Customer';
                               <td>{e.name}</td>
                               <td>{e.address}</td>
                               <td>{e.phone}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.created_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.updated_at).toLocaleString()}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>

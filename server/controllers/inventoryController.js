@@ -1,31 +1,31 @@
 const sqlCon = require("../db/connection");
 const DateTimeService = require('../services/DateTimeService');
 
-const getAllFinances = (req, res) => {
-    sqlCon.query("SELECT * FROM finances", (err, results) => {
+const getAllInventories = (req, res) => {
+    sqlCon.query("SELECT * FROM inventories", (err, results) => {
         if(err) return res.sendStatus(400);
         return res.send(results);
     })
 };
 
-const getFinanceById = (req, res) => {
-    sqlCon.query(`SELECT * FROM finances WHERE id = ${req.params.id}`, (err, results) => {
+const getInventoryById = (req, res) => {
+    sqlCon.query(`SELECT * FROM inventories WHERE id = ${req.params.id}`, (err, results) => {
         if(err) return res.sendStatus(400);
         return res.send(results);
     })
 }
 
-const postFinance = (req, res) => {
+const postInventory = (req, res) => {
     var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
     sqlCon.query(
-        `INSERT INTO finances (income, expense, payer, receiver, type, description, recorded_by, created_at, updated_at)
+        `INSERT INTO inventories (product, quantity, price, seller, department, description, recorded_by, created_at, updated_at)
         VALUES (?,?,?,?,?,?,?,?,?);`,
         [
-            req.body.income,
-            req.body.expense,
-            req.body.payer,
-            req.body.receiver,
-            req.body.type,
+            req.body.product,
+            req.body.quantity,
+            req.body.price,
+            req.body.seller,
+            req.body.department,
             req.body.description,
             req.body.recorded_by,
             currentLocalTime,
@@ -37,20 +37,20 @@ const postFinance = (req, res) => {
     })
 }
 
-const updateFinance = (req, res) => {
+const updateInventory = (req, res) => {
     var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
     var updatedAt = new Date(currentLocalTime).toISOString();
-
+  
     sqlCon.query(
         `
         SET SQL_MODE='ALLOW_INVALID_DATES';
-        UPDATE finances 
+        UPDATE inventories
         SET 
-        income = '${req.body.income}',
-        expense = '${req.body.expense}',
-        payer = '${req.body.payer}',
-        receiver = '${req.body.receiver}',
-        type = '${req.body.type}',
+        product = '${req.body.product}',
+        quantity = '${req.body.quantity}',
+        price = '${req.body.price}',
+        seller = '${req.body.seller}',
+        department = '${req.body.department}',
         description = '${req.body.description}',
         recorded_by = '${req.body.recorded_by}',
         updated_at = '${updatedAt}'
@@ -61,20 +61,20 @@ const updateFinance = (req, res) => {
     })
 }
 
-const deleteFinance = (req, res) => {
+const deleteInventory = (req, res) => {
     sqlCon.query(
-        `DELETE FROM finances WHERE id = ${req.params.id};`
+        `DELETE FROM inventories WHERE id = ${req.params.id};`
     , (err, results) => {
-        console.log(err)
         if(err) return res.sendStatus(400);
         return res.send(results); 
     })
 }
 
 module.exports = {
-    getAllFinances,
-    getFinanceById,
-    postFinance,
-    updateFinance,
-    deleteFinance
+    getAllInventories,
+    getInventoryById,
+    postInventory,
+    updateInventory,
+    deleteInventory
 };
+

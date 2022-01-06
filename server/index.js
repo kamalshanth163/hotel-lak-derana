@@ -14,6 +14,7 @@ const paymentRoutes = require("./routes/payment");
 const attendanceRoutes = require("./routes/attendance");
 const salaryRoutes = require("./routes/salary");
 const financeRoutes = require("./routes/finance");
+const inventoryRoutes = require("./routes/inventory");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -31,6 +32,7 @@ app.use("/payments", paymentRoutes);
 app.use("/attendances", attendanceRoutes);
 app.use("/salaries", salaryRoutes);
 app.use("/finances", financeRoutes);
+app.use("/inventories", inventoryRoutes);
 
 let seed = new Seed();
 
