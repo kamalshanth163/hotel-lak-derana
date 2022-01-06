@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
   import '../../styles/CustomerPage.css'
   import API_Payment from '../../../APIs/API_Payment';
+  import DateTimeService from '../../../services/DateTimeService';
   
   function Payment() {
     var initialPayment = {
@@ -21,7 +22,7 @@ import React, { useState, useEffect } from 'react';
   
     useEffect(() => {
       getAllPayments();
-    })
+    }, [])
   
     const getAllPayments = () => {
       new API_Payment().getAllPayments().then(data => {
@@ -40,6 +41,7 @@ import React, { useState, useEffect } from 'react';
       e.preventDefault();
       new API_Payment().postPayment(payment).then(data => {
         setPayment(initialPayment);
+        getAllPayments();
       });
     }
   
@@ -47,6 +49,7 @@ import React, { useState, useEffect } from 'react';
       e.preventDefault();
       new API_Payment().updatePayment(payment).then(data => {
         setPayment(initialPayment);
+        getAllPayments();
       });
       setAction("add");
     }
@@ -153,8 +156,8 @@ import React, { useState, useEffect } from 'react';
                               <td>{e.completed ? "Yes" : "No"}</td>
                               <td>{e.customer_id}</td>
                               <td>{e.room_id}</td>
-                              <td>{new Date(e.created_at).toLocaleString()}</td>
-                              <td>{new Date(e.updated_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.created_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.updated_at).toLocaleString()}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>

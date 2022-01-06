@@ -1,5 +1,5 @@
 const sqlCon = require("../db/connection");
-const DateTimeService = require('../services/DateTimeService')
+const DateTimeService = require('../services/DateTimeService');
 
 const getAllFinances = (req, res) => {
     sqlCon.query("SELECT * FROM finances", (err, results) => {

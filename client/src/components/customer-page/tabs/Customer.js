@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/CustomerPage.css'
 import API_Customer from '../../../APIs/API_Customer';
+import DateTimeService from '../../../services/DateTimeService';
   
   function Customer() {
     var initialCustomer = {
@@ -15,7 +16,7 @@ import API_Customer from '../../../APIs/API_Customer';
   
     useEffect(() => {
       getAllCustomers();
-    })
+    }, [])
   
     const getAllCustomers = () => {
       new API_Customer().getAllCustomers().then(data => {
@@ -33,6 +34,7 @@ import API_Customer from '../../../APIs/API_Customer';
       e.preventDefault();
       new API_Customer().postCustomer(customer).then(data => {
         setCustomer(initialCustomer);
+        getAllCustomers();
       });
     }
   
@@ -40,6 +42,7 @@ import API_Customer from '../../../APIs/API_Customer';
       e.preventDefault();
       new API_Customer().updateCustomer(customer).then(data => {
         setCustomer(initialCustomer);
+        getAllCustomers();
       });
       setAction("add");
     }
@@ -107,8 +110,8 @@ import API_Customer from '../../../APIs/API_Customer';
                               <td>{e.name}</td>
                               <td>{e.address}</td>
                               <td>{e.phone}</td>
-                              <td>{new Date(e.created_at).toLocaleString()}</td>
-                              <td>{new Date(e.updated_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.created_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.updated_at).toLocaleString()}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>

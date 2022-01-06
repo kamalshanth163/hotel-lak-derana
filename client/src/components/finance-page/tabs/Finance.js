@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/FinancePage.css'
 import API_Finance from '../../../APIs/API_Finance';
+import DateTimeService from '../../../services/DateTimeService';
   
   function Finance() {
     var initialFinance = {
@@ -16,7 +17,7 @@ import API_Finance from '../../../APIs/API_Finance';
   
     useEffect(() => {
       getAllFinances();
-    })
+    }, [])
   
     const getAllFinances = () => {
       new API_Finance().getAllFinances().then(data => {
@@ -31,10 +32,10 @@ import API_Finance from '../../../APIs/API_Finance';
     }
   
     const handleAdd = (e) => {
-      console.log(finance)
       e.preventDefault();
       new API_Finance().postFinance(finance).then(data => {
         setFinance(initialFinance);
+        getAllFinances();
       });
     }
   
@@ -42,6 +43,7 @@ import API_Finance from '../../../APIs/API_Finance';
       e.preventDefault();
       new API_Finance().updateFinance(finance).then(data => {
         setFinance(initialFinance);
+        getAllFinances();
       });
       setAction("add");
     }
@@ -114,8 +116,8 @@ import API_Finance from '../../../APIs/API_Finance';
                               <td>{e.payer}</td>
                               <td>{e.description}</td>
                               <td>{e.recorded_by}</td>
-                              <td>{new Date(e.created_at).toLocaleString()}</td>
-                              <td>{new Date(e.updated_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.created_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.updated_at).toLocaleString()}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>

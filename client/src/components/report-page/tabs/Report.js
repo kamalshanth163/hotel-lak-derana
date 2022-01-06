@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styles/ReportPage.css'
 import ReportCard from './ReportCard';
 import jsPDF from 'jspdf';
@@ -8,7 +8,7 @@ import API_Finance from '../../../APIs/API_Finance';
 import DateTimeService from '../../../services/DateTimeService';
 
   function Report() {
-
+    
     const saveReport = (report, data) => {
       const doc = new jsPDF();
       if(data.length < 1){
@@ -44,8 +44,9 @@ import DateTimeService from '../../../services/DateTimeService';
     const generateDailyIncomeReport = (report) => {
       new API_Finance().getAllFinances().then(data => {
         var mapped = data.filter((d) => {
-          var dateTimeService = new DateTimeService(calculateTimeDifference(d.date));
-          d.date = new Date(d.date).toLocaleString();
+          var dateTimeService = new DateTimeService(calculateTimeDifference(d.created_at));
+          d.created_at = dateTimeService.getLocalDateTime(d.created_at).toLocaleString();
+          d.updated_at = dateTimeService.getLocalDateTime(d.updated_at).toLocaleString();
           console.log(dateTimeService.days)
           return dateTimeService.days < 1;
         })
@@ -56,8 +57,9 @@ import DateTimeService from '../../../services/DateTimeService';
     const generateMonthlyIncomeReport = (report) => {
       new API_Finance().getAllFinances().then(data => {
         var mapped = data.filter((d) => {
-          var dateTimeService = new DateTimeService(calculateTimeDifference(d.date));
-          d.date = new Date(d.date).toLocaleString();
+          var dateTimeService = new DateTimeService(calculateTimeDifference(d.created_at));
+          d.created_at = dateTimeService.getLocalDateTime(d.created_at).toLocaleString();
+          d.updated_at = dateTimeService.getLocalDateTime(d.updated_at).toLocaleString();
           return dateTimeService.months < 1;
         })
         saveReport(report, mapped);
@@ -67,8 +69,9 @@ import DateTimeService from '../../../services/DateTimeService';
     const generateYearlyIncomeReport = (report) => {
       new API_Finance().getAllFinances().then(data => {
         var mapped = data.filter((d) => {
-          var dateTimeService = new DateTimeService(calculateTimeDifference(d.date));
-          d.date = new Date(d.date).toLocaleString();
+          var dateTimeService = new DateTimeService(calculateTimeDifference(d.created_at));
+          d.created_at = dateTimeService.getLocalDateTime(d.created_at).toLocaleString();
+          d.updated_at = dateTimeService.getLocalDateTime(d.updated_at).toLocaleString();
           return dateTimeService.years < 1;
         })
         saveReport(report, mapped);
@@ -77,8 +80,10 @@ import DateTimeService from '../../../services/DateTimeService';
     
     const calculateTimeDifference = (d) => {
       var date = new Date(d);
+      console.log(d)
       var localDate = new Date(date.setMinutes(date.getMinutes() - 330));
       var ms = new Date() - localDate;
+      console.log(ms)
       return ms;
     }
 

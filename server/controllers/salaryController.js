@@ -1,4 +1,5 @@
 const sqlCon = require("../db/connection");
+const DateTimeService = require('../services/DateTimeService');
 
 const getAllSalaries = (req, res) => {
     sqlCon.query("SELECT * FROM salaries", (err, results) => {
@@ -15,9 +16,10 @@ const getSalaryById = (req, res) => {
 }
 
 const postSalary = (req, res) => {
+    var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
     sqlCon.query(
-        `INSERT INTO salaries (basic_salary, over_time, allowance, leaves, deduction, final_amount, hr_id, employee_id)
-        VALUES (?,?,?,?,?,?,?,?);`,
+        `INSERT INTO salaries (basic_salary, over_time, allowance, leaves, deduction, final_amount, hr_id, employee_id, created_at, updated_at)
+        VALUES (?,?,?,?,?,?,?,?,?,?);`,
         [
             req.body.basic_salary,
             req.body.over_time,
@@ -26,7 +28,9 @@ const postSalary = (req, res) => {
             req.body.deduction,
             req.body.final_amount,
             req.body.hr_id,
-            req.body.employee_id
+            req.body.employee_id,
+            currentLocalTime,
+            currentLocalTime,
         ]
     , (err, results) => {
         console.log(err)
@@ -36,8 +40,13 @@ const postSalary = (req, res) => {
 }
 
 const updateSalary = (req, res) => {
+    var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
+    var updatedAt = new Date(currentLocalTime).toISOString();
+  
     sqlCon.query(
-        `UPDATE salaries 
+        `
+        SET SQL_MODE='ALLOW_INVALID_DATES';
+        UPDATE salaries 
         SET 
         basic_salary = '${req.body.basic_salary}',
         over_time = '${req.body.over_time}',
@@ -46,7 +55,8 @@ const updateSalary = (req, res) => {
         deduction = '${req.body.deduction}',
         final_amount = '${req.body.final_amount}',
         hr_id = '${req.body.hr_id}',
-        employee_id = '${req.body.employee_id}'
+        employee_id = '${req.body.employee_id}',
+        updated_at = '${updatedAt}'
         WHERE id = '${req.body.id}';`
     , (err, results) => {
         if(err) return res.sendStatus(400);

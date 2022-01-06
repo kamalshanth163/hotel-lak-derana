@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
   import '../../styles/CustomerPage.css'
   import API_Reservation from '../../../APIs/API_Reservation';
+  import DateTimeService from '../../../services/DateTimeService';
   
   function Reservation() {
     var initialReservation = {
@@ -17,7 +18,7 @@ import React, { useState, useEffect } from 'react';
   
     useEffect(() => {
       getAllReservations();
-    })
+    }, [])
   
     const getAllReservations = () => {
       new API_Reservation().getAllReservations().then(data => {
@@ -32,10 +33,10 @@ import React, { useState, useEffect } from 'react';
     }
   
     const handleAdd = (e) => {
-      reservation.hotel_id = reservation.hotel_id * 1;
       e.preventDefault();
       new API_Reservation().postReservation(reservation).then(data => {
         setReservation(initialReservation);
+        getAllReservations();
       });
     }
   
@@ -43,6 +44,7 @@ import React, { useState, useEffect } from 'react';
       e.preventDefault();
       new API_Reservation().updateReservation(reservation).then(data => {
         setReservation(initialReservation);
+        getAllReservations();
       });
       setAction("add");
     }
@@ -125,8 +127,8 @@ import React, { useState, useEffect } from 'react';
                               <td>{e.customer_id}</td>
                               <td>{e.room_id}</td>
                               <td>{e.checked_out ? "Yes" : "No"}</td>
-                              <td>{new Date(e.created_at).toLocaleString()}</td>
-                              <td>{new Date(e.updated_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.created_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.updated_at).toLocaleString()}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>

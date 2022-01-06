@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
   import '../../styles/AdminPage.css'
   import API_Room from '../../../APIs/API_Room';
+  import DateTimeService from '../../../services/DateTimeService';
   
   function Room() {
     var initialRoom = {
@@ -16,7 +17,7 @@ import React, { useState, useEffect } from 'react';
   
     useEffect(() => {
       getAllRooms();
-    })
+    }, [])
   
     const getAllRooms = () => {
       new API_Room().getAllRooms().then(data => {
@@ -35,6 +36,7 @@ import React, { useState, useEffect } from 'react';
       e.preventDefault();
       new API_Room().postRoom(room).then(data => {
         setRoom(initialRoom);
+        getAllRooms();
       });
     }
   
@@ -42,6 +44,7 @@ import React, { useState, useEffect } from 'react';
       e.preventDefault();
       new API_Room().updateRoom(room).then(data => {
         setRoom(initialRoom);
+        getAllRooms();
       });
       setAction("add");
     }
@@ -124,8 +127,8 @@ import React, { useState, useEffect } from 'react';
                               <td>{e.availability ? "Yes" : "No"}</td>
                               <td>{e.type}</td>
                               <td>{e.hotel_id}</td>
-                              <td>{new Date(e.created_at).toLocaleString()}</td>
-                              <td>{new Date(e.updated_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.created_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.updated_at).toLocaleString()}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>

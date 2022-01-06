@@ -1,4 +1,5 @@
 const sqlCon = require("../db/connection");
+const DateTimeService = require('../services/DateTimeService');
 
 const getAllPayments = (req, res) => {
     sqlCon.query("SELECT * FROM payments", (err, results) => {
@@ -15,9 +16,10 @@ const getPaymentById = (req, res) => {
 }
 
 const postPayment = (req, res) => {
+    var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
     sqlCon.query(
-        `INSERT INTO payments (date_checked_in, date_checked_out, reservation_fee, hotel_fee, paid, due, completed, customer_id, room_id)
-        VALUES (?,?,?,?,?,?,?,?,?);`,
+        `INSERT INTO payments (date_checked_in, date_checked_out, reservation_fee, hotel_fee, paid, due, completed, customer_id, room_id, created_at, updated_at)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?);`,
         [
             new Date(req.body.date_checked_in),
             new Date(req.body.date_checked_out),
@@ -27,7 +29,9 @@ const postPayment = (req, res) => {
             req.body.due,
             req.body.completed,
             req.body.customer_id,
-            req.body.room_id
+            req.body.room_id,
+            currentLocalTime,
+            currentLocalTime,
         ]
     , (err, results) => {
         if(err) return res.sendStatus(400);
@@ -36,6 +40,9 @@ const postPayment = (req, res) => {
 }
 
 const updatePayment = (req, res) => {
+    var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
+    var updatedAt = new Date(currentLocalTime).toISOString();
+  
     sqlCon.query(
         `
         SET SQL_MODE='ALLOW_INVALID_DATES';
@@ -49,7 +56,8 @@ const updatePayment = (req, res) => {
         due = '${req.body.due}',
         completed = '${req.body.completed}',
         customer_id = '${req.body.customer_id}',
-        room_id = '${req.body.room_id}'
+        room_id = '${req.body.room_id}',
+        updated_at = '${updatedAt}'
         WHERE id = '${req.body.id}';`
     , (err, results) => {
         if(err) return res.sendStatus(400);

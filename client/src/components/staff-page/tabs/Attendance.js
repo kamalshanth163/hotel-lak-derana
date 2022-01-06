@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
   import '../../styles/StaffPage.css'
   import API_Attendance from '../../../APIs/API_Attendance';
+  import DateTimeService from '../../../services/DateTimeService';
   
   function Attendance() {
     var initialAttendance = {
@@ -16,7 +17,7 @@ import React, { useState, useEffect } from 'react';
   
     useEffect(() => {
       getAllAttendances();
-    })
+    }, [])
   
     const getAllAttendances = () => {
       new API_Attendance().getAllAttendances().then(data => {
@@ -35,6 +36,7 @@ import React, { useState, useEffect } from 'react';
       e.preventDefault();
       new API_Attendance().postAttendance(attendance).then(data => {
         setAttendance(initialAttendance);
+        getAllAttendances();
       });
     }
   
@@ -42,6 +44,7 @@ import React, { useState, useEffect } from 'react';
       e.preventDefault();
       new API_Attendance().updateAttendance(attendance).then(data => {
         setAttendance(initialAttendance);
+        getAllAttendances();
       });
       setAction("add");
     }
@@ -118,8 +121,8 @@ import React, { useState, useEffect } from 'react';
                               <td>{new Date(e.exited).toDateString()}</td>
                               <td>{e.hr_id}</td>
                               <td>{e.employee_id}</td>
-                              <td>{new Date(e.created_at).toLocaleString()}</td>
-                              <td>{new Date(e.updated_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.created_at).toLocaleString()}</td>
+                              <td>{new DateTimeService().getLocalDateTime(e.updated_at).toLocaleString()}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>
