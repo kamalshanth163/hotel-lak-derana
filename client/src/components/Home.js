@@ -22,6 +22,9 @@ const Home = () => {
           <button className="btn btn-4" onClick={() => history.push('./finance-page')}>
             Finance Management
           </button><br />
+          <button className="btn btn-4" onClick={() => history.push('./inventory-page')}>
+            Inventory Management
+          </button><br />
           <button className="btn btn-1" onClick={() => history.push('./report-page')}>
             Generate Reports
           </button><br />

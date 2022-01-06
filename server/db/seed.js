@@ -150,6 +150,21 @@ class Seed {
             PRIMARY KEY (id),
             FOREIGN KEY (recorded_by) REFERENCES employees(id)
         );
+        
+        CREATE TABLE if not exists inventories (
+            id INT NOT NULL AUTO_INCREMENT,
+            product VARCHAR(100),
+            quantity INT,
+            price DECIMAL(13,2),
+            seller VARCHAR(100),          
+            department VARCHAR(40),
+            description VARCHAR(40),
+            recorded_by INT,
+            created_at DATETIME,
+            updated_at DATETIME,
+            PRIMARY KEY (id),
+            FOREIGN KEY (recorded_by) REFERENCES employees(id)
+        );
         `;
 
         sqlCon.query(createTables, function(err, results, fields) {

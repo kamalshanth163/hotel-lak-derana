@@ -9,6 +9,7 @@ import CustomerPage from './components/customer-page/CustomerPage';
 import StaffPage from './components/staff-page/StaffPage';
 import FinancePage from './components/finance-page/FinancePage';
 import ReportPage from './components/report-page/ReportPage';
+import InventoryPage from './components/inventory-page/InventoryPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/staff-page" component = {StaffPage} />
             <Route path="/finance-page" component = {FinancePage} />
             <Route path="/report-page" component = {ReportPage} />
+            <Route path="/inventory-page" component = {InventoryPage} />
         </Switch>
       </Router>
     </AppContextProvider>
