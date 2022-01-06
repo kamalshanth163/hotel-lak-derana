@@ -1,3 +1,7 @@
+.report-page{
+    width: 95%;
+    margin: 0 auto;
+}
 .report-page .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
@@ -13,4 +17,28 @@
     padding: 20px;
     font-size: 30px;
     text-align: center;
+  }
+
+  .report-page .sub-links ul{
+    display: inline-block;
+    text-decoration: none;
+  }
+  .report-page .report-menu{
+    margin-bottom: 20px; 
+  }
+  .report-page .report-menu td .menu-link{
+    background: rgb(218, 218, 218);
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 8px 20px;
+    border-radius: 10px;
+  }
+
+  .report-page .btn{
+    background: rgb(37, 119, 37);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
   }

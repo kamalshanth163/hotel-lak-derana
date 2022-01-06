@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../styles/ReportPage.css'
 
 function ReportCard({report, action}) {
@@ -9,7 +9,7 @@ function ReportCard({report, action}) {
         <div className='report-card'>
             <h3>{title}</h3>
             <p>{description}</p>
-            <button onClick={() => action(report)}>Generate Report</button>
+            <button className='btn' onClick={() => action(report)}>Generate Report</button>
         </div>
     )
 } 
