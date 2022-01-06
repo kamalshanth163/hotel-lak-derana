@@ -16,16 +16,17 @@ const getFinanceById = (req, res) => {
 }
 
 const postFinance = (req, res) => {
-    var localDateTime = new DateTimeService().getLocalDateTime(new Date());
+    var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
     sqlCon.query(
-        `INSERT INTO finances (amount, payer, description, recorded_by, date)
-        VALUES (?,?,?,?,?);`,
+        `INSERT INTO finances (amount, payer, description, recorded_by, created_at, updated_at)
+        VALUES (?,?,?,?,?,?);`,
         [
             req.body.amount,
             req.body.payer,
             req.body.description,
             req.body.recorded_by,
-            localDateTime,
+            currentLocalTime,
+            currentLocalTime,
         ]
     , (err, results) => {
         if(err) return res.sendStatus(400);
@@ -34,13 +35,19 @@ const postFinance = (req, res) => {
 }
 
 const updateFinance = (req, res) => {
+    var currentLocalTime = new DateTimeService().getLocalDateTime(new Date());
+    var updatedAt = new Date(currentLocalTime).toISOString();
+
     sqlCon.query(
-        `UPDATE finances 
+        `
+        SET SQL_MODE='ALLOW_INVALID_DATES';
+        UPDATE finances 
         SET 
         amount = '${req.body.amount}',
         payer = '${req.body.payer}',
         description = '${req.body.description}',
-        recorded_by = '${req.body.recorded_by}'
+        recorded_by = '${req.body.recorded_by}',
+        updated_at = '${updatedAt}'
         WHERE id = '${req.body.id}';`
     , (err, results) => {
         if(err) return res.sendStatus(400);
@@ -64,4 +71,3 @@ module.exports = {
     updateFinance,
     deleteFinance
 };
-

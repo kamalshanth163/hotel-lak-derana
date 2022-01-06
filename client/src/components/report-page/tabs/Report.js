@@ -46,6 +46,7 @@ import DateTimeService from '../../../services/DateTimeService';
         var mapped = data.filter((d) => {
           var dateTimeService = new DateTimeService(calculateTimeDifference(d.date));
           d.date = new Date(d.date).toLocaleString();
+          console.log(dateTimeService.days)
           return dateTimeService.days < 1;
         })
         saveReport(report, mapped);

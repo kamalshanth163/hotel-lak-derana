@@ -102,7 +102,8 @@ import API_Finance from '../../../APIs/API_Finance';
                           <th>Payer</th>
                           <th>Description</th>
                           <th>Recorded By</th>
-                          <th>Date</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
                           <th></th>
                         </tr>
                         {finances.map((e, i) => {
@@ -113,7 +114,8 @@ import API_Finance from '../../../APIs/API_Finance';
                               <td>{e.payer}</td>
                               <td>{e.description}</td>
                               <td>{e.recorded_by}</td>
-                              <td>{new Date(e.date).toLocaleString()}</td>
+                              <td>{new Date(e.created_at).toLocaleString()}</td>
+                              <td>{new Date(e.updated_at).toLocaleString()}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>
