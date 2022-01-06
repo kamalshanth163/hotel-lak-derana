@@ -128,8 +128,10 @@ function Employee() {
                             <td>{e.email}</td>
                             <td>{e.phone}</td>
                             <td>{e.hotel_id}</td>
+                              <td>{new Date(e.created_at).toLocaleString()}</td>
+                              <td>{new Date(e.updated_at).toLocaleString()}</td>
                             <td>
-                              <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
+                            <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                             </td>
                             <td>
                               <button className="delete-btn btn" onClick={() => handleDelete(e.id)}>Delete</button>

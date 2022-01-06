@@ -136,6 +136,8 @@ import React, { useState, useEffect } from 'react';
                               <td>{e.final_amount}</td>
                               <td>{e.hr_id}</td>
                               <td>{e.employee_id}</td>
+                              <td>{new Date(e.created_at).toLocaleString()}</td>
+                              <td>{new Date(e.updated_at).toLocaleString()}</td>
                               <td>
                                 <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
                               </td>
