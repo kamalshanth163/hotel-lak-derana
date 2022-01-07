@@ -1,18 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import '../../styles/FinancePage.css'
-import API_Finance from '../../../APIs/API_Finance';
-import DateTimeService from '../../../services/DateTimeService';
+  import '../../styles/Finance.css';
+  import API_Finance from '../../../APIs/API_Finance';
+  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+  import { faUserPlus,faUserCheck} from '@fortawesome/free-solid-svg-icons';
+
+  //Bootstrap and jQuery libraries
+  import 'bootstrap/dist/css/bootstrap.min.css';
+  import 'jquery/dist/jquery.min.js';
+  //Datatable Modules
+  import "datatables.net-dt/js/dataTables.dataTables"
+  import "datatables.net-dt/css/jquery.dataTables.min.css"
+  import "datatables.net-buttons/js/dataTables.buttons.js"
+  import "datatables.net-buttons/js/buttons.colVis.js"
+  import "datatables.net-buttons/js/buttons.flash.js"
+  import "datatables.net-buttons/js/buttons.html5.js"
+  import "datatables.net-buttons/js/buttons.print.js"
+  import "datatables.net-dt/css/jquery.dataTables.min.css"
+  import $ from 'jquery';
+
+
+  //initialize datatable
+  $(document).ready(function () {
+    setTimeout(function(){
+    $('#finance').DataTable(
+        {
+            pagingType: 'full_numbers',
+              pageLength: 5,
+              processing: true,
+              dom: 'Bfrtip',
+                  buttons: ['copy', 'csv', 'print'
+                  ]
+        }
+    );
+    } ,
+    1000
+    );
+  });
+
   
   function Finance() {
     var initialFinance = {
-      id: 0,
-      income: 0,
-      expense: 0,
+      id: "",
+      amount: "",
       payer: "",
-      receiver: "",
-      type: "Income",
       description: "",
-      recorded_by: 0
+      recorded_by: ""
     }
     const [finance, setFinance] = useState(initialFinance);
     const [finances, setFinances] = useState([]);
@@ -20,7 +52,7 @@ import DateTimeService from '../../../services/DateTimeService';
   
     useEffect(() => {
       getAllFinances();
-    }, [])
+    })
   
     const getAllFinances = () => {
       new API_Finance().getAllFinances().then(data => {
@@ -35,10 +67,10 @@ import DateTimeService from '../../../services/DateTimeService';
     }
   
     const handleAdd = (e) => {
+      console.log(finance)
       e.preventDefault();
       new API_Finance().postFinance(finance).then(data => {
         setFinance(initialFinance);
-        getAllFinances();
       });
     }
   
@@ -46,7 +78,6 @@ import DateTimeService from '../../../services/DateTimeService';
       e.preventDefault();
       new API_Finance().updateFinance(finance).then(data => {
         setFinance(initialFinance);
-        getAllFinances();
       });
       setAction("add");
     }
@@ -58,110 +89,208 @@ import DateTimeService from '../../../services/DateTimeService';
   
     const handleDelete = (financeId) => {
       if(window.confirm("Are you sure you want to DELETE this Finance?")){
-        new API_Finance().deleteFinance(financeId).then(data => {
-          getAllFinances();
-        });
+        new API_Finance().deleteFinance(financeId);
       }
     }
   
     return (
-      <div className="finance-page row">
-        <div>
-          <hr></hr>
-          <h2>Manage Finances</h2>
-        <table className="layout">
-        <tr>
-          <td className="left-col">
-          <form className="form">
-              <div class="container">
-              {action === 'add' ? 
-                  <h3>Add a Finance</h3> : <h3>Edit Finance</h3>
-                }
-              <hr></hr>
 
-              <label for="type"><b>Type</b></label>
-              <select name="type" id="type" value={finance.type} required onChange={(e)=>handleChange(e)}>
-                <option value="Income">Income</option>
-                <option value="Expense">Expense</option>
-              </select>
-              <br></br>
-              <br></br>
 
-              <label for="income"><b>Income (LKR)</b></label>
-              <input type="number" placeholder="Income (LKR)" name="income" id="income" value={finance.income} required onChange={(e)=>handleChange(e)}/>
+      <div className='finance-tab'>
 
-              <label for="expense"><b>Expense (LKR)</b></label>
-              <input type="number" placeholder="Expense (LKR)" name="expense" id="expense" value={finance.expense} required onChange={(e)=>handleChange(e)}/>
+          <div className='title-and-action'>
+               <h3>Finance :</h3>
 
-              <label for="payer"><b>Payer</b></label>
-              <input type="text" placeholder="Payer" name="payer" id="payer" value={finance.payer} required onChange={(e)=>handleChange(e)}/>
-              
-              <label for="receiver"><b>Receiver</b></label>
-              <input type="text" placeholder="Receiver" name="receiver" id="receiver" value={finance.receiver} required onChange={(e)=>handleChange(e)}/>
+        <form className="form">
 
-              <label for="description"><b>Description</b></label>
-              <input type="text" placeholder="Description" name="description" id="description" value={finance.description} required onChange={(e)=>handleChange(e)}/>
-              
-              <label for="recorded_by"><b>Recorded By</b></label>
-              <input type="number" placeholder="Recorded By" name="recorded_by" id="recorded_by" value={finance.recorded_by} required onChange={(e)=>handleChange(e)}/>
-              <br></br>
-  
-              {action === 'add' ? 
-              <button type="submit" className="addBtn" onClick={(e) => handleAdd(e)}>Add</button> :
-              <button type="submit" className="editBtn" onClick={(e) => handleEdit(e)}>Save</button>
-              }
-              </div>        
+
+              <div className='input'> 
+              <label for="amount"></label>
+               <input type="number" placeholder="Amount" name="amount" id="amount" value={finance.amount} required onChange={(e)=>handleChange(e)}/>
+              </div>
+
+              <div className='input'>
+              <label for="payer"></label>
+               <input type="text" placeholder="Payer" name="payer" id="payer" value={finance.payer} required onChange={(e)=>handleChange(e)}/>
+              </div>
+
+              <div className='input'>
+               <label for="description"></label>
+               <input type="text" placeholder="Description" name="description" id="description" value={finance.description} required onChange={(e)=>handleChange(e)}/>
+              </div>
+
+              <div className='input'>
+               <label for="recorded_by"></label>
+               <input type="number" placeholder="Recorded By" name="recorded_by" id="recorded_by" value={finance.recorded_by} required onChange={(e)=>handleChange(e)}/>
+              </div>
+
+
+              <div className='btns'>
+              <button type="submit" className="addBtn"   onClick={(e) => handleAdd(e)} ><FontAwesomeIcon className='icon' icon={faUserPlus} />Add</button>
+              <button type="submit" className="editBtn"  onClick={(e) => handleEdit(e)} ><FontAwesomeIcon className='icon' icon={faUserCheck} />Save</button>
+              </div>
+
+
+            
           </form>
-          </td>
-          <td className="right-col">
-              <div className="panel">
-                    <table>
-  
-                      <div className="table-body">
-                        <tr className="th-row">
+
+      </div>
+
+
+
+
+    <div className="TableDiv">
+
+        <div>
+          <h4>Finances Table View</h4>
+          <hr></hr>
+        </div>
+    
+        <div className="container p-5">
+            
+            <table id="finance" class="table table-hover table-bordered ">
+            <thead>
+              <tr>
                           <th>Id</th>
-                          <th>Income (LKR)</th>
-                          <th>Expense (LKR)</th>
+                          <th>Amount</th>
                           <th>Payer</th>
-                          <th>Receiver</th>
-                          <th>Type</th>
                           <th>Description</th>
                           <th>Recorded By</th>
-                          <th>Created At</th>
-                          <th>Updated At</th>
-                          <th></th>
-                        </tr>
-                        {finances.map((e, i) => {
+                          <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            {finances.map((e, i) => {
                           return (
-                            <tr className="td-row">
-                              <td>{e.id}</td>
-                              <td>{e.income}</td>
-                              <td>{e.expense}</td>
-                              <td>{e.payer}</td>
-                              <td>{e.receiver}</td>
-                              <td>{e.type}</td>
-                              <td>{e.description}</td>
-                              <td>{e.recorded_by}</td>
-                              <td>{new DateTimeService().getLocalDateTime(e.created_at).toLocaleString()}</td>
-                              <td>{new DateTimeService().getLocalDateTime(e.updated_at).toLocaleString()}</td>
+                            <tr>
+
+                                 <td>{e.id}</td>
+                                 <td>{e.amount}</td>
+                                 <td>{e.payer}</td>
+                                 <td>{e.description}</td>
+                                 <td>{e.recorded_by}</td>
                               <td>
-                                <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
-                              </td>
-                              <td>
-                                <button className="delete-btn btn" onClick={() => handleDelete(e.id)}>Delete</button>
+                                <button className="deleteBtn" onClick={() => handleDelete(e.id)}><FontAwesomeIcon className='icon' icon={faUserPlus} />Delete</button>
+                                <button className="editBtn" onClick={() => handleEditAction(e)}><FontAwesomeIcon className='icon' icon={faUserCheck} />Edit</button>
                               </td>
                             </tr>
+
                           )
                         })}
-                      </div>
-                      </table> 
-              </div>
-          </td>
-        </tr>
-      </table>       
+            
+              
+            </tbody>
+          </table>
+            
+          </div>
       </div>
+
+
+      {/* <div className='ChartDiv'>
+
+        <div>
+      <h4>Attendances <br /> Graphical View</h4>
+        <hr></hr>
+        </div>
+
+        <div className='chart'>
+        <ResBarChart />
+        </div>
+
+      </div> */}
   
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // <div className="finance-page row">
+      //   <div>
+      //     <hr></hr>
+      //     <h2>Manage Finances</h2>
+      //   <table className="layout">
+      //   <tr>
+      //     <td className="left-col">
+      //     <form className="form">
+      //         <div class="container">
+      //         {action === 'add' ? 
+      //             <h3>Add a Finance</h3> : <h3>Edit Finance</h3>
+      //           }
+      //         <hr></hr>
+      //         <label for="amount"><b>Amount (LKR)</b></label>
+      //         <input type="number" placeholder="Amount (LKR)" name="amount" id="amount" value={finance.amount} required onChange={(e)=>handleChange(e)}/>
+
+      //         <label for="payer"><b>Payer</b></label>
+      //         <input type="text" placeholder="Payer" name="payer" id="payer" value={finance.payer} required onChange={(e)=>handleChange(e)}/>
+              
+      //         <label for="description"><b>Description</b></label>
+      //         <input type="text" placeholder="Description" name="description" id="description" value={finance.description} required onChange={(e)=>handleChange(e)}/>
+              
+      //         <label for="recorded_by"><b>Recorded By</b></label>
+      //         <input type="number" placeholder="Recorded By" name="recorded_by" id="recorded_by" value={finance.recorded_by} required onChange={(e)=>handleChange(e)}/>
+      //         <br></br>
+  
+      //         {action === 'add' ? 
+      //         <button type="submit" className="addBtn" onClick={(e) => handleAdd(e)}>Add</button> :
+      //         <button type="submit" className="editBtn" onClick={(e) => handleEdit(e)}>Save</button>
+      //         }
+      //         </div>        
+      //     </form>
+      //     </td>
+      //     <td className="right-col">
+      //         <div className="panel">
+      //               <table>
+  
+      //                 <div className="table-body">
+      //                   <tr className="th-row">
+      //                     <th>Id</th>
+      //                     <th>Amount</th>
+      //                     <th>Payer</th>
+      //                     <th>Description</th>
+      //                     <th>Recorded By</th>
+      //                     <th></th>
+      //                   </tr>
+      //                   {finances.map((e, i) => {
+      //                     return (
+      //                       <tr className="td-row">
+      //                         <td>{e.id}</td>
+      //                         <td>{e.amount}</td>
+      //                         <td>{e.payer}</td>
+      //                         <td>{e.description}</td>
+      //                         <td>{e.recorded_by}</td>
+      //                         <td>
+      //                           <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
+      //                         </td>
+      //                         <td>
+      //                           <button className="delete-btn btn" onClick={() => handleDelete(e.id)}>Delete</button>
+      //                         </td>
+      //                       </tr>
+      //                     )
+      //                   })}
+      //                 </div>
+      //                 </table> 
+      //         </div>
+      //     </td>
+      //   </tr>
+      // </table>       
+      // </div>
+  
+      //   </div>
     );
   }
   

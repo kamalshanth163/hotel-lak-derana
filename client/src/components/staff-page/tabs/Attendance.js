@@ -1,15 +1,53 @@
-import React, { useState, useEffect } from 'react';
-  import '../../styles/StaffPage.css'
+  import React, { useState, useEffect } from 'react';
+  import '../../styles/Attendance.css';
   import API_Attendance from '../../../APIs/API_Attendance';
-  import DateTimeService from '../../../services/DateTimeService';
+  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+  import { faUserPlus,faUserCheck} from '@fortawesome/free-solid-svg-icons';
+
+  //Bootstrap and jQuery libraries
+  import 'bootstrap/dist/css/bootstrap.min.css';
+  import 'jquery/dist/jquery.min.js';
+  //Datatable Modules
+  import "datatables.net-dt/js/dataTables.dataTables"
+  import "datatables.net-dt/css/jquery.dataTables.min.css"
+  import "datatables.net-buttons/js/dataTables.buttons.js"
+  import "datatables.net-buttons/js/buttons.colVis.js"
+  import "datatables.net-buttons/js/buttons.flash.js"
+  import "datatables.net-buttons/js/buttons.html5.js"
+  import "datatables.net-buttons/js/buttons.print.js"
+  import "datatables.net-dt/css/jquery.dataTables.min.css"
+  import $ from 'jquery';
+
+
+    //initialize datatable
+    $(document).ready(function () {
+      setTimeout(function(){
+      $('#attendance').DataTable(
+          {
+              pagingType: 'full_numbers',
+                pageLength: 5,
+                processing: true,
+                dom: 'Bfrtip',
+                    buttons: ['copy', 'csv', 'print'
+                    ]
+          }
+      );
+      } ,
+      1000
+      );
+    });
+
+
+
+
   
   function Attendance() {
     var initialAttendance = {
-      id: 0,
+      id: "",
       entered: new Date().toDateString(),
       exited: new Date().toDateString(),
-      customer_id: 0,
-      room_id: 0
+      customer_id: "",
+      room_id: ""
     }
     const [attendance, setAttendance] = useState(initialAttendance);
     const [attendances, setAttendances] = useState([]);
@@ -17,7 +55,7 @@ import React, { useState, useEffect } from 'react';
   
     useEffect(() => {
       getAllAttendances();
-    }, [])
+    })
   
     const getAllAttendances = () => {
       new API_Attendance().getAllAttendances().then(data => {
@@ -36,7 +74,6 @@ import React, { useState, useEffect } from 'react';
       e.preventDefault();
       new API_Attendance().postAttendance(attendance).then(data => {
         setAttendance(initialAttendance);
-        getAllAttendances();
       });
     }
   
@@ -44,7 +81,6 @@ import React, { useState, useEffect } from 'react';
       e.preventDefault();
       new API_Attendance().updateAttendance(attendance).then(data => {
         setAttendance(initialAttendance);
-        getAllAttendances();
       });
       setAction("add");
     }
@@ -56,93 +92,160 @@ import React, { useState, useEffect } from 'react';
   
     const handleDelete = (attendanceId) => {
       if(window.confirm("Are you sure you want to DELETE this Attendance?")){
-        new API_Attendance().deleteAttendance(attendanceId).then(data => {
-          getAllAttendances();
-        });
+        new API_Attendance().deleteAttendance(attendanceId);
       }
     }
   
     return (
-      <div className="attendance-page row">
-        <div>
-          <hr></hr>
-          <h2>Manage Attendances</h2>
-        <table className="layout">
-        <tr>
-          <td className="left-col">
-          <form className="form">
-              <div class="container">
-              {action === 'add' ? 
-                  <h3>Add a Attendance</h3> : <h3>Edit Attendance</h3>
-                }
-              <hr></hr>
-              <label for="entered"><b>Entered</b></label>
-              <input type="date" placeholder="Entered" name="entered" id="entered" value={attendance.entered} required onChange={(e)=>handleChange(e)}/>
-              <br></br>
-              <br></br>
 
-              <label for="exited"><b>Exited</b></label>
-              <input type="date" placeholder="Exited" name="exited" id="exited" value={attendance.exited} required onChange={(e)=>handleChange(e)}/>
-              <br></br>
-              <br></br>
-              
-              <label for="hr_id"><b>HR Id</b></label>
-              <input type="number" placeholder="HR Id" name="hr_id" id="hr_id" value={attendance.hr_id} required onChange={(e)=>handleChange(e)}/>
-              
-              <label for="employee_id"><b>Employee Id</b></label>
+      <div className='attendance-tab'>
+
+          <div className='title-and-action'>
+               <h3>Attendance :</h3>
+
+        <form className="form">
+
+
+        <div className='div1'> 
+        <div className='input'> 
+              <label for="employee_id"></label>
+                <input type="number" placeholder="Employee Id" name="employee_id" id="employee_id" value={attendance.employee_id} required onChange={(e)=>handleChange(e)}/>
+              </div>
+
+
+              <div className='input'>
+                <label for="entered"> Check-in</label>
+               <input type="date"  name="entered" id="entered" value={attendance.entered} required onChange={(e)=>handleChange(e)}/>
+              </div>
+
+        </div>
+        <div className='div2'> 
+
+        <div className='input'>
+
+              <div className='input'>
+                <label for="exited">Check-out</label>
+               <input type="date"  name="exited" id="exited" value={attendance.exited} required onChange={(e)=>handleChange(e)}/>
+              </div>
+
+        </div>
+
+              <div className='input'>
+
+              <label for="hr_id"></label>
+             <input type="number" placeholder="HR Id" name="hr_id" id="hr_id" value={attendance.hr_id} required onChange={(e)=>handleChange(e)}/>
+              </div>
+
+
+        </div>
+
+
+
+        <div className='div3'> 
+
+        <div className='input'>
+              <label for="employee_id"></label>
               <input type="number" placeholder="Employee Id" name="employee_id" id="employee_id" value={attendance.employee_id} required onChange={(e)=>handleChange(e)}/>
-              <br></br>
-  
-              {action === 'add' ? 
-              <button type="submit" className="addBtn" onClick={(e) => handleAdd(e)}>Add</button> :
-              <button type="submit" className="editBtn" onClick={(e) => handleEdit(e)}>Save</button>
-              }
-              </div>        
+              </div>
+        
+        </div>
+
+        <div className='btns'>
+              <button type="submit" className="addBtn"   onClick={(e) => handleAdd(e)} ><FontAwesomeIcon className='icon' icon={faUserPlus} />Add</button>
+              <button type="submit" className="editBtn"  onClick={(e) => handleEdit(e)} ><FontAwesomeIcon className='icon' icon={faUserCheck} />Save</button>
+              </div>
+
+
+              
+
+              
+
+
           </form>
-          </td>
-          <td className="right-col">
-              <div className="panel">
-                    <table>
-  
-                      <div className="table-body">
-                        <tr className="th-row">
-                          <th>Id</th>
-                          <th>Entered</th>
-                          <th>Exited</th>
-                          <th>HR Id</th>
-                          <th>Employee Id</th>
-                          <th>Created At</th>
-                          <th>Updated At</th>
-                          <th></th>
-                        </tr>
-                        {attendances.map((e, i) => {
+
+      </div>
+
+
+
+
+    <div className="TableDiv">
+
+        <div>
+          <h4>Attendances Table View</h4>
+          <hr></hr>
+        </div>
+    
+        <div className="container p-5">
+            
+            <table id="attendance" class="table table-hover table-bordered ">
+            <thead>
+              <tr>
+              <th>Id</th>
+              <th>Check-in</th>
+              <th>Checl-out</th>
+              <th>HR Id</th>
+              <th>Employee Id</th>
+              <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            {attendances.map((e, i) => {
                           return (
-                            <tr className="td-row">
+                            <tr>
                               <td>{e.id}</td>
-                              <td>{new Date(e.entered).toDateString()}</td>
-                              <td>{new Date(e.exited).toDateString()}</td>
-                              <td>{e.hr_id}</td>
-                              <td>{e.employee_id}</td>
-                              <td>{new DateTimeService().getLocalDateTime(e.created_at).toLocaleString()}</td>
-                              <td>{new DateTimeService().getLocalDateTime(e.updated_at).toLocaleString()}</td>
+                               <td>{new Date(e.entered).toDateString()}</td>
+                               <td>{new Date(e.exited).toDateString()}</td>
+                               <td>{e.hr_id}</td>
+                               <td>{e.employee_id}</td>
                               <td>
-                                <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
-                              </td>
-                              <td>
-                                <button className="delete-btn btn" onClick={() => handleDelete(e.id)}>Delete</button>
+                                <button className="deleteBtn" onClick={() => handleDelete(e.id)}><FontAwesomeIcon className='icon' icon={faUserPlus} />Delete</button>
+                                <button className="editBtn" onClick={() => handleEditAction(e)}><FontAwesomeIcon className='icon' icon={faUserCheck} />Edit</button>
                               </td>
                             </tr>
+
                           )
                         })}
-                      </div>
-                      </table> 
-              </div>
-          </td>
-        </tr>
-      </table>       
+            
+              
+            </tbody>
+          </table>
+            
+          </div>
       </div>
+
+
+      {/* <div className='ChartDiv'>
+
+        <div>
+      <h4>Attendances <br /> Graphical View</h4>
+        <hr></hr>
+        </div>
+
+        <div className='chart'>
+        <ResBarChart />
+        </div>
+
+      </div> */}
   
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     );
   }
   

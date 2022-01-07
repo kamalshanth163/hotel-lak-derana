@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/StaffPage.css'
 import {
+  BrowserRouter as Router,
   Switch,
   Route,
   Link,
@@ -8,27 +9,24 @@ import {
 } from "react-router-dom";
 import Attendance from './tabs/Attendance';
 import Salary from './tabs/Salary';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoneyBillAlt, faUserEdit} from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
+
+
+
 
 const StaffPage = () => {
   let { path, url } = useRouteMatch();
 
   return (
 
-  <div className='staff-page'>
-    <div>
-      <div>
+    <div className='staff-page'>
 
-        <h1>Staff page</h1>
-        <table className='staff-menu'>
-          <tr>
-            <td>
-              <Link className="menu-link" to={`${url}/attendance`}>Attendances</Link>
-            </td>
-            <td>
-              <Link className="menu-link" to={`${url}/salary`}>Salaries</Link>
-            </td>
-          </tr>
-        </table>
+    <div className='sub-options'>
+      <NavLink className="menu-link" activeClassName="is-active" to={`${url}/attendance`}><FontAwesomeIcon className='icon' icon={faUserEdit} />Attendances</NavLink>
+      <NavLink className="menu-link" activeClassName="is-active" to={`${url}/salary`}><FontAwesomeIcon className='icon' icon={faMoneyBillAlt} />Salaries</NavLink>
+    </div>
 
         <Switch>
           <Route path={`${path}`} exact component = {Attendance} />
@@ -36,10 +34,8 @@ const StaffPage = () => {
           <Route path={`${path}/salary`} component = {Salary} />
         </Switch>
 
-      </div>
-    </div>
-    
-    </div>
+</div>
+
   );
 }
 

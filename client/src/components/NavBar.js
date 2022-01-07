@@ -1,57 +1,78 @@
 import React from 'react';
-import '../App.css';
+import '../components/styles/navbar.css';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faIdCard, faTasks, faUsers, faFileInvoiceDollar, faBoxes, faFileContract } from '@fortawesome/free-solid-svg-icons';
+import {Dropdown} from "react-bootstrap";
+
 
 const NavBar = () => {
 
   return (
-    <div>
         <div class="topnav">      
-            <div className="nav-topbar">
-              <table>
-                <tr>
-                  <td>
-                    <NavLink className="logo" to="/">
-                      <h1 className="main-text">LD</h1>
-                    </NavLink>
-                  </td>
-                  <td className="sign-section">
-                    <span className="user-sign">
-                      <span className="signin-btn">Login</span>
-                    </span>
-                  </td>
-                </tr>
-              </table>
+            <div className="nav-logo">
+                
+            <NavLink className="navlink" activeClassName="is-active" to="/" exact> <div className='logo'></div>
+                </NavLink>
             </div>           
             <div className="navlinks">
+
               <table>
                 <tr>
                   <td>
-                    <NavLink className="navlink" activeClassName="is-active" to="/" exact>Home</NavLink>
-                  </td>
-                  <td>
-                    <NavLink className="navlink" activeClassName="is-active" to="/admin-page">Admin</NavLink>
-                  </td>
-                  <td>
-                    <NavLink className="navlink" activeClassName="is-active" to="/customer-page">Customer</NavLink>
-                  </td>
-                  <td>
-                    <NavLink className="navlink" activeClassName="is-active" to="/staff-page">Staff</NavLink>
-                  </td>
-                  <td>
-                    <NavLink className="navlink" activeClassName="is-active" to="/finance-page">Finance</NavLink>
-                  </td>
-                  <td>
-                    <NavLink className="navlink" activeClassName="is-active" to="/inventory-page">Inventory</NavLink>
-                  </td>
-                  <td>
-                    <NavLink className="navlink" activeClassName="is-active" to="/report-page">Report</NavLink>
+                    <NavLink className="navlink link" activeClassName="is-active" to="/" exact>
+                    <FontAwesomeIcon className='navicon' icon={faHome} />
+                    Home</NavLink>
                   </td>
                 </tr>
+                <tr>
+                  <td>
+                    <NavLink className="navlink link" activeClassName="is-active" to="/customer-page" >
+                    <span className='navicon'> <FontAwesomeIcon icon={faUsers} /> </span>
+                    Customer</NavLink>
+                  </td>
+                </tr>                
+
+                <tr>
+                  <td>
+                      <NavLink className="navlink link" activeClassName="is-active" to="/staff-page">
+                      <span className='navicon'> <FontAwesomeIcon icon={faIdCard} /> </span>
+                      Employees</NavLink>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                      <NavLink className="navlink link" activeClassName="is-active" to="/finance-page">
+                      <span className='navicon'> <FontAwesomeIcon icon={faFileInvoiceDollar} /> </span>
+                      Finance</NavLink>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                      <NavLink className="navlink link" activeClassName="is-active" to="/inventory-page/inventory">   
+                      <span className='navicon'> <FontAwesomeIcon icon={faBoxes} /> </span>
+                      Inventory</NavLink>
+                  </td>
+                </tr> 
+                <tr>
+                  <td>
+                      <NavLink className="navlink link" activeClassName="is-active"  to="/admin-page">   
+                      <span className='navicon'> <FontAwesomeIcon icon={faTasks} /> </span>
+                      Manage</NavLink>
+                  </td>
+                </tr>   
+                <tr>
+                  <td>
+                      <NavLink className="navlink link" activeClassName="is-active"  to="/report-page">   
+                      <span className='navicon'> <FontAwesomeIcon icon={faFileContract} /> </span>
+                      Reports</NavLink>
+                  </td>
+                </tr>                
+
               </table>
             </div>
+
           </div>
-    </div>
   );
 }
 

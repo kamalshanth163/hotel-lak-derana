@@ -1,0 +1,98 @@
+.flex-wrap {
+  display: flex;
+  flex-direction: row;
+  height: 80px;
+  background-color: white;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 160px;
+  border-bottom: 3px solid rgb(78, 137, 255);
+}
+
+.main-text {
+  color: black;
+  margin-top: 10px;
+  text-align: center;
+  transition: all 1s;
+  cursor: pointer;
+  margin-left: 40px;
+}
+
+.main-text:hover {
+  color: rgb(78, 137, 255);
+}
+
+.flex-items {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.dropdown .btn {
+  color: rgb(0, 0, 0);
+  background-color: white;
+  box-shadow: none;
+  transition: all 0.5s;
+}
+
+.dropdown:hover {
+  background-color: rgb(66, 129, 255);
+  border-radius: 5px;
+}
+
+#dropdown-basic {
+  box-shadow: none;
+}
+
+.date {
+  height: 38px;
+  width: 110px;
+  border-bottom: 3px solid rgb(78, 137, 255);
+  color: rgb(0, 0, 0);
+  transition: all 0.5s;
+  background-color: white;
+  margin: 0 20px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.time {
+  height: 38px;
+  width: 130px;
+  border-bottom: 3px solid rgb(78, 137, 255);
+  color: rgb(0, 0, 0);
+  transition: all 0.5s;
+  background-color: white;
+  margin: 0 20px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.flex-wrap .icon {
+  color: rgb(78, 137, 255);
+}
+
+.branch-label {
+  height: 38px;
+  width: 140px;
+  background: rgb(0, 76, 224);
+  background: linear-gradient(
+    112deg,
+    rgba(0, 76, 224, 1) 0%,
+    rgba(127, 170, 255, 1) 100%
+  );
+  color: white;
+  font-size: 18px;
+  cursor: default;
+  font-weight: 400;
+  font-family: sans-serif;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 5px;
+  box-shadow: 6px 7px 14px -5px rgba(0, 0, 0, 0.171);
+}

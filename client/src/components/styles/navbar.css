@@ -1,0 +1,136 @@
+.topnav {
+  background-color: #1f1e2c;
+  height: auto;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+}
+.navlinks {
+  width: 140px;
+  /* height: 85vh; */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow-y: auto;
+  position: relative;
+}
+
+.navlinks.desktop {
+  overflow-y: hidden;
+}
+
+/*------scroll bar---------------------*/
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 7px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #525965;
+  border: 0px none #ffffff;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #525965;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #525965;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: transparent;
+}
+::-webkit-scrollbar-track:active {
+  background: transparent;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.navlink {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  height: 100px;
+  width: auto;
+  margin: 20px 20px 0 20px;
+  background-color: transparent;
+  transition: all 0.5s;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.navlink:hover {
+  background-color: #1a1b29;
+}
+
+.navlink:hover .navicon {
+  color: #009ff6;
+}
+
+.navicon {
+  height: 50px;
+  font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+  font-stretch: expanded;
+  width: 40px;
+  font-size: 35px;
+  color: #3a3b5c;
+  transition: all 0.5s;
+}
+
+.link {
+  color: #9c9cb0;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 400;
+  transition: all 0.5s;
+}
+
+.link:hover {
+  color: white;
+}
+
+.topnav .logo {
+  text-align: center;
+  text-decoration: none;
+  list-style: none;
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  width: auto;
+  height: 120px;
+  justify-content: center;
+  background-color: #1a1b29;
+}
+
+.navlinks .is-active {
+  background-color: #1a1b29;
+  color: white;
+}
+
+.navlinks .is-active .navicon {
+  background-color: #1a1b29;
+  color: rgb(0, 139, 219);
+}
+
+.logo {
+  background-image: url("../../assets/images/svg/60x60.svg");
+  width: 50px;
+  height: 60px;
+  background-repeat: no-repeat;
+}

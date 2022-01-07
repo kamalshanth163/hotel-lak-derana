@@ -1,0 +1,32 @@
+.room-page .title-and-action h3 {
+  font-size: 30px;
+  margin: 0 50px 0 30px !important;
+}
+
+.room-page form select {
+  margin: 0 0 0 15px;
+}
+
+.room-page .title-and-action form label {
+  color: #343a40;
+}
+
+.room-page .title-and-action .selct {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px 0 0;
+}
+
+.room-page .TableDiv .editBtn {
+  color: white;
+  height: 30px;
+  margin: 0 15px 0 0 !important;
+  border: none;
+  width: 70px;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffd75e;
+  font-size: 15px;
+}

@@ -1,61 +1,51 @@
-.inventory-tab .title-and-action h3 {
+.payment-tab .title-and-action h3 {
   font-size: 25px;
   margin: 0 20px 0 30px !important;
-  width: 135px;
+  width: 170px;
 }
 
-.inventory-tab .title-and-action {
+.payment-tab .title-and-action {
   height: 300px;
 }
 
-.inventory-tab .title-and-action form {
-  display: flex;
-  align-items: center;
-}
-
-.inventory-tab .title-and-action form .div1 {
+.payment-tab .title-and-action form .div1 {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 210px;
+  height: 250px;
   width: 250px;
   gap: 50px !important;
 }
 
-.inventory-tab .title-and-action form .div2 {
+.payment-tab .title-and-action form .div2 {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 210px;
-  width: 330px;
-  gap: 50px !important;
-}
-
-.inventory-tab .title-and-action form .div2 label {
-  font-weight: 300 !important;
-}
-
-.inventory-tab .title-and-action form .div2 select {
-  margin: 0 0 0 10px;
-  width: 180px;
-}
-
-.inventory-tab .title-and-action form .div3 {
-  display: flex;
-  flex-direction: column;
-  height: 210px;
+  height: 250px;
   width: 250px;
-  gap: 50px !important;
+  gap: 65px !important;
 }
 
-.inventory-tab .title-and-action form .btns {
+.payment-tab .title-and-action form .div3 {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  width: 250px;
+  gap: 60px !important;
+  margin-top: 20px;
+}
+
+.payment-tab .title-and-action form .div3 select {
+  width: 100px;
+  margin: 0 0 0 30px;
+}
+
+.payment-tab .title-and-action form .btns {
   display: flex;
   gap: 30px;
   justify-content: center;
   align-items: center;
 }
 
-.inventory-tab .title-and-action form input[type="number"],
+.payment-tab .title-and-action form input[type="number"],
 input[type="number"],
 input[type="data"],
 textarea {
@@ -67,13 +57,13 @@ textarea {
   text-transform: capitalize;
 }
 
-.inventory-tab .title-and-action form .btns {
+.payment-tab .title-and-action form .btns {
   display: flex;
   gap: 20px;
   margin: 0;
 }
 
-.inventory-tab .TableDiv {
+.payment-tab .TableDiv {
   width: auto;
   margin: 0 20px 30px 20px;
   border-radius: 10px;
@@ -81,11 +71,11 @@ textarea {
   background-color: white;
 }
 
-.inventory-tab .TableDiv .deleteBtn {
+.payment-tab .TableDiv .deleteBtn {
   color: white;
   height: 30px;
   border: none;
-  width: 90px;
+  width: 80px;
   border-radius: 3px;
   align-items: center;
   justify-content: center;
@@ -93,7 +83,7 @@ textarea {
   font-size: 15px;
 }
 
-.inventory-tab .TableDiv .editBtn {
+.payment-tab .TableDiv .editBtn {
   color: white;
   height: 30px;
   margin: 0;
@@ -106,14 +96,14 @@ textarea {
   font-size: 15px;
 }
 
-.inventory-tab .TableDiv table td:nth-child(10) {
+.payment-tab .TableDiv table td:nth-child(11) {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   gap: 15px;
 }
 
-.inventory-tab .TableDiv hr {
+.payment-tab .TableDiv hr {
   width: 220px;
   height: 2px !important;
   padding: 0;
