@@ -13,7 +13,7 @@
   flex-direction: column;
   height: 250px;
   width: 250px;
-  gap: 50px !important;
+  gap: 65px !important;
   justify-content: center;
 }
 
@@ -94,7 +94,7 @@ textarea {
   border-radius: 3px;
   align-items: center;
   justify-content: center;
-  background-color: #ffd75e;
+  background-color: #ffce3c;
   font-size: 15px;
 }
 

@@ -63,12 +63,12 @@
 
 .title-and-action h3 {
   font-size: 30px;
-  margin: 0 140px 0 30px;
+  margin: 0 20px 0 30px !important;
 }
 
 .title-and-action form {
   display: flex;
-  gap: 20px;
+  gap: 10px !important;
 }
 
 .title-and-action form input[type="text"],

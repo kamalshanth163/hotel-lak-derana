@@ -91,7 +91,7 @@ import $ from 'jquery';
      return (
 
 
-      <div>
+      <div className='hotel-tab'>
 
       <div className='title-and-action'>
         <h3>Hotel :</h3>

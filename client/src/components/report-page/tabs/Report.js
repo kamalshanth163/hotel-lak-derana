@@ -88,20 +88,16 @@ import DateTimeService from '../../../services/DateTimeService';
     }
 
     return (
-      <div className="report-page row">
-        <div>
-          <hr></hr>
-          <h2>Generate Reports</h2>
-          <div class="grid-container">
+      <div className='page-report-div'>
+          <div className='flex-wrap-div'>
             {reports.map((r, i) => {
               return (
-                <div class="grid-item">
+                <div>
                   <ReportCard report={r} action={generateReport}/>
                 </div> 
               ) 
             })}
           </div>
-        </div>
       </div>
     );
   }

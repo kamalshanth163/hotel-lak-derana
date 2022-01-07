@@ -9,16 +9,18 @@ import StaffPage from './components/staff-page/StaffPage';
 import FinancePage from './components/finance-page/FinancePage';
 import InventoryPage from './components/inventory-page/InventoryPage';
 import ReportPage from './components/report-page/ReportPage';
-
 import NavBar from './components/NavBar';
 import { AppContextProvider } from './AppContext';
 import Signin from './components/sign_in';
+
+//Bootstrap and jQuery libraries
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'jquery/dist/jquery.min.js';
 
 
 function App() {
   return (
 
-    // <Dtable />
 
 
     <div className='col-div'>

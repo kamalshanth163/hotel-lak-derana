@@ -1,41 +1,8 @@
   import React, { useState, useEffect } from 'react';
   import '../../styles/PaymentPage.css'
   import API_Payment from '../../../APIs/API_Payment';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserPlus,faUserCheck} from '@fortawesome/free-solid-svg-icons';
-// import {CusBarChart} from '../../charts/customerbar';
-//Bootstrap and jQuery libraries
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'jquery/dist/jquery.min.js';
-//Datatable Modules
-import "datatables.net-dt/js/dataTables.dataTables"
-import "datatables.net-dt/css/jquery.dataTables.min.css"
-import "datatables.net-buttons/js/dataTables.buttons.js"
-import "datatables.net-buttons/js/buttons.colVis.js"
-import "datatables.net-buttons/js/buttons.flash.js"
-import "datatables.net-buttons/js/buttons.html5.js"
-import "datatables.net-buttons/js/buttons.print.js"
-import "datatables.net-dt/css/jquery.dataTables.min.css"
-import $ from 'jquery'; 
-
-    //initialize datatable
-    $(document).ready(function () {
-      setTimeout(function(){
-      $('#payment').DataTable(
-          {
-              pagingType: 'full_numbers',
-                pageLength: 5,
-                processing: true,
-                dom: 'Bfrtip',
-                    buttons: ['copy', 'csv', 'print'
-                    ]
-          }
-      );
-      } ,
-      1000
-      );
-  });
+  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+  import { faUserPlus,faUserCheck} from '@fortawesome/free-solid-svg-icons';
 
   
   function Payment() {
@@ -109,14 +76,12 @@ import $ from 'jquery';
 
           <div className='div1'>
 
-            
-
-          <div className='input'>
+          <div className='input dte'>
                 <label for="date_checked_in">Date Checked In</label>
                 <input type="date" placeholder="Date Checked In" name="date_checked_in" id="date_checked_in" value={payment.date_checked_in} required onChange={(e)=>handleChange(e)}/>
               </div>
 
-              <div className='input'>
+              <div className='input dte'>
                  <label for="date_checked_out">Date Checked Out</label>
                <input type="date" placeholder="Date Checked Out" name="date_checked_out" id="date_checked_out" value={payment.date_checked_out} required onChange={(e)=>handleChange(e)}/>
               </div>
@@ -178,9 +143,6 @@ import $ from 'jquery';
           </form>
 
       </div>
-
-
-
 
     <div className="TableDiv">
 

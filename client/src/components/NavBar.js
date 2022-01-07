@@ -42,7 +42,7 @@ const NavBar = () => {
                 </tr>
                 <tr>
                   <td>
-                      <NavLink className="navlink link" activeClassName="is-active" to="/finance-page">
+                      <NavLink className="navlink link" activeClassName="is-active" to="/finance-page/finance">
                       <span className='navicon'> <FontAwesomeIcon icon={faFileInvoiceDollar} /> </span>
                       Finance</NavLink>
                   </td>
@@ -63,7 +63,7 @@ const NavBar = () => {
                 </tr>   
                 <tr>
                   <td>
-                      <NavLink className="navlink link" activeClassName="is-active"  to="/report-page">   
+                      <NavLink className="navlink link" activeClassName="is-active"  to="/report-page/report">   
                       <span className='navicon'> <FontAwesomeIcon icon={faFileContract} /> </span>
                       Reports</NavLink>
                   </td>

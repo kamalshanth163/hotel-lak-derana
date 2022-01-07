@@ -3,40 +3,6 @@ import React, { useState, useEffect } from 'react';
   import API_Finance from '../../../APIs/API_Finance';
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
   import { faUserPlus,faUserCheck} from '@fortawesome/free-solid-svg-icons';
-
-  //Bootstrap and jQuery libraries
-  import 'bootstrap/dist/css/bootstrap.min.css';
-  import 'jquery/dist/jquery.min.js';
-  //Datatable Modules
-  import "datatables.net-dt/js/dataTables.dataTables"
-  import "datatables.net-dt/css/jquery.dataTables.min.css"
-  import "datatables.net-buttons/js/dataTables.buttons.js"
-  import "datatables.net-buttons/js/buttons.colVis.js"
-  import "datatables.net-buttons/js/buttons.flash.js"
-  import "datatables.net-buttons/js/buttons.html5.js"
-  import "datatables.net-buttons/js/buttons.print.js"
-  import "datatables.net-dt/css/jquery.dataTables.min.css"
-  import $ from 'jquery';
-
-
-  //initialize datatable
-  $(document).ready(function () {
-    setTimeout(function(){
-    $('#finance').DataTable(
-        {
-            pagingType: 'full_numbers',
-              pageLength: 5,
-              processing: true,
-              dom: 'Bfrtip',
-                  buttons: ['copy', 'csv', 'print'
-                  ]
-        }
-    );
-    } ,
-    1000
-    );
-  });
-
   
   function Finance() {
     var initialFinance = {
@@ -95,14 +61,12 @@ import React, { useState, useEffect } from 'react';
   
     return (
 
-
       <div className='finance-tab'>
 
           <div className='title-and-action'>
                <h3>Finance :</h3>
 
         <form className="form">
-
 
               <div className='input'> 
               <label for="amount"></label>
@@ -124,20 +88,13 @@ import React, { useState, useEffect } from 'react';
                <input type="number" placeholder="Recorded By" name="recorded_by" id="recorded_by" value={finance.recorded_by} required onChange={(e)=>handleChange(e)}/>
               </div>
 
-
               <div className='btns'>
               <button type="submit" className="addBtn"   onClick={(e) => handleAdd(e)} ><FontAwesomeIcon className='icon' icon={faUserPlus} />Add</button>
               <button type="submit" className="editBtn"  onClick={(e) => handleEdit(e)} ><FontAwesomeIcon className='icon' icon={faUserCheck} />Save</button>
               </div>
 
-
-            
           </form>
-
       </div>
-
-
-
 
     <div className="TableDiv">
 
@@ -179,118 +136,14 @@ import React, { useState, useEffect } from 'react';
                           )
                         })}
             
-              
             </tbody>
           </table>
             
           </div>
       </div>
 
-
-      {/* <div className='ChartDiv'>
-
-        <div>
-      <h4>Attendances <br /> Graphical View</h4>
-        <hr></hr>
         </div>
 
-        <div className='chart'>
-        <ResBarChart />
-        </div>
-
-      </div> */}
-  
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      // <div className="finance-page row">
-      //   <div>
-      //     <hr></hr>
-      //     <h2>Manage Finances</h2>
-      //   <table className="layout">
-      //   <tr>
-      //     <td className="left-col">
-      //     <form className="form">
-      //         <div class="container">
-      //         {action === 'add' ? 
-      //             <h3>Add a Finance</h3> : <h3>Edit Finance</h3>
-      //           }
-      //         <hr></hr>
-      //         <label for="amount"><b>Amount (LKR)</b></label>
-      //         <input type="number" placeholder="Amount (LKR)" name="amount" id="amount" value={finance.amount} required onChange={(e)=>handleChange(e)}/>
-
-      //         <label for="payer"><b>Payer</b></label>
-      //         <input type="text" placeholder="Payer" name="payer" id="payer" value={finance.payer} required onChange={(e)=>handleChange(e)}/>
-              
-      //         <label for="description"><b>Description</b></label>
-      //         <input type="text" placeholder="Description" name="description" id="description" value={finance.description} required onChange={(e)=>handleChange(e)}/>
-              
-      //         <label for="recorded_by"><b>Recorded By</b></label>
-      //         <input type="number" placeholder="Recorded By" name="recorded_by" id="recorded_by" value={finance.recorded_by} required onChange={(e)=>handleChange(e)}/>
-      //         <br></br>
-  
-      //         {action === 'add' ? 
-      //         <button type="submit" className="addBtn" onClick={(e) => handleAdd(e)}>Add</button> :
-      //         <button type="submit" className="editBtn" onClick={(e) => handleEdit(e)}>Save</button>
-      //         }
-      //         </div>        
-      //     </form>
-      //     </td>
-      //     <td className="right-col">
-      //         <div className="panel">
-      //               <table>
-  
-      //                 <div className="table-body">
-      //                   <tr className="th-row">
-      //                     <th>Id</th>
-      //                     <th>Amount</th>
-      //                     <th>Payer</th>
-      //                     <th>Description</th>
-      //                     <th>Recorded By</th>
-      //                     <th></th>
-      //                   </tr>
-      //                   {finances.map((e, i) => {
-      //                     return (
-      //                       <tr className="td-row">
-      //                         <td>{e.id}</td>
-      //                         <td>{e.amount}</td>
-      //                         <td>{e.payer}</td>
-      //                         <td>{e.description}</td>
-      //                         <td>{e.recorded_by}</td>
-      //                         <td>
-      //                           <button className="edit-btn btn" onClick={() => handleEditAction(e)}>Edit</button>
-      //                         </td>
-      //                         <td>
-      //                           <button className="delete-btn btn" onClick={() => handleDelete(e.id)}>Delete</button>
-      //                         </td>
-      //                       </tr>
-      //                     )
-      //                   })}
-      //                 </div>
-      //                 </table> 
-      //         </div>
-      //     </td>
-      //   </tr>
-      // </table>       
-      // </div>
-  
-      //   </div>
     );
   }
   

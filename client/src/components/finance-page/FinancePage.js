@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../styles/FinancePage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
-
 import { faHandHoldingUsd} from '@fortawesome/free-solid-svg-icons';
 import {
   BrowserRouter as Router,

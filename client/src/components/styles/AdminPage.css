@@ -1,6 +1,6 @@
 .admin-page {
   width: auto;
-  height: auto;
+  height: 120vh;
   background-color: #f1f5f9;
   display: flex;
   flex-direction: column;
@@ -212,34 +212,4 @@ textarea {
 .TableDiv .icon {
   font-size: 15px;
   margin: 0 5px 0 0;
-}
-
-.ChartDiv {
-  width: auto;
-  margin: 30px 20px 30px 20px;
-  border-radius: 10px;
-  height: 460px;
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  gap: 100px;
-  align-items: center;
-  justify-content: center;
-}
-
-.ChartDiv h4 {
-  text-align: center;
-}
-
-.ChartDiv .chart {
-  height: 400px;
-  width: 800px;
-}
-
-.ChartDiv hr {
-  width: 200px;
-  height: 2px !important;
-  padding: 0;
-  margin: 0 0 0 30px;
-  background-color: rgb(61, 124, 250);
 }

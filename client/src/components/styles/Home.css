@@ -1,7 +1,8 @@
 .home-page {
   background-color: #f1f5f9;
   display: flex;
-  height: 90vh;
+  padding: 0 0 0 20px;
+  height: 120vh;
   width: auto;
   color: rgb(27, 27, 27);
 }

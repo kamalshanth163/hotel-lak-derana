@@ -1,3 +1,7 @@
+.finance-tab {
+  height: 115vh;
+}
+
 .finance-tab .title-and-action h3 {
   font-size: 25px;
   width: 130px;

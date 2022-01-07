@@ -34,11 +34,7 @@ const CustomerPage = () => {
           <Route path={`${path}/reservation`} component = {Reservation} />
           <Route path={`${path}/payment`} component = {Payment} />
         </Switch>
-
-
-
-
-    
+        
     </div>
   );
 }

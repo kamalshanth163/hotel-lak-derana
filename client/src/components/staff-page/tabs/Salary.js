@@ -3,41 +3,6 @@ import React, { useState, useEffect } from 'react';
   import API_Salary from '../../../APIs/API_Salary';
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
   import { faUserPlus,faUserCheck} from '@fortawesome/free-solid-svg-icons';
-
-  //Bootstrap and jQuery libraries
-  import 'bootstrap/dist/css/bootstrap.min.css';
-  import 'jquery/dist/jquery.min.js';
-  //Datatable Modules
-  import "datatables.net-dt/js/dataTables.dataTables"
-  import "datatables.net-dt/css/jquery.dataTables.min.css"
-  import "datatables.net-buttons/js/dataTables.buttons.js"
-  import "datatables.net-buttons/js/buttons.colVis.js"
-  import "datatables.net-buttons/js/buttons.flash.js"
-  import "datatables.net-buttons/js/buttons.html5.js"
-  import "datatables.net-buttons/js/buttons.print.js"
-  import "datatables.net-dt/css/jquery.dataTables.min.css"
-  import $ from 'jquery';
-
-  
-    //initialize datatable
-    $(document).ready(function () {
-      setTimeout(function(){
-      $('#salary').DataTable(
-          {
-              pagingType: 'full_numbers',
-                pageLength: 5,
-                processing: true,
-                dom: 'Bfrtip',
-                    buttons: ['copy', 'csv', 'print'
-                    ]
-          }
-      );
-      } ,
-      1000
-      );
-    });
-
-
   
   function Salary() {
     var initialSalary = {
@@ -107,16 +72,6 @@ import React, { useState, useEffect } from 'react';
 
     <form className="form">
 
-
-
-              
-
-               
-
-
-
-
-
     <div className='div1'> 
 
         <div className='input'> 
@@ -155,8 +110,6 @@ import React, { useState, useEffect } from 'react';
 
     </div>
 
-
-
     <div className='div3'> 
 
         <div className='input'>
@@ -178,9 +131,6 @@ import React, { useState, useEffect } from 'react';
       </form>
 
   </div>
-
-
-
 
 <div className="TableDiv">
 
@@ -231,37 +181,13 @@ import React, { useState, useEffect } from 'react';
                       )
                     })}
         
-          
         </tbody>
       </table>
         
       </div>
   </div>
 
-
-  {/* <div className='ChartDiv'>
-
-    <div>
-  <h4>Attendances <br /> Graphical View</h4>
-    <hr></hr>
     </div>
-
-    <div className='chart'>
-    <ResBarChart />
-    </div>
-
-  </div> */}
-
-    </div>
-
-
-
-
-
-
-
-
-
 
     );
   }

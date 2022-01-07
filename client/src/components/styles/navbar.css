@@ -7,7 +7,7 @@
 }
 .navlinks {
   width: 140px;
-  /* height: 85vh; */
+  height: 112vh;
   display: flex;
   flex-direction: column;
   text-align: center;

@@ -3,43 +3,6 @@
   import API_Attendance from '../../../APIs/API_Attendance';
   import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
   import { faUserPlus,faUserCheck} from '@fortawesome/free-solid-svg-icons';
-
-  //Bootstrap and jQuery libraries
-  import 'bootstrap/dist/css/bootstrap.min.css';
-  import 'jquery/dist/jquery.min.js';
-  //Datatable Modules
-  import "datatables.net-dt/js/dataTables.dataTables"
-  import "datatables.net-dt/css/jquery.dataTables.min.css"
-  import "datatables.net-buttons/js/dataTables.buttons.js"
-  import "datatables.net-buttons/js/buttons.colVis.js"
-  import "datatables.net-buttons/js/buttons.flash.js"
-  import "datatables.net-buttons/js/buttons.html5.js"
-  import "datatables.net-buttons/js/buttons.print.js"
-  import "datatables.net-dt/css/jquery.dataTables.min.css"
-  import $ from 'jquery';
-
-
-    //initialize datatable
-    $(document).ready(function () {
-      setTimeout(function(){
-      $('#attendance').DataTable(
-          {
-              pagingType: 'full_numbers',
-                pageLength: 5,
-                processing: true,
-                dom: 'Bfrtip',
-                    buttons: ['copy', 'csv', 'print'
-                    ]
-          }
-      );
-      } ,
-      1000
-      );
-    });
-
-
-
-
   
   function Attendance() {
     var initialAttendance = {
@@ -100,72 +63,39 @@
 
       <div className='attendance-tab'>
 
-          <div className='title-and-action'>
+        <div className='title-and-action'>
                <h3>Attendance :</h3>
 
         <form className="form">
 
+          <div className='input'> 
+            <label for="employee_id"></label>
+            <input type="number" placeholder="Employee Id" name="employee_id" id="employee_id" value={attendance.employee_id} required onChange={(e)=>handleChange(e)}/>
+          </div>
 
-        <div className='div1'> 
-        <div className='input'> 
-              <label for="employee_id"></label>
-                <input type="number" placeholder="Employee Id" name="employee_id" id="employee_id" value={attendance.employee_id} required onChange={(e)=>handleChange(e)}/>
-              </div>
+          <div className='input dte'>
+            <label for="entered"> Entered</label>
+            <input type="date"  name="entered" id="entered" value={attendance.entered} required onChange={(e)=>handleChange(e)}/>
+          </div>
 
+          <div className='input dte'>
+            <label for="exited">Exited</label>
+            <input type="date"  name="exited" id="exited" value={attendance.exited} required onChange={(e)=>handleChange(e)}/>
+          </div>
 
-              <div className='input'>
-                <label for="entered"> Check-in</label>
-               <input type="date"  name="entered" id="entered" value={attendance.entered} required onChange={(e)=>handleChange(e)}/>
-              </div>
+          <div className='input'>
+            <label for="hr_id"></label>
+            <input type="number" placeholder="HR Id" name="hr_id" id="hr_id" value={attendance.hr_id} required onChange={(e)=>handleChange(e)}/>
+          </div>
 
-        </div>
-        <div className='div2'> 
-
-        <div className='input'>
-
-              <div className='input'>
-                <label for="exited">Check-out</label>
-               <input type="date"  name="exited" id="exited" value={attendance.exited} required onChange={(e)=>handleChange(e)}/>
-              </div>
-
-        </div>
-
-              <div className='input'>
-
-              <label for="hr_id"></label>
-             <input type="number" placeholder="HR Id" name="hr_id" id="hr_id" value={attendance.hr_id} required onChange={(e)=>handleChange(e)}/>
-              </div>
-
-
-        </div>
-
-
-
-        <div className='div3'> 
-
-        <div className='input'>
-              <label for="employee_id"></label>
-              <input type="number" placeholder="Employee Id" name="employee_id" id="employee_id" value={attendance.employee_id} required onChange={(e)=>handleChange(e)}/>
-              </div>
-        
-        </div>
-
-        <div className='btns'>
-              <button type="submit" className="addBtn"   onClick={(e) => handleAdd(e)} ><FontAwesomeIcon className='icon' icon={faUserPlus} />Add</button>
-              <button type="submit" className="editBtn"  onClick={(e) => handleEdit(e)} ><FontAwesomeIcon className='icon' icon={faUserCheck} />Save</button>
-              </div>
-
-
-              
-
-              
-
+          <div className='btns'>
+                <button type="submit" className="addBtn"   onClick={(e) => handleAdd(e)} ><FontAwesomeIcon className='icon' icon={faUserPlus} />Add</button>
+                <button type="submit" className="editBtn"  onClick={(e) => handleEdit(e)} ><FontAwesomeIcon className='icon' icon={faUserCheck} />Save</button>
+          </div>
 
           </form>
 
       </div>
-
-
 
 
     <div className="TableDiv">
@@ -207,45 +137,13 @@
                           )
                         })}
             
-              
             </tbody>
           </table>
             
           </div>
       </div>
-
-
-      {/* <div className='ChartDiv'>
-
-        <div>
-      <h4>Attendances <br /> Graphical View</h4>
-        <hr></hr>
-        </div>
-
-        <div className='chart'>
-        <ResBarChart />
-        </div>
-
-      </div> */}
   
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     );
   }
   
