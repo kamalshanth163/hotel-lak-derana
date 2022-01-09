@@ -53,6 +53,21 @@ class API_Employee {
             });
         return result;
     }
+
+    async loginUser(user){
+        var result =
+            fetch(`${baseUrl}employees/login`,
+            {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(user)           
+            })
+            .then((response) => response.json())
+            .then((a) => {
+                return a;
+            });
+        return result;
+    }
 }
 
 export default API_Employee;

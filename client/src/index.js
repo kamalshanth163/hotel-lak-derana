@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Signin from './components/sign_in'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
