@@ -1,44 +1,410 @@
-.home-page{
-    background-image: url('../../assets/hotel.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 80vh;
-    width: 100%;
-    padding-top: 40px;
-    color: #fff;
+.home-page {
+  background-color: #f1f5f9;
+  display: flex;
+  padding: 0 0 0 20px;
+  height: 120vh;
+  width: auto;
+  color: rgb(27, 27, 27);
 }
 
-.home-page .text-1{
-    font-size: 40px;
-    margin: 0px 0px 0px;
+.home-page .text-1 {
+  font-size: 40px;
+  margin: 0px 0px 0px;
 }
 
-.home-page .text-2{
-    font-size: 80px;
-    margin: 10px 0px 0px;
-    /* text-shadow: 6px 8px #2a6079; */
+.home-page .text-2 {
+  font-size: 50px;
+  margin: 10px 0px 0px;
 }
 
-.home-page .text-3{
-    font-size: 20px;
-    padding: 0px 300px;
-    text-shadow: 1px 1px #9b9b9b;
+.home-page .text-3 {
+  font-size: 20px;
+  padding: 0px 300px;
+  text-shadow: 1px 1px #181818;
 }
 
-.home-page .banner{
-    text-align: center;
-    margin-top: 0px;
+.home-page .content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.home-page .btn{
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    background: rgb(71, 71, 71);
-    color: white;
-    cursor: pointer;
-    font-size: 20px;
-    text-align: center;
-    margin: 4px auto;
+.widgets1 {
+  display: flex;
+  justify-content: center;
+}
+
+.dash-cards {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0 25px 0;
+}
+
+.dash-card-col {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 25px 0;
+}
+
+.dash-card-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-cus {
+  width: 280px;
+  height: 450px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 7px 11px 20px -2px rgba(0, 0, 0, 0.226);
+  margin: 10px 25px 0 10px;
+  background-color: white;
+  transition: all 1s ease-in;
+  cursor: default;
+}
+
+.card-cus .titl {
+  font-size: 15px;
+  font-weight: 500;
+  color: #a1a5b5;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease-in;
+}
+
+.card-cus:hover .titl {
+  color: rgb(255, 255, 255);
+}
+
+.card-cus .titl h1 {
+  color: #1f1f1f;
+  font-weight: 700;
+  transition: background-color 0.2s ease-in;
+}
+
+.card-cus:hover {
+  background: rgb(0, 76, 224);
+  background: linear-gradient(
+    112deg,
+    rgba(0, 76, 224, 1) 0%,
+    rgba(127, 170, 255, 1) 100%
+  );
+  color: rgb(255, 255, 255);
+  background-image: url("../../assets/images/svg/cus-card.svg");
+}
+
+.card-cus:hover h1 {
+  color: rgb(255, 255, 255);
+}
+
+.card-cus .icon {
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
+  margin: 20px 0 20px 0;
+  line-height: 60px;
+  color: #437ef3;
+  font-size: 35px;
+  box-shadow: rgb(210, 214, 224) -8px 12px 18px 0px;
+  background-color: #dff0fe;
+}
+
+.card-cus .hori-rule {
+  height: 2px;
+  width: 80%;
+  background-color: rgb(61, 61, 61);
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.card-cus:hover .hori-rule {
+  background-color: white;
+}
+
+.cards {
+  width: 280px;
+  height: 130px;
+  border-radius: 10px;
+  display: flex;
+  position: relative;
+  box-shadow: 7px 11px 20px -2px rgba(0, 0, 0, 0.226);
+  cursor: default;
+  margin: 30px 25px 0 25px;
+  padding: 30px 0 0 30px;
+  background-color: white;
+  transition: background 1s 0s ease-in;
+}
+
+.cards .titl {
+  font-size: 15px;
+  font-weight: 500;
+  color: #a1a5b5;
+  text-transform: uppercase;
+}
+
+.cards:hover .titl {
+  color: rgb(255, 255, 255);
+}
+
+.cards .titl h2 {
+  color: #1f1f1f;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.cards:hover {
+  background: rgb(0, 76, 224);
+  background: linear-gradient(
+    112deg,
+    rgba(0, 76, 224, 1) 0%,
+    rgba(127, 170, 255, 1) 100%
+  );
+  color: rgb(255, 255, 255);
+  box-shadow: rgb(174, 175, 177) -8px 12px 18px 0px;
+}
+
+.cards:hover h2 {
+  color: rgb(255, 255, 255);
+}
+
+.cards .icon {
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
+  margin: 0 0 0 165px;
+  position: absolute;
+  line-height: 60px;
+  color: #437ef3;
+  font-size: 35px;
+  box-shadow: rgb(210, 214, 224) -8px 12px 18px 0px;
+  background-color: #dff0fe;
+}
+
+.pie {
+  height: 450px;
+  width: 340px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 7px 11px 20px -2px rgba(0, 0, 0, 0.226);
+  margin: 30px 10px 20px 30px;
+  padding: 20px 0 0 0;
+  color: #181818;
+  cursor: default;
+}
+
+.pie h3 {
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.quick-check-in-card {
+  width: 610px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 7px 11px 20px -2px rgba(0, 0, 0, 0.226);
+  margin: 30px 25px 0 25px;
+  background-image: url("../../assets/images/city.png");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 430px;
+  background-position-y: bottom;
+  background-color: white;
+  padding: 0 0 0 20px;
+  cursor: default;
+}
+
+.quick-check-in-card:hover {
+  background-color: rgb(105, 154, 252);
+}
+
+.quick-check-in-card:hover h2 {
+  color: white;
+}
+
+.quick-check-in-card h2 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  color: #1f1f1f;
+}
+
+.quick-check-in-card button {
+  background-color: rgb(29, 104, 255);
+  border-radius: 5px;
+  height: 35px;
+  width: 100px;
+  border: none;
+  font-size: 15px;
+  color: white;
+  font-weight: 500;
+  margin: 10px 0 0 45px;
+  line-height: 21px;
+  transition: 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: white;
+  color: rgb(29, 104, 255);
+
+  box-shadow: rgba(25, 25, 26, 0.288) -8px 12px 18px 0px;
+}
+
+.widgets2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cus-card-2 {
+  height: 170px;
+  width: 850px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  box-shadow: 7px 11px 20px -2px rgba(0, 0, 0, 0.226);
+  border-radius: 10px;
+  cursor: default;
+}
+
+.cus-card-2 h4 {
+  margin: 10px 0 0 25px;
+  color: #1f1f1f;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.cus-card-2 .items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.cus-card-2 .items .item {
+  height: 100px;
+  width: 280px;
+  margin: 0 5px 0 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.cus-card-2 .items .item .c2titl {
+  margin: 20px 0 0 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #a1a5b5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cus-card-2 .items .item p {
+  font-weight: 500;
+  color: #181818;
+  font-size: 25px;
+}
+
+.cus-card-2 .items .item .st-icon {
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  color: #437ef3;
+  font-size: 30px;
+  margin: 0 10px 0 0;
+  background-color: #dff0fe;
+  box-shadow: rgb(210, 214, 224) -8px 12px 18px 0px;
+  border-radius: 50%;
+}
+
+.cus-card-2:hover {
+  background: rgb(0, 76, 224);
+  background: linear-gradient(
+    112deg,
+    rgba(0, 76, 224, 1) 0%,
+    rgba(127, 170, 255, 1) 100%
+  );
+  color: rgb(255, 255, 255);
+  box-shadow: rgb(174, 175, 177) -8px 12px 18px 0px;
+}
+
+.cus-card-2:hover h4 {
+  color: white;
+}
+
+.cus-card-2:hover .items .item .c2titl {
+  color: white;
+}
+
+.cus-card-2:hover .items .item .c2titl p {
+  color: white;
+}
+
+.cus-card-3 {
+  height: 170px;
+  width: 160px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 7px 11px 20px -2px rgba(0, 0, 0, 0.363);
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 30px;
+  justify-content: center;
+  cursor: default;
+
+  align-items: center;
+}
+
+.cus-card-3:hover {
+  background: rgb(0, 76, 224);
+  background: linear-gradient(
+    112deg,
+    rgba(0, 76, 224, 1) 0%,
+    rgba(127, 170, 255, 1) 100%
+  );
+  color: rgb(255, 255, 255);
+  box-shadow: rgb(174, 175, 177) -8px 12px 18px 0px;
+}
+
+.cus-card-3 .titl {
+  font-size: 15px;
+  font-weight: 500;
+  color: #a1a5b5;
+  text-transform: uppercase;
+  transition: background-color 1s ease-in;
+}
+
+.cus-card-3 .titl h3 {
+  color: #1f1f1f;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in;
+  margin: 0;
+}
+
+.cus-card-3 .icon {
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
+  margin: 10px 0 10px 0;
+  line-height: 60px;
+  color: #437ef3;
+  font-size: 35px;
+  box-shadow: rgb(210, 214, 224) -8px 12px 18px 0px;
+  background-color: #dff0fe;
+}
+
+.cus-card-3:hover .titl {
+  color: rgb(255, 255, 255);
+}
+
+.cus-card-3:hover h3 {
+  color: rgb(255, 255, 255);
 }

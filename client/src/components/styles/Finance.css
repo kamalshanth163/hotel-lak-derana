@@ -1,0 +1,75 @@
+.finance-tab {
+  height: 115vh;
+}
+
+.finance-tab .title-and-action h3 {
+  font-size: 25px;
+  width: 130px;
+  margin: 0 0 0 20px !important;
+}
+
+.finance-tab .title-and-action {
+  height: 150px;
+}
+
+.finance-tab .title-and-action form .btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 !important;
+}
+
+.finance-tab .title-and-action form input[type="number"],
+input[type="number"],
+input[type="data"],
+textarea {
+  border: none;
+  border-bottom: 2px solid rgb(111, 159, 255);
+  background: transparent;
+  outline: none;
+  width: 90%;
+  text-transform: capitalize;
+}
+
+.finance-tab .TableDiv {
+  width: auto;
+  margin: 0 20px 30px 20px;
+  border-radius: 10px;
+  height: 530px;
+  background-color: white;
+}
+
+.finance-tab .TableDiv .deleteBtn {
+  color: white;
+  height: 30px;
+  border: none;
+  width: 90px;
+  margin: 0 20px 0 0;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  background-color: #dc3545;
+  font-size: 15px;
+}
+
+.finance-tab .TableDiv .editBtn {
+  color: white;
+  height: 30px;
+  margin: 0;
+  border: none;
+  width: 70px;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffd75e;
+  font-size: 15px;
+}
+
+.finance-tab .TableDiv hr {
+  width: 220px;
+  height: 2px !important;
+  padding: 0;
+  margin: 5px 0 0 60px;
+  background-color: rgb(61, 124, 250);
+}

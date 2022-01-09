@@ -1,169 +1,122 @@
-.inventory-page{
-    width: 95%;
-    margin: 0 auto;
-}
-.form {
-    background-color: white;
-  }
-
-  label{
-    margin-right: 20px;
-  }
-  
-  input[type=text], input[type=password], input[type=number]{
-    width: 300px;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-  }
-  
-  input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-  } 
-  .addBtn, .editBtn {
-    background-color: #046daa;
-    color: white;
-    padding: 16px 20px;
-    margin: 0 auto;
-    border: none;
-    cursor: pointer;
-    width: 300px;
-    opacity: 0.9;
-  } 
-
-  .inventorybtn:hover {
-    opacity: 1;
-  }
-  a {
-    color: dodgerblue;
-  }
-  .signup {
-    background-color: #f1f1f1;
-    text-align: center;
-  }
-  .layout{
-    width: 100%;
-  }
-  .left-col{
-    width: 10%;
-}
-  .right-col{
-    width: 90%;
-    vertical-align: top;
-    padding: 30px 0px 30px 10px;
+.inventory-tab .title-and-action h3 {
+  font-size: 25px;
+  margin: 0 20px 0 30px !important;
+  width: 135px;
 }
 
-.panel {
-  margin-top: -10px;
-}
-.panel table{
-    display: block;
-    width: 100%;
-    padding: 20px;
-    background: white;
-    height: 400px;
-}
-.panel table thead tr {
-    text-align: center;
-}
-.panel table thead tr td {
-    padding: 20px;
-    text-align: center;
-    height: 50px;
-    min-height: 40px;
-}
-.panel table tbody tr {
-    text-align: center;
-    background: white;
-}
-.panel table tr td{
-    padding: 20px;
-    text-align: center;
-    height: 50px;
-    min-height: 40px;
+.inventory-tab .title-and-action {
+  height: 300px;
 }
 
-.panel table .btn{
-    padding: 4px 8px;
-    border: none;
-    border-radius: 2px;
-    background: rgb(7, 158, 70);
-    color: white;
-    margin: 2px;
-    cursor: pointer;
-    font-size: 12px;
+.inventory-tab .title-and-action form {
+  display: flex;
+  align-items: center;
 }
 
-.panel table .edit-btn{
-    background: rgb(7, 158, 70);
+.inventory-tab .title-and-action form .div1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 210px;
+  width: 250px;
+  gap: 50px !important;
 }
 
-.panel table .delete-btn{
-    background: rgb(221, 26, 0);
+.inventory-tab .title-and-action form .div2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 210px;
+  width: 330px;
+  gap: 55px !important;
 }
 
-.panel table .table-body {
-  height: 500px;
-  overflow-y: scroll;
-  padding: 10px;
+.inventory-tab .title-and-action select {
+  width: 90px;
+  height: 30px;
+  margin: 0 0 0 15px !important;
+  border: 1px solid rgb(111, 159, 255);
+}
+
+.inventory-tab .title-and-action form .div2 label {
+  font-weight: 300 !important;
+}
+
+.inventory-tab .title-and-action form .div2 select {
+  margin: 0 0 0 10px;
+  width: 180px;
+}
+
+.inventory-tab .title-and-action form .div3 {
+  display: flex;
+  flex-direction: column;
+  height: 210px;
+  width: 250px;
+  gap: 50px !important;
+}
+
+.inventory-tab .title-and-action form .btns {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.inventory-tab .title-and-action form input[type="number"],
+input[type="number"],
+input[type="data"],
+textarea {
   border: none;
+  border-bottom: 2px solid rgb(111, 159, 255);
+  background: transparent;
+  outline: none;
+  width: 90%;
+  text-transform: capitalize;
 }
-.panel table .table-head {
-  overflow-y: scroll;
-}
-.panel table .th-row th{
-  border: none;
+
+.inventory-tab .TableDiv {
+  width: auto;
+  margin: 0 20px 30px 20px;
   border-radius: 10px;
+  height: 530px;
+  background-color: white;
+}
+
+.inventory-tab .TableDiv .deleteBtn {
+  color: white;
+  height: 30px;
+  border: none;
+  width: 90px;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  background-color: #dc3545;
+  font-size: 15px;
+}
+
+.inventory-tab .TableDiv .editBtn {
+  color: white;
+  height: 30px;
+  margin: 0;
+  border: none;
+  width: 70px;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffd75e;
+  font-size: 15px;
+}
+
+.inventory-tab .TableDiv table td:nth-child(11) {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inventory-tab .TableDiv hr {
+  width: 220px;
+  height: 2px !important;
   padding: 0;
-  width: 160px;
-  margin: 0 auto;
-  text-align: center;
-  height: 40px;
-}
-.panel table .td-row td{
-  background: rgb(236, 236, 236);
-  width: 160px;
-  padding: 10px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.inventory-table-message-box{
-  width: 500px;
-  height: auto;
-  color: rgb(109, 109, 109);
-  vertical-align: center;
-  margin: 120px auto;
-  border: none;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.inventory-panel-message-box{
-  width: 500px;
-  height: auto;
-  color: rgb(109, 109, 109);
-  vertical-align: center;
-  margin: 160px auto;
-  border: none;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.inventory-page .sub-links ul{
-  display: inline-block;
-  text-decoration: none;
-}
-.inventory-page .inventory-menu{
-  margin-bottom: 20px; 
-}
-.inventory-page .inventory-menu td .menu-link{
-  background: rgb(218, 218, 218);
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-  padding: 8px 20px;
-  border-radius: 10px;
+  margin: 5px 0 0 60px;
+  background-color: rgb(61, 124, 250);
 }

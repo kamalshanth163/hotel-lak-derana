@@ -1,169 +1,244 @@
-.finance-page{
-    width: 95%;
-    margin: 0 auto;
-}
-.form {
-    background-color: white;
-  }
-
-  label{
-    margin-right: 20px;
-  }
-  
-  input[type=text], input[type=password], input[type=number]{
-    width: 300px;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-  }
-  
-  input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-  } 
-  .addBtn, .editBtn {
-    background-color: #046daa;
-    color: white;
-    padding: 16px 20px;
-    margin: 0 auto;
-    border: none;
-    cursor: pointer;
-    width: 300px;
-    opacity: 0.9;
-  } 
-
-  .financebtn:hover {
-    opacity: 1;
-  }
-  a {
-    color: dodgerblue;
-  }
-  .signup {
-    background-color: #f1f1f1;
-    text-align: center;
-  }
-  .layout{
-    width: 100%;
-  }
-  .left-col{
-    width: 10%;
-}
-  .right-col{
-    width: 90%;
-    vertical-align: top;
-    padding: 30px 0px 30px 10px;
-}
-
-.panel {
-  margin-top: -10px;
-}
-.panel table{
-    display: block;
-    width: 100%;
-    padding: 20px;
-    background: white;
-    height: 400px;
-}
-.panel table thead tr {
-    text-align: center;
-}
-.panel table thead tr td {
-    padding: 20px;
-    text-align: center;
-    height: 50px;
-    min-height: 40px;
-}
-.panel table tbody tr {
-    text-align: center;
-    background: white;
-}
-.panel table tr td{
-    padding: 20px;
-    text-align: center;
-    height: 50px;
-    min-height: 40px;
-}
-
-.panel table .btn{
-    padding: 4px 8px;
-    border: none;
-    border-radius: 2px;
-    background: rgb(7, 158, 70);
-    color: white;
-    margin: 2px;
-    cursor: pointer;
-    font-size: 12px;
-}
-
-.panel table .edit-btn{
-    background: rgb(7, 158, 70);
-}
-
-.panel table .delete-btn{
-    background: rgb(221, 26, 0);
-}
-
-.panel table .table-body {
-  height: 500px;
-  overflow-y: scroll;
-  padding: 10px;
-  border: none;
-}
-.panel table .table-head {
-  overflow-y: scroll;
-}
-.panel table .th-row th{
-  border: none;
-  border-radius: 10px;
-  padding: 0;
-  width: 160px;
-  margin: 0 auto;
-  text-align: center;
-  height: 40px;
-}
-.panel table .td-row td{
-  background: rgb(236, 236, 236);
-  width: 160px;
-  padding: 10px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.finance-table-message-box{
-  width: 500px;
+.finance-page {
+  width: auto;
   height: auto;
-  color: rgb(109, 109, 109);
-  vertical-align: center;
-  margin: 120px auto;
-  border: none;
-  border-radius: 10px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f5f9;
 }
 
-.finance-panel-message-box{
-  width: 500px;
-  height: auto;
-  color: rgb(109, 109, 109);
-  vertical-align: center;
-  margin: 160px auto;
-  border: none;
-  border-radius: 10px;
-  text-align: center;
+.sub-options {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  gap: 30px;
+  padding: 0 0 0 20px;
+  align-items: center;
+  box-shadow: 6px 7px 14px -5px rgba(0, 0, 0, 0.26);
 }
 
-.finance-page .sub-links ul{
-  display: inline-block;
+.sub-options .menu-link {
   text-decoration: none;
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  height: 38px;
+  width: 160px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 10px;
+  background-color: #767792;
 }
-.finance-page .finance-menu{
-  margin-bottom: 20px; 
+
+.sub-options .menu-link .icon {
+  font-size: 20px;
 }
-.finance-page .finance-menu td .menu-link{
-  background: rgb(218, 218, 218);
+
+.sub-options a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 16px !important;
+}
+
+.sub-options .menu-link:hover {
+  background-color: #3a3b5c;
+  box-shadow: 0px 10px 13px -7px #0000009f, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.sub-options .is-active {
+  background-color: #3a3b5c;
+  box-shadow: 0px 10px 13px -7px #0000009f, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.sub-options .menu-link:hover a {
+  color: white;
+}
+
+.title-and-action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+}
+
+.title-and-action h3 {
+  font-size: 30px;
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.title-and-action form {
+  display: flex;
+}
+
+.title-and-action form input[type="text"],
+input[type="number"],
+textarea {
+  border: none;
+  border-bottom: 2px solid rgb(111, 159, 255);
+  background: transparent;
+  outline: none;
+  width: 90%;
+  text-transform: capitalize;
+  padding: 5px 10px;
+}
+
+.title-and-action form .btns {
+  display: flex;
+  gap: 10px;
+}
+
+.title-and-action form .btns button {
+  height: 35px;
+  width: 110px;
+  border: none;
+  text-transform: uppercase;
+  color: white;
+}
+
+.title-and-action form .btns button:nth-child(1) {
+  background-color: #5fcc79;
+}
+
+.title-and-action form .btns button:nth-child(2) {
+  background-color: #ffce3c;
+}
+
+.title-and-action form .btns button:nth-child(1):hover {
+  background-color: #47b861;
+  box-shadow: 0px 10px 13px -7px #0000002a, 5px 5px 15px 5px rgba(0, 0, 0, 0) !important;
+  color: white;
+}
+
+.title-and-action form .btns button:nth-child(2):hover {
+  background-color: #ebb915;
+  box-shadow: 0px 10px 13px -7px #0000002a, 5px 5px 15px 5px rgba(0, 0, 0, 0) !important;
+  color: white;
+}
+
+.title-and-action form .btns button .icon {
+  margin: 0 10px 0 0;
+}
+
+.TableDiv {
+  width: auto;
+  margin: 0 20px 0 20px;
+  border-radius: 10px;
+  height: 520px;
+  background-color: white;
+}
+
+.TableDiv .dataTables_filter {
+  padding-bottom: 20px;
+}
+
+.TableDiv table td:nth-child(5) {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.TableDiv h4 {
+  margin: 0 0 0 60px;
+  padding-top: 30px;
+}
+
+.TableDiv hr {
+  width: 330px;
+  height: 2px !important;
+  padding: 0;
+  margin: 5px 0 0 60px;
+  background-color: rgb(61, 124, 250);
+}
+
+.TableDiv .p-5 {
+  padding-top: 20px !important;
+}
+
+.TableDiv button {
   text-decoration: none;
   color: rgb(0, 0, 0);
-  padding: 8px 20px;
+  height: 30px;
+  border: none;
+  width: 70px;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid black;
+}
+
+.TableDiv button:hover {
+  background-color: rgb(68, 131, 255);
+  box-shadow: 0px 10px 13px -7px #00000028, 5px 5px 15px 5px rgba(0, 0, 0, 0) !important;
+  color: white;
+  border: none;
+}
+
+.TableDiv .deleteBtn {
+  color: white;
+  height: 30px;
+  border: none;
+  width: 100px;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  background-color: #dc3545;
+  font-size: 15px;
+}
+
+.TableDiv .deleteBtn:hover {
+  background-color: #cf2334;
+}
+
+.TableDiv .editBtn {
+  color: white;
+  height: 30px;
+  margin: 0;
+  border: none;
+  width: 80px;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffce3c;
+  font-size: 15px;
+}
+
+.TableDiv .editBtn:hover {
+  background-color: #ebb915;
+}
+
+.TableDiv .icon {
+  font-size: 15px;
+  margin: 0 5px 0 0;
+}
+
+.ChartDiv {
+  width: auto;
+  margin: 30px 20px 30px 20px;
   border-radius: 10px;
+  height: 460px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+.ChartDiv h4 {
+  text-align: center;
+}
+
+.ChartDiv .chart {
+  height: 400px;
+  width: 800px;
+}
+
+.ChartDiv hr {
+  width: 200px;
+  height: 2px !important;
+  padding: 0;
+  margin: 0 0 0 30px;
+  background-color: rgb(61, 124, 250);
 }

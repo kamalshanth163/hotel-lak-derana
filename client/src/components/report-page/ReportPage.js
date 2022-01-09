@@ -7,34 +7,26 @@ import {
   useRouteMatch
 } from "react-router-dom";
 import Report from './tabs/Report';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileContract} from '@fortawesome/free-solid-svg-icons';
 
 const ReportPage = () => {
   let { path, url } = useRouteMatch();
 
   return (
 
-  <div className='report-page'>
-    <div>
-      <div>
+    <div className='report-page'>
 
-        <h1>Report page</h1>
-        <table className='report-menu'>
-          <tr>
-            <td>
-              <Link className="menu-link" to={`${url}/report`}>Reports</Link>
-            </td>
-          </tr>
-        </table>
-
+    <div className='sub-options'>
+      <NavLink className="menu-link" activeClassName="is-active" to={`${url}/report`}><FontAwesomeIcon className='icon' icon={faFileContract} />Reports</NavLink>
+    </div>
         <Switch>
           <Route path={`${path}`} exact component = {Report} />
           <Route path={`${path}/report`} component = {Report} />
         </Switch>
+    </div>
 
-      </div>
-    </div>
-    
-    </div>
   );
 }
 

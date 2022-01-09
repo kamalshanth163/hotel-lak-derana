@@ -1,6 +1,10 @@
-import React from 'react';
-import '../styles/FinancePage.css'
+import React, { useState } from 'react';
+import '../styles/FinancePage.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NavLink } from 'react-router-dom';
+import { faHandHoldingUsd} from '@fortawesome/free-solid-svg-icons';
 import {
+  BrowserRouter as Router,
   Switch,
   Route,
   Link,
@@ -13,28 +17,19 @@ const FinancePage = () => {
 
   return (
 
-  <div className='finance-page'>
-    <div>
-      <div>
+    <div className='finance-page'>
 
-        <h1>Finance page</h1>
-        <table className='finance-menu'>
-          <tr>
-            <td>
-              <Link className="menu-link" to={`${url}/finance`}>Finances</Link>
-            </td>
-          </tr>
-        </table>
+    <div className='sub-options'>
+      <NavLink className="menu-link" activeClassName="is-active" to={`${url}/finance`}><FontAwesomeIcon className='icon' icon={faHandHoldingUsd} />Finance</NavLink>
+    </div>
 
         <Switch>
           <Route path={`${path}`} exact component = {Finance} />
           <Route path={`${path}/finance`} component = {Finance} />
         </Switch>
-
-      </div>
-    </div>
     
     </div>
+
   );
 }
 

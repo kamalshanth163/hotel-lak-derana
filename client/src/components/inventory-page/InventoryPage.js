@@ -7,34 +7,30 @@ import {
   useRouteMatch
 } from "react-router-dom";
 import Inventory from './tabs/Inventory';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NavLink } from 'react-router-dom';
+import { faDollyFlatbed ,faMoneyCheckAlt} from '@fortawesome/free-solid-svg-icons';
 
 const InventoryPage = () => {
   let { path, url } = useRouteMatch();
 
   return (
 
-  <div className='inventory-page'>
-    <div>
-      <div>
+    
+  <div className='customer-page'>
 
-        <h1>Inventory page</h1>
-        <table className='inventory-menu'>
-          <tr>
-            <td>
-              <Link className="menu-link" to={`${url}/inventory`}>Inventories</Link>
-            </td>
-          </tr>
-        </table>
+  <div className='sub-options'>
+    <NavLink className="menu-link"  activeClassName="is-active" to={`${url}/inventory`}><FontAwesomeIcon className='icon' icon={faDollyFlatbed} />Inventory</NavLink>
+  </div>
 
-        <Switch>
+      <Switch>
           <Route path={`${path}`} exact component = {Inventory} />
           <Route path={`${path}/inventory`} component = {Inventory} />
-        </Switch>
+      </Switch>
 
-      </div>
+
     </div>
-    
-    </div>
+
   );
 }
 
