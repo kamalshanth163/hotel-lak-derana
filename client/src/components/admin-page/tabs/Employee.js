@@ -94,6 +94,7 @@ function Employee() {
                     <option value="Manager">Manager</option>
                     <option value="Reservation Manager">Reservation Manager</option>
                     <option value="Human Resource Manager">Human Resource Manager</option>
+                    <option value="Bar Manager">Bar Manager</option>
                   </select>
               </div>
 
