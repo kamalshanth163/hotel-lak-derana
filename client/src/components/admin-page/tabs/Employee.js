@@ -82,10 +82,21 @@ function Employee() {
             </div>
 
             <div className='div2'> 
-              <div className='input'>
+              {/* <div className='input'>
                 <label for="role"></label>
                 <input type="text" placeholder="Role" name="role" id="role" value={employee.role} required onChange={(e)=>handleChange(e)}/>
+              </div> */}
+
+              <div className='input'>
+                <label for="role"><b>Role</b></label>
+                  <select name="role" id="role" value={employee.role} required onChange={(e)=>handleChange(e)}>
+                    <option value="Admin">Admin</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Reservation Manager">Reservation Manager</option>
+                    <option value="Human Resource Manager">Human Resource Manager</option>
+                  </select>
               </div>
+
               <div className='input'>
                 <label for="email"></label>
                 <input type="text" placeholder="Email" name="email" id="email" value={employee.email} required onChange={(e)=>handleChange(e)}/>

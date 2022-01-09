@@ -51,7 +51,7 @@ const loginEmployee = (req, res) => {
     , (err, results) => {
         if(err) return res.sendStatus(400);
         if(results.length == 0) return res.sendStatus(404);
-        return res.sendStatus(200);
+        return res.send(results[0]);
     })
 }
 

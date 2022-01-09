@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import "./styles/Home.css";
 import {Pchart} from './charts/staffpie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,7 +6,6 @@ import { faUsers, faFileInvoice, faBuilding, faDoorOpen, faMoneyBillWave, faUser
 
 
 const Home = () => {
-  const history = useHistory();
 
   return (
     
@@ -17,7 +15,7 @@ const Home = () => {
           <div className='widgets1'>
 
             <div className='pie'>
-              <h3> Lak Derena Staffs </h3>
+              <h3> Lak Derana Staffs </h3>
               <Pchart />
             </div>
 

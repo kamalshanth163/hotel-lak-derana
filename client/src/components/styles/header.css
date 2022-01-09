@@ -96,3 +96,11 @@
   border-radius: 5px;
   box-shadow: 6px 7px 14px -5px rgba(0, 0, 0, 0.171);
 }
+
+.login-btn{
+  background: rgb(94, 160, 190);
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+}

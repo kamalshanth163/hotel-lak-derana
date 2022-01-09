@@ -5,6 +5,10 @@
   font-family: Montserrat, Helvetica, Arial, serif;
 }
 
+.login-page {
+  width: 100%;
+}
+
 section {
   position: relative;
   width: 100%;
