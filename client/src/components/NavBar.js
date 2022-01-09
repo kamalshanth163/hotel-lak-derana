@@ -22,7 +22,7 @@ const NavBar = () => {
                   <td>
                     <NavLink className="navlink link" activeClassName="is-active" to="/" exact>
                     <FontAwesomeIcon className='navicon' icon={faHome} />
-                    Home</NavLink>
+                    Dashboard</NavLink>
                   </td>
                 </tr>
                 <tr>
@@ -37,7 +37,7 @@ const NavBar = () => {
                   <td>
                       <NavLink className="navlink link" activeClassName="is-active" to="/staff-page">
                       <span className='navicon'> <FontAwesomeIcon icon={faIdCard} /> </span>
-                      Employees</NavLink>
+                      Staff</NavLink>
                   </td>
                 </tr>
                 <tr>
@@ -58,7 +58,7 @@ const NavBar = () => {
                   <td>
                       <NavLink className="navlink link" activeClassName="is-active"  to="/admin-page">   
                       <span className='navicon'> <FontAwesomeIcon icon={faTasks} /> </span>
-                      Manage</NavLink>
+                      Admin</NavLink>
                   </td>
                 </tr>   
                 <tr>
