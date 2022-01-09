@@ -13,3 +13,24 @@ body {
   position: static;
   flex: 1 0 18%;
 }
+
+.message-area {
+  font-size: 20px;
+  background: rgb(255, 255, 255);
+  width: 60%;
+  height: auto;
+  border: none;
+  border-radius: 20px;
+  color: black;
+  margin: 100px auto;
+  padding: 40px;
+}
+
+.message-btn{
+  font-size: 20px;
+  background: rgb(94, 160, 190);
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+}

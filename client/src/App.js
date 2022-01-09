@@ -57,7 +57,6 @@ function App() {
             <Route path="/staff-page" component = {StaffPage} />
             <Route path="/finance-page" component = {FinancePage} />
             <Route path="/report-page" component = {ReportPage} />
-            {/* <Route path="/login-page" component = {LoginPage} /> */}
         </Switch>
       </div>
 

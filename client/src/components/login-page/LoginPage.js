@@ -14,9 +14,7 @@ function LoginPage() {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        console.log(user)
         new API_Employee().loginUser(user).then(data => {
-            console.log(data);
             localStorage.setItem("user", JSON.stringify({
                 id: data.id,
                 name: data.name,
